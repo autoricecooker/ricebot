@@ -23,7 +23,7 @@ def handle(msg):
 
 
 	if content_type == "text":
-  print(msg)
+		print(msg)
 		if chat_id == "234762812":
 			print("chat id is testGC")
 		if (any(x in msg["text"].lower() for x in sadgreet) and "ricecooker" in msg["text"].lower()):
