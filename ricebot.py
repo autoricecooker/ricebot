@@ -10,7 +10,7 @@ from telepot.loop import MessageLoop
 
 
 ricebot = telepot.Bot(os.environ["BOT_TOKEN"])
-wwgc = telepot.Bot(os.environ["WW_GC"])
+wwgc = os.environ["WW_GC"]
 riceID = ricebot.getMe()
 ricecontent = 0
 sadgreet = ["spill", "trip", "eat", "bite", "tips", "tips over"]
