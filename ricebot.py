@@ -13,7 +13,7 @@ riceID = ricebot.getMe()
 ricecontent = 0
 sadgreet = ["spills", "trips", "eats", "bites", "tips", "tips over"]
 killgreet = ["unplug", "bang", "kill", "rip"]
-randomgreet = ["Hello", "Hi", "Greetings", "Good day", "How are ya?", "Yes", "No"]
+randomgreet = ["Hello", "Hi", "Greetings", "Good day", "How are ya?", "Yes", "No", "What's up?"]
 unpluggif = "CgADBQADNwADtjzaDXzFsIuaINkHAg"
 
 def handle(msg):
