@@ -8,7 +8,8 @@ import random
 
 from telepot.loop import MessageLoop
 
-ricebot = telepot.Bot("629508118:AAFCWu7nZRfHw_iOhy_xA488x5Qe6XGZHMc")
+
+ricebot = telepot.Bot(os.environ["BOT_TOKEN"])
 riceID = ricebot.getMe()
 ricecontent = 0
 sadgreet = ["spills", "trips", "eats", "bites", "tips", "tips over"]
