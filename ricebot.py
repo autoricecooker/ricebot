@@ -23,7 +23,6 @@ def handle(msg):
 
 
 	if content_type == "text":
-		print(msg)
 		if chat_id == -234762812:
 			print("chat id is testGC")
 		if (any(x in msg["text"].lower() for x in sadgreet) and "ricecooker" in msg["text"].lower()):
@@ -32,7 +31,7 @@ def handle(msg):
 			ricebot.sendMessage(chat_id, ">.>", parse_mode="Markdown")
 			ricebot.sendMessage(chat_id, "_spills rice_", parse_mode="Markdown")
         #send WW GC invite link in main GC
-		elif (("werewolf" in msg["text"]) or ("nextgame@werewolfbot" in msg["text"])) and (chat_id == "-234762812"):
+		elif (("/werewolf" in msg["text"]) or ("/nextgame@werewolfbot" in msg["text"])) and (chat_id == -234762812):
 			ricebot.sendMessage(chat_id, "Hi, you may join this GC's werewolf game channel at https://t.me/joinchat/" + wwgc, parse_mode="Markdown", disable_web_page_preview=None, disable_notification=True, reply_to_message_id=msg_id)
         #send unplug GIF if a kill greeting has been sent        
 		elif (any(x in msg["text"].lower() for x in killgreet) and "ricecooker" in msg["text"].lower()): 
