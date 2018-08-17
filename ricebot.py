@@ -19,7 +19,7 @@ randomgreet = ["Hello", "Hi", "Greetings", "Good day", "How are ya?", "Yes", "No
 unpluggif = "CgADBQADNwADtjzaDXzFsIuaINkHAg"
 
 def handle(msg):
-    content_type, chat_type, chat_id, msg_date, msg_id = telepot.glance(msg, flavor="chat", long="True")
+	content_type, chat_type, chat_id, msg_date, msg_id = telepot.glance(msg, flavor="chat", long="True")
 
 
 	if content_type == "text":
