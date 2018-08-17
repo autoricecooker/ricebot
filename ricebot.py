@@ -12,7 +12,7 @@ from telepot.loop import MessageLoop
 ricebot = telepot.Bot(os.environ["BOT_TOKEN"])
 riceID = ricebot.getMe()
 ricecontent = 0
-sadgreet = ["spills", "trips", "eats", "bites", "tips", "tips over"]
+sadgreet = ["spill", "trip", "eat", "bite", "tips", "tips over"]
 killgreet = ["unplug", "bang", "kill", "rip"]
 randomgreet = ["Hello", "Hi", "Greetings", "Good day", "How are ya?", "Yes", "No", "What's up?"]
 unpluggif = "CgADBQADNwADtjzaDXzFsIuaINkHAg"
