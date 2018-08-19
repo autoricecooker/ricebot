@@ -16,6 +16,7 @@ ricecontent = 0
 sadgreet = ["spill", "trip", "eat", "bite", "tips", "tips over"]
 killgreet = ["unplug", "bang", "kill", "rip"]
 randomgreet = ["Hello", "Hi", "Greetings", "Good day", "How are ya?", "Yes", "No", "What's up?"]
+assumptgreet = ["akala ko si rice", "akala ko si ricecooker", "akala ko si @ricecooker"]
 werewolfcommands = ["/werewolf@riceCookerisnotAbot", "/startchaos@werewolfbot", "/nextgame@werewolfbot", "/start@werewolfbot",]
 unpluggif = "CgADBQADNwADtjzaDXzFsIuaINkHAg"
 
@@ -34,7 +35,9 @@ def handle(msg):
         #send WW GC invite link in main GC
 		elif (any(x in msg["text"] for x in werewolfcommands) and (chat_id == -1001043875036)):
 			ricebot.sendMessage(chat_id, "Hi, you may join this GC's werewolf game channel at https://t.me/joinchat/" + wwgc, parse_mode="Markdown", disable_web_page_preview=None, disable_notification=True, reply_to_message_id=msg_id)
-        #send unplug GIF if a kill greeting has been sent        
+		elif (any(x in msg["text"].lower() for x in assumptgreet)):
+			ricebot.sendMessage(chat_id, "Di ako yun", parse_mode="Markdown", disable_web_page_preview=None, disable_notification=True, reply_to_message_id=msg_id)
+  #send unplug GIF if a kill greeting has been sent 
 		elif (any(x in msg["text"].lower() for x in killgreet) and "ricecooker" in msg["text"].lower()): 
 			ricebot.sendDocument(chat_id, unpluggif)
         #send reply based on parameters
