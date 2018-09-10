@@ -19,6 +19,7 @@ randomgreet = ["Hello", "Hi", "Greetings", "Good day", "How are ya?", "Yes", "No
 assumptgreet = ["akala ko si rice", "akala ko si ricecooker", "akala ko si @ricecooker", "kala ko si rice", "kala ko si @ricecooker", "kala ko si ricecooker"]
 werewolfcommands = ["/werewolf@riceCookerisnotAbot", "/startchaos@werewolfbot", "/nextgame@werewolfbot", "/start@werewolfbot",]
 unpluggif = "CgADBQADNwADtjzaDXzFsIuaINkHAg"
+landigif = ["CgADBQADHQAD6QuQV_mxPdwxj0s2Ag", "CgADBQADKQADvG2JVi4mEJDnylDvAg"]
 
 def handle(msg):
 	content_type, chat_type, chat_id, msg_date, msg_id = telepot.glance(msg, flavor="chat", long="True")
@@ -27,6 +28,8 @@ def handle(msg):
 	if content_type == "text":
 		if chat_id == -234762812:
 			print("chat id is testGC")
+			ricebot.sendDocument(chat_id, random.choice(landigif), none, parse_mode="Markdown", disable_notification=True, reply_to_message_id=msg_id)
+
 		if (any(x in msg["text"].lower() for x in sadgreet) and "ricecooker" in msg["text"].lower()):
 			ricebot.sendMessage(chat_id,"<.<", parse_mode="Markdown", disable_web_page_preview=None, disable_notification=True, reply_to_message_id=msg_id)
 			time.sleep(1)
@@ -43,6 +46,8 @@ def handle(msg):
 			ricebot.sendDocument(chat_id, unpluggif)
 			#send reply based on parameters
         #elif ((msg["from"]["username"] is not None) and (msg["from"]["username"] != "riceCooker") and (msg["text"].lower() == "hi")):
+		#elif (msg["text"].lower() == "hipo"):
+		#	ricebot.sendDocument(chat_id, random.choice(landigif), none, parse_mode="Markdown", disable_notification=True, reply_to_message_id=msg_id)
 		elif (msg["text"].lower() == "hi" or msg["text"].lower() == "hi rice"):
 			#print (msg["from"]["username"])
 			time.sleep(1)
