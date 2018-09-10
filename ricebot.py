@@ -27,33 +27,45 @@ def handle(msg):
 
 
 	if content_type == "text":
+		#gc specific autoreply
+		
 		if chat_id == -234762812:
 			print("chat id is " + msg["chat"]["title"])
+					
+		#send WW GC invite link in main GC
+		elif (chat_id == -1001043875036):
+			#give 25% chance for Jerome landigif, 75% chance for generic landigif
+			landichance = random.randint(1,4) % 4
+			#autoreply for landi mo reply
 			if ((msg["reply_to_message"] is not None) and (msg["text"].lower() == "landi mo")):
-				ricebot.sendMessage(chat_id, "reply to original message", parse_mode="Markdown", disable_web_page_preview=None, disable_notification=True,reply_to_message_id=msg["reply_to_message"]["message_id"])
-				ricebot.sendDocument(chat_id, random.choice(landigif), caption=None, parse_mode="Markdown", disable_notification=True, reply_to_message_id=msg["reply_to_message"]["message_id"])
+				if (landichance == 0):
+					ricebot.sendDocument(chat_id, landigif[1], caption=None, parse_mode="Markdown", disable_notification=True, reply_to_message_id=msg["reply_to_message"]["message_id"])
+				else:
+					ricebot.sendDocument(chat_id, landigif[0], caption=None, parse_mode="Markdown", disable_notification=True, reply_to_message_id=msg["reply_to_message"]["message_id"])
+			#autoreply for hipo messages
+			elif (msg["text"].lower() == "hipo"):
+				if (landichance == 0):
+					ricebot.sendDocument(chat_id, landigif[1], caption=None, parse_mode="Markdown", disable_notification=True, reply_to_message_id=msg_id)
+				else:
+					ricebot.sendDocument(chat_id, landigif[0], caption=None, parse_mode="Markdown", disable_notification=True, reply_to_message_id=msg_id)
+			#werewolf command invite autoreply
+			elif (any(x in msg["text"] for x in werewolfcommands)):
+				ricebot.sendMessage(chat_id, "Hi, you may join this GC's werewolf game channel at https://t.me/joinchat/" + wwgc, parse_mode="Markdown", disable_web_page_preview=None, disable_notification=True, reply_to_message_id=msg_id)
+			#assumptions autoreply
+			elif (any(x in msg["text"].lower() for x in assumptgreet)):
+				time.sleep(1)			
+				ricebot.sendMessage(chat_id, "Di ako yun", parse_mode="Markdown", disable_web_page_preview=None, disable_notification=True, reply_to_message_id=msg_id)
+		
+		#non-gc specific autoreply
+		#sad greetings autoreply
 		if (any(x in msg["text"].lower() for x in sadgreet) and "ricecooker" in msg["text"].lower()):
 			ricebot.sendMessage(chat_id,"<.<", parse_mode="Markdown", disable_web_page_preview=None, disable_notification=True, reply_to_message_id=msg_id)
 			time.sleep(1)
 			ricebot.sendMessage(chat_id, ">.>", parse_mode="Markdown")
 			ricebot.sendMessage(chat_id, "_spills rice_", parse_mode="Markdown")
-		#send WW GC invite link in main GC
-		elif (any(x in msg["text"] for x in werewolfcommands) and (chat_id == -1001043875036)):
-			ricebot.sendMessage(chat_id, "Hi, you may join this GC's werewolf game channel at https://t.me/joinchat/" + wwgc, parse_mode="Markdown", disable_web_page_preview=None, disable_notification=True, reply_to_message_id=msg_id)
-		elif (any(x in msg["text"].lower() for x in assumptgreet)):
-			time.sleep(1)			
-			ricebot.sendMessage(chat_id, "Di ako yun", parse_mode="Markdown", disable_web_page_preview=None, disable_notification=True, reply_to_message_id=msg_id)
 		#send unplug GIF if a kill greeting has been sent 
 		elif (any(x in msg["text"].lower() for x in killgreet) and "ricecooker" in msg["text"].lower()): 
-			ricebot.sendDocument(chat_id, unpluggif)
-		elif ((msg["text"].lower() == "hipo") and (chat_id == -1001043875036)):
-			#give 25% chance for Jerome landigif, 75% chance for generic landigif
-			landichance = random.randint(1,4) % 4
-			time.sleep(1)
-			if (landichance == 0):
-				ricebot.sendDocument(chat_id, landigif[1], caption=None, parse_mode="Markdown", disable_notification=True, reply_to_message_id=msg_id)
-			else:
-				ricebot.sendDocument(chat_id, landigif[0], caption=None, parse_mode="Markdown", disable_notification=True, reply_to_message_id=msg_id)
+			ricebot.sendDocument(chat_id, unpluggif)		
 		#send greetings
 		elif (msg["text"].lower() == "hi" or msg["text"].lower() == "hi rice"):
 			time.sleep(1)
