@@ -29,8 +29,9 @@ def handle(msg):
 	if content_type == "text":
 		if chat_id == -234762812:
 			print("chat id is " + msg["chat"]["title"])
-			if (msg["reply_to_message"] is not None):
+			if ((msg["reply_to_message"] is not None) and (msg["text"].lower() == "landi mo")):
 				ricebot.sendMessage(chat_id, "reply to original message", parse_mode="Markdown", disable_web_page_preview=None, disable_notification=True,reply_to_message_id=msg["reply_to_message"]["message_id"])
+				ricebot.sendDocument(chat_id, random.choice(landigif), caption=None, parse_mode="Markdown", disable_notification=True, reply_to_message_id=msg["reply_to_message"]["message_id"])
 		if (any(x in msg["text"].lower() for x in sadgreet) and "ricecooker" in msg["text"].lower()):
 			ricebot.sendMessage(chat_id,"<.<", parse_mode="Markdown", disable_web_page_preview=None, disable_notification=True, reply_to_message_id=msg_id)
 			time.sleep(1)
