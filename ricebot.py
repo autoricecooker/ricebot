@@ -35,15 +35,8 @@ def handle(msg):
 		elif (chat_id == -1001043875036):
 			#give 25% chance for Jerome landigif, 75% chance for generic landigif
 			landichance = random.randint(1,4) % 4
-			#werewolf command invite autoreply
-			if (any(x in msg["text"] for x in werewolfcommands)):
-				ricebot.sendMessage(chat_id, "Hi, you may join this GC's werewolf game channel at https://t.me/joinchat/" + wwgc, parse_mode="Markdown", disable_web_page_preview=None, disable_notification=True, reply_to_message_id=msg_id)
-			#assumptions autoreply
-			elif (any(x in msg["text"].lower() for x in assumptgreet)):
-				time.sleep(1)			
-				ricebot.sendMessage(chat_id, "Di ako yun", parse_mode="Markdown", disable_web_page_preview=None, disable_notification=True, reply_to_message_id=msg_id)
 			#autoreply for hipo messages
-			elif (msg["text"].lower() == "hipo"):
+			if (msg["text"].lower() == "hipo"):
 				if (landichance == 0):
 					ricebot.sendDocument(chat_id, landigif[1], caption=None, parse_mode="Markdown", disable_notification=True, reply_to_message_id=msg_id)
 				else:
@@ -54,9 +47,14 @@ def handle(msg):
 					ricebot.sendDocument(chat_id, landigif[1], caption=None, parse_mode="Markdown", disable_notification=True, reply_to_message_id=msg["reply_to_message"]["message_id"])
 				else:
 					ricebot.sendDocument(chat_id, landigif[0], caption=None, parse_mode="Markdown", disable_notification=True, reply_to_message_id=msg["reply_to_message"]["message_id"])
-			
-			
-
+			#werewolf command invite autoreply
+			elif (any(x in msg["text"] for x in werewolfcommands)):
+				ricebot.sendMessage(chat_id, "Hi, you may join this GC's werewolf game channel at https://t.me/joinchat/" + wwgc, parse_mode="Markdown", disable_web_page_preview=None, disable_notification=True, reply_to_message_id=msg_id)
+			#assumptions autoreply
+			elif (any(x in msg["text"].lower() for x in assumptgreet)):
+				time.sleep(1)			
+				ricebot.sendMessage(chat_id, "Di ako yun", parse_mode="Markdown", disable_web_page_preview=None, disable_notification=True, reply_to_message_id=msg_id)
+	
 		
 		#non-gc specific autoreply
 		#sad greetings autoreply
