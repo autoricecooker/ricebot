@@ -31,7 +31,7 @@ def handle(msg):
 
 		if chat_id == -234762812:
 			print("chat id is " + msg["chat"]["title"])
-			if (("reply_to_message" in msg) and (msg["text"].lower() == "landi mo") and (msg_id == msg["reply_to_message"]["message_id"])):
+			if (("reply_to_message" in msg) and (msg["text"].lower() == "landi mo") and (msg["from"]["id"] == msg["reply_to_message"]["from"]["id"])):
 				print("same user ID")
 		elif (chat_id == -1001043875036):
 			#give 25% chance for Jerome landigif, 75% chance for generic landigif
@@ -43,7 +43,7 @@ def handle(msg):
 				else:
 					ricebot.sendDocument(chat_id, landigif[0], caption=None, parse_mode="Markdown", disable_notification=True, reply_to_message_id=msg_id)
 			#autoreply for landi mo reply
-			elif (("reply_to_message" in msg) and (msg["text"].lower() == "landi mo") and (msg_id != msg["reply_to_message"]["message_id"])):
+			elif (("reply_to_message" in msg) and (msg["text"].lower() == "landi mo") and (msg["from"]["id"] != msg["reply_to_message"]["from"]["id"])):
 				if (landichance == 0):
 					ricebot.sendDocument(chat_id, landigif[1], caption=None, parse_mode="Markdown", disable_notification=True, reply_to_message_id=msg["reply_to_message"]["message_id"])
 				else:
