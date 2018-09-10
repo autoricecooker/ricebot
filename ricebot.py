@@ -28,33 +28,35 @@ def handle(msg):
 
 	if content_type == "text":
 		#gc specific autoreply
-		
+
 		if chat_id == -234762812:
 			print("chat id is " + msg["chat"]["title"])
-					
-		#send WW GC invite link in main GC
+
 		elif (chat_id == -1001043875036):
 			#give 25% chance for Jerome landigif, 75% chance for generic landigif
 			landichance = random.randint(1,4) % 4
-			#autoreply for landi mo reply
-			if ((msg["reply_to_message"] is not None) and (msg["text"].lower() == "landi mo")):
-				if (landichance == 0):
-					ricebot.sendDocument(chat_id, landigif[1], caption=None, parse_mode="Markdown", disable_notification=True, reply_to_message_id=msg["reply_to_message"]["message_id"])
-				else:
-					ricebot.sendDocument(chat_id, landigif[0], caption=None, parse_mode="Markdown", disable_notification=True, reply_to_message_id=msg["reply_to_message"]["message_id"])
+			#werewolf command invite autoreply
+			if (any(x in msg["text"] for x in werewolfcommands)):
+				ricebot.sendMessage(chat_id, "Hi, you may join this GC's werewolf game channel at https://t.me/joinchat/" + wwgc, parse_mode="Markdown", disable_web_page_preview=None, disable_notification=True, reply_to_message_id=msg_id)
+			#assumptions autoreply
+			elif (any(x in msg["text"].lower() for x in assumptgreet)):
+				time.sleep(1)			
+				ricebot.sendMessage(chat_id, "Di ako yun", parse_mode="Markdown", disable_web_page_preview=None, disable_notification=True, reply_to_message_id=msg_id)
 			#autoreply for hipo messages
 			elif (msg["text"].lower() == "hipo"):
 				if (landichance == 0):
 					ricebot.sendDocument(chat_id, landigif[1], caption=None, parse_mode="Markdown", disable_notification=True, reply_to_message_id=msg_id)
 				else:
 					ricebot.sendDocument(chat_id, landigif[0], caption=None, parse_mode="Markdown", disable_notification=True, reply_to_message_id=msg_id)
-			#werewolf command invite autoreply
-			elif (any(x in msg["text"] for x in werewolfcommands)):
-				ricebot.sendMessage(chat_id, "Hi, you may join this GC's werewolf game channel at https://t.me/joinchat/" + wwgc, parse_mode="Markdown", disable_web_page_preview=None, disable_notification=True, reply_to_message_id=msg_id)
-			#assumptions autoreply
-			elif (any(x in msg["text"].lower() for x in assumptgreet)):
-				time.sleep(1)			
-				ricebot.sendMessage(chat_id, "Di ako yun", parse_mode="Markdown", disable_web_page_preview=None, disable_notification=True, reply_to_message_id=msg_id)
+			#autoreply for landi mo reply
+			elif (("reply_to_message" in msg) and (msg["text"].lower() == "landi mo")):
+				if (landichance == 0):
+					ricebot.sendDocument(chat_id, landigif[1], caption=None, parse_mode="Markdown", disable_notification=True, reply_to_message_id=msg["reply_to_message"]["message_id"])
+				else:
+					ricebot.sendDocument(chat_id, landigif[0], caption=None, parse_mode="Markdown", disable_notification=True, reply_to_message_id=msg["reply_to_message"]["message_id"])
+			
+			
+
 		
 		#non-gc specific autoreply
 		#sad greetings autoreply
