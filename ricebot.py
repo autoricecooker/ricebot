@@ -28,8 +28,7 @@ def handle(msg):
 
 	if content_type == "text":
 		if chat_id == -234762812:
-			print("chat id is testGC")
-			print(msg["chat"]["title"])
+			print("chat id is " + msg["chat"]["title"])
 		if (any(x in msg["text"].lower() for x in sadgreet) and "ricecooker" in msg["text"].lower()):
 			ricebot.sendMessage(chat_id,"<.<", parse_mode="Markdown", disable_web_page_preview=None, disable_notification=True, reply_to_message_id=msg_id)
 			time.sleep(1)
