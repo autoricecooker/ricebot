@@ -23,14 +23,11 @@ landigif = ["CgADBQADHQAD6QuQV_mxPdwxj0s2Ag", "CgADBQADKQADvG2JVi4mEJDnylDvAg"]
 
 def handle(msg):
 	content_type, chat_type, chat_id, msg_date, msg_id = telepot.glance(msg, flavor="chat", long="True")
-	print(msg)
+
 
 	if content_type == "text":
 		if chat_id == -234762812:
 			print("chat id is testGC")
-			if (msg["text"].lower() == "hipo"):
-				ricebot.sendDocument(chat_id, random.choice(landigif), caption=None, parse_mode="Markdown", disable_notification=True, reply_to_message_id=msg_id)
-
 		if (any(x in msg["text"].lower() for x in sadgreet) and "ricecooker" in msg["text"].lower()):
 			ricebot.sendMessage(chat_id,"<.<", parse_mode="Markdown", disable_web_page_preview=None, disable_notification=True, reply_to_message_id=msg_id)
 			time.sleep(1)
@@ -47,8 +44,9 @@ def handle(msg):
 			ricebot.sendDocument(chat_id, unpluggif)
 			#send reply based on parameters
         #elif ((msg["from"]["username"] is not None) and (msg["from"]["username"] != "riceCooker") and (msg["text"].lower() == "hi")):
-		#elif (msg["text"].lower() == "hipo"):
-		#	ricebot.sendDocument(chat_id, random.choice(landigif), none, parse_mode="Markdown", disable_notification=True, reply_to_message_id=msg_id)
+		elif ((msg["text"].lower() == "hipo") and (chat_id == -1001043875036)):
+			time.sleep(1)
+			ricebot.sendDocument(chat_id, random.choice(landigif), caption=None, parse_mode="Markdown", disable_notification=True, reply_to_message_id=msg_id)
 		elif (msg["text"].lower() == "hi" or msg["text"].lower() == "hi rice"):
 			#print (msg["from"]["username"])
 			time.sleep(1)
