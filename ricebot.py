@@ -38,25 +38,26 @@ def handle(msg):
 	chat_id = msg["chat"]["id"]
 
 	if content_type == "text":
+		msg_text = msg["text"].lower()
 		#gc specific autoreply
 
 		#check if GC is for testing
 		if chat_id == -234762812:
 			print("chat id is " + msg["chat"]["title"])
-			if (("reply_to_message" in msg) and (msg["text"].lower() == "landi mo") and (msg["from"]["id"] == msg["reply_to_message"]["from"]["id"])):
+			if (("reply_to_message" in msg) and (msg_text == "landi mo") and (msg["from"]["id"] == msg["reply_to_message"]["from"]["id"])):
 				print("same user ID")
 		#check if GC is production
 		elif (chat_id == -1001043875036):
 			#give 20% chance for Jerome landigif, 80% chance for generic landigif
 			landichance = random.randint(1,5) % 5
 			#autoreply for hipo messages
-			if (msg["text"].lower() == "hipo"):
+			if (msg_text == "hipo"):
 				if (landichance == 0):
 					ricebot.sendDocument(chat_id, landigif[1], caption=None, parse_mode="Markdown", disable_notification=True, reply_to_message_id=msg_id)
 				else:
 					ricebot.sendDocument(chat_id, landigif[0], caption=None, parse_mode="Markdown", disable_notification=True, reply_to_message_id=msg_id)
 			#autoreply for landi mo reply
-			elif (("reply_to_message" in msg) and (msg["text"].lower() == "landi mo") and (msg["from"]["id"] != msg["reply_to_message"]["from"]["id"])):
+			elif (("reply_to_message" in msg) and (msg_text == "landi mo") and (msg["from"]["id"] != msg["reply_to_message"]["from"]["id"])):
 				if (landichance == 0):
 					ricebot.sendDocument(chat_id, landigif[1], caption=None, parse_mode="Markdown", disable_notification=True, reply_to_message_id=msg["reply_to_message"]["message_id"])
 				else:
@@ -65,24 +66,24 @@ def handle(msg):
 			elif (any(x in msg["text"] for x in werewolfcommands)):
 				ricebot.sendMessage(chat_id, "Hi, you may join this GC's werewolf game channel at https://t.me/joinchat/" + wwgc, parse_mode="Markdown", disable_web_page_preview=None, disable_notification=True, reply_to_message_id=msg_id)
 			#assumptions autoreply
-			elif (any(x in msg["text"].lower() for x in assumptgreet)):
+			elif (any(x in msg_text for x in assumptgreet)):
 				time.sleep(1)			
 				ricebot.sendMessage(chat_id, "Di ako yun", parse_mode="Markdown", disable_web_page_preview=None, disable_notification=True, reply_to_message_id=msg_id)
 	
 		
 		#non-gc specific autoreply
 		#send greetings
-		if (msg["text"].lower() == "hi" or msg["text"].lower() == "hi rice"):
+		if (msg_text == "hi" or msg_text == "hi rice"):
 			time.sleep(1)
 			ricebot.sendMessage(chat_id, random.choice(randomgreet), parse_mode="Markdown", disable_web_page_preview=None, disable_notification=True, reply_to_message_id=msg_id)
 		#sad greetings autoreply
-		elif (any(x in msg["text"].lower() for x in sadgreet) and "ricecooker" in msg["text"].lower()):
+		elif (any(x in msg_text for x in sadgreet) and "ricecooker" in msg_text):
 			ricebot.sendMessage(chat_id,"<.<", parse_mode="Markdown", disable_web_page_preview=None, disable_notification=True, reply_to_message_id=msg_id)
 			time.sleep(1)
 			ricebot.sendMessage(chat_id, ">.>", parse_mode="Markdown")
 			ricebot.sendMessage(chat_id, "_spills rice_", parse_mode="Markdown")
 		#send unplug GIF if a kill greeting has been sent 
-		elif (any(x in msg["text"].lower() for x in killgreet) and "ricecooker" in msg["text"].lower()): 
+		elif (any(x in msg_text for x in killgreet) and "ricecooker" in msg_text): 
 			ricebot.sendDocument(chat_id, unpluggif)		
 		
 		
