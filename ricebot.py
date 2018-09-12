@@ -71,7 +71,7 @@ def handle(msg):
 				ricebot.sendMessage(chat_id, "Di ako yun", parse_mode="Markdown", disable_web_page_preview=None, disable_notification=True, reply_to_message_id=msg_id)
 			#Fetch user id of blacklisted member
 			if (("username" in msg["from"]) and (msg["from"]["username"] == "ChickenNu66ets")):
-				ricebot.sendMessage(-234762812, "User ID is" + msg["from"]["id"], parse_mode="Markdown")
+				ricebot.sendMessage(-234762812, "User ID is" + str(msg["from"]["id"]), parse_mode="Markdown")
 	
 		
 		#non-gc specific autoreply
