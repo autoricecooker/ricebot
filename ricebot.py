@@ -44,8 +44,6 @@ def handle(msg):
 		#check if GC is for testing
 		if chat_id == -234762812:
 			print("chat id is " + msg["chat"]["title"])
-			if ("reply_to_message" in msg):
-				print("content type detected in text")
 			if (("reply_to_message" in msg) and (msg_text == "landi mo") and (msg["from"]["id"] == msg["reply_to_message"]["from"]["id"])):
 				print("same user ID")
 		#check if GC is production
