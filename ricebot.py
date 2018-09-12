@@ -18,6 +18,7 @@ sadgreet = ["spill", "trip", "eat", "bite", "tips", "tips over"]
 killgreet = ["unplug", "bang", "kill", "rip"]
 randomgreet = ["Hello", "Hi", "Greetings", "Good day", "How are ya?", "Yes", "No", "What's up?"]
 assumptgreet = ["akala ko si rice", "akala ko si ricecooker", "akala ko si @ricecooker", "kala ko si rice", "kala ko si @ricecooker", "kala ko si ricecooker"]
+angerygreet = ["Shooo", "...", "Wag ka na", ":|"]
 werewolfcommands = ["/werewolf@riceCookerisnotAbot", "/startchaos@werewolfbot", "/nextgame@werewolfbot", "/start@werewolfbot",]
 unpluggif = "CgADBQADNwADtjzaDXzFsIuaINkHAg"
 landigif = ["CgADBQADHQAD6QuQV_mxPdwxj0s2Ag", "CgADBQADKQADvG2JVi4mEJDnylDvAg"]
@@ -50,8 +51,11 @@ def handle(msg):
 		elif (chat_id == -1001043875036):
 			#give 20% chance for Jerome landigif, 80% chance for generic landigif
 			landichance = random.randint(1,5) % 5
+			angerychance = random.randint(1,4)%4
 			#autoreply for hipo messages
-			if (msg_text == "hipo"):
+			if (msg["from"]["id"] == 322520879 and angerychance == 0 and (msg_text == "hipo" or msg_text == "landi mo")):
+				ricebot.sendMessage(chat_id, random.choice(angerygreet), parse_mode="Markdown", disable_web_page_preview=None, disable_notification=True, reply_to_message_id=msg_id)
+			elif (msg_text == "hipo"):
 				if (landichance == 0):
 					ricebot.sendDocument(chat_id, landigif[1], caption=None, parse_mode="Markdown", disable_notification=True, reply_to_message_id=msg_id)
 				else:
@@ -69,9 +73,6 @@ def handle(msg):
 			elif (any(x in msg_text for x in assumptgreet)):
 				time.sleep(1)			
 				ricebot.sendMessage(chat_id, "Di ako yun", parse_mode="Markdown", disable_web_page_preview=None, disable_notification=True, reply_to_message_id=msg_id)
-			#Fetch user id of blacklisted member
-			if (("username" in msg["from"]) and (msg["from"]["username"] == "ChickenNu66ets")):
-				ricebot.sendMessage(-234762812, "User ID is" + str(msg["from"]["id"]), parse_mode="Markdown")
 	
 		
 		#non-gc specific autoreply
