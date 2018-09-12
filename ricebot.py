@@ -88,7 +88,11 @@ def handle(msg):
 			ricebot.sendMessage(chat_id, "_spills rice_", parse_mode="Markdown")
 		#send unplug GIF if a kill greeting has been sent 
 		elif (any(x in msg_text for x in killgreet) and "ricecooker" in msg_text): 
-			ricebot.sendDocument(chat_id, unpluggif)		
+			ricebot.sendDocument(chat_id, unpluggif)
+
+	elif content_type == "sticker":
+		print ("User sent a sticker")
+
 		
 		
 
