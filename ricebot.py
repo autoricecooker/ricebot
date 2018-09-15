@@ -27,10 +27,11 @@ landichance = 0
 
 #get content type
 def _find_first_key(d, keys):
-    for k in keys:
-        if k in d:
-            return k
-    raise KeyError("No suggested keys %s in %s" % (str(keys), str(d)))
+	for k in keys:
+		if k in d:
+			print(k)
+			return k
+	raise KeyError("No suggested keys %s in %s" % (str(keys), str(d)))
 
 def handle(msg):
 	#content_type, chat_type, chat_id = telepot.glance(msg, flavor="chat", long="False")
