@@ -91,12 +91,6 @@ def handle(msg):
 		elif (any(x in msg_text for x in killgreet) and "ricecooker" in msg_text): 
 			ricebot.sendDocument(chat_id, unpluggif)
 
-	elif content_type == "sticker":
-		print ("User sent a sticker")
-
-		
-		
-
 
 MessageLoop(ricebot, handle).run_as_thread()
 
