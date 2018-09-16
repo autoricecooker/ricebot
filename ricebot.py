@@ -29,7 +29,6 @@ landichance = 0
 def _find_first_key(d, keys):
 	for k in keys:
 		if k in d:
-			print(k)
 			return k
 	raise KeyError("No suggested keys %s in %s" % (str(keys), str(d)))
 
@@ -45,7 +44,6 @@ def handle(msg):
 
 		#check if GC is for testing
 		if chat_id == -234762812:
-			print("chat id is " + msg["chat"]["title"])
 			if (("reply_to_message" in msg) and (msg_text == "landi mo") and (msg["from"]["id"] == msg["reply_to_message"]["from"]["id"])):
 				print("same user ID")
 		#check if GC is production
