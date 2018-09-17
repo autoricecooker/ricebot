@@ -23,9 +23,13 @@ werewolfcommands = ["/werewolf@riceCookerisnotAbot", "/startchaos@werewolfbot", 
 unpluggif = "CgADBQADNwADtjzaDXzFsIuaINkHAg"
 landigif = ["CgADBQADHQAD6QuQV_mxPdwxj0s2Ag", "CgADBQADKQADvG2JVi4mEJDnylDvAg"]
 atomgreet = ["atom", "nambabakod", "malupet sa bakod"]
+leigreet = ["cute ako", "maganda ako", "pinaka cute", "pinaka maganda", "pinakacute"]
+leisticker = [""]
+leigif = [""]
 landichance = 0
 angerychance = 0
 atomchance = 0
+leichance = 0
 
 #get content type
 def _find_first_key(d, keys):
@@ -42,6 +46,7 @@ def handle(msg):
 
 	if content_type == "text":
 		msg_text = msg["text"].lower()
+		msg_split = msg_text.split()
 		#gc specific autoreply
 
 		#check if GC is for testing
@@ -55,6 +60,8 @@ def handle(msg):
 			landichance = random.randint(1,5) % 5
 			angerychance = random.randint(1,4) % 4
 			atomchance = random.randint(1,6) % 6
+			leichance = random.randint(1,3) % 3
+
 			#autoreply for hipo messages
 			if (msg["from"]["id"] == 322520879 and angerychance == 0 and (msg_text == "hipo" or msg_text == "landi mo")):
 				ricebot.sendMessage(chat_id, random.choice(angerygreet), parse_mode="Markdown", disable_web_page_preview=None, disable_notification=True, reply_to_message_id=msg_id)
@@ -69,8 +76,14 @@ def handle(msg):
 					ricebot.sendDocument(chat_id, landigif[1], caption=None, parse_mode="Markdown", disable_notification=True, reply_to_message_id=msg["reply_to_message"]["message_id"])
 				else:
 					ricebot.sendDocument(chat_id, landigif[0], caption=None, parse_mode="Markdown", disable_notification=True, reply_to_message_id=msg["reply_to_message"]["message_id"])
+			#autoreply for lei's narcissism
+			#elif ((msg["from"]["id"] == 477167517) and (any (x in msg_text for x in leigreet))):
+			#	if (leichance == 0):
+			#		ricebot.sendSticker(chat_id, random.choice(leisticker))
+			#	else :
+			#		ricebot.sendDocument(chat_id, random.choice(leigif))
 			#autosend atom sticker
-			elif ((any(x in msg_text for x in atomgreet)) and (atomchance != 0)):
+			elif ((any(x in msg_split for x in atomgreet)) and (atomchance != 0)):
 				ricebot.sendSticker(chat_id, "CAADBQADHgADKGW-C2i6PBdd6c9ZAg", disable_notification=None, reply_to_message_id=msg_id)
 			#werewolf command invite autoreply
 			elif ((any(x in msg["text"] for x in werewolfcommands)) and "entities" in msg):
