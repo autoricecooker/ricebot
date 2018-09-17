@@ -22,6 +22,7 @@ angerygreet = ["Shooo", "...", "Wag ka na", ":|"]
 werewolfcommands = ["/werewolf@riceCookerisnotAbot", "/startchaos@werewolfbot", "/nextgame@werewolfbot", "/start@werewolfbot",]
 unpluggif = "CgADBQADNwADtjzaDXzFsIuaINkHAg"
 landigif = ["CgADBQADHQAD6QuQV_mxPdwxj0s2Ag", "CgADBQADKQADvG2JVi4mEJDnylDvAg"]
+atom = "atom"
 landichance = 0
 angerychance = 0
 atomchance = 0
@@ -52,7 +53,8 @@ def handle(msg):
 		elif (chat_id == -1001043875036):
 			#give 20% chance for Jerome landigif, 80% chance for generic landigif
 			landichance = random.randint(1,5) % 5
-			angerychance = random.randint(1,4)%4
+			angerychance = random.randint(1,4) % 4
+			atomchance = random.randint(1,6) % 6
 			#autoreply for hipo messages
 			if (msg["from"]["id"] == 322520879 and angerychance == 0 and (msg_text == "hipo" or msg_text == "landi mo")):
 				ricebot.sendMessage(chat_id, random.choice(angerygreet), parse_mode="Markdown", disable_web_page_preview=None, disable_notification=True, reply_to_message_id=msg_id)
@@ -68,10 +70,8 @@ def handle(msg):
 				else:
 					ricebot.sendDocument(chat_id, landigif[0], caption=None, parse_mode="Markdown", disable_notification=True, reply_to_message_id=msg["reply_to_message"]["message_id"])
 			#autosend atom sticker
-			elif ("atom" in msg_text):
-				atomchance = random.randint(1,6) % 6
-				if (atomchance != 0):
-					ricebot.sendSticker(chat_id, "CAADBQADHgADKGW-C2i6PBdd6c9ZAg", disable_notification=None, reply_to_message_id=msg_id)
+			elif ((any (x in msg_text for x in atom)) and (atomchance != 0)):
+				ricebot.sendSticker(chat_id, "CAADBQADHgADKGW-C2i6PBdd6c9ZAg", disable_notification=None, reply_to_message_id=msg_id)
 			#werewolf command invite autoreply
 			elif ((any(x in msg["text"] for x in werewolfcommands)) and "entities" in msg):
 				ricebot.sendMessage(chat_id, "Hi, you may join this GC's werewolf game channel at https://t.me/joinchat/" + wwgc, parse_mode="Markdown", disable_web_page_preview=None, disable_notification=True, reply_to_message_id=msg_id)
