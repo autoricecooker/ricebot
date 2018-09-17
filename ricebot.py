@@ -23,7 +23,8 @@ werewolfcommands = ["/werewolf@riceCookerisnotAbot", "/startchaos@werewolfbot", 
 unpluggif = "CgADBQADNwADtjzaDXzFsIuaINkHAg"
 landigif = ["CgADBQADHQAD6QuQV_mxPdwxj0s2Ag", "CgADBQADKQADvG2JVi4mEJDnylDvAg"]
 landichance = 0
-
+angerychance = 0
+atomchance = 0
 
 #get content type
 def _find_first_key(d, keys):
@@ -46,6 +47,10 @@ def handle(msg):
 		if chat_id == -234762812:
 			if (("reply_to_message" in msg) and (msg_text == "landi mo") and (msg["from"]["id"] == msg["reply_to_message"]["from"]["id"])):
 				print("same user ID")
+			elif ("atom" in msg_text):
+				atomchance = random.randint(1,4) % 4
+				print (atomchance)
+				ricebot.sendSticker(chat_id, "CAADBQADHgADKGW-C2i6PBdd6c9ZAg", disable_notification=None, reply_to_message_id=msg_id)
 		#check if GC is production
 		elif (chat_id == -1001043875036):
 			#give 20% chance for Jerome landigif, 80% chance for generic landigif
@@ -66,7 +71,7 @@ def handle(msg):
 				else:
 					ricebot.sendDocument(chat_id, landigif[0], caption=None, parse_mode="Markdown", disable_notification=True, reply_to_message_id=msg["reply_to_message"]["message_id"])
 			#werewolf command invite autoreply
-			elif (any(x in msg["text"] for x in werewolfcommands)):
+			elif ((any(x in msg["text"] for x in werewolfcommands)) and "entities" in msg):
 				ricebot.sendMessage(chat_id, "Hi, you may join this GC's werewolf game channel at https://t.me/joinchat/" + wwgc, parse_mode="Markdown", disable_web_page_preview=None, disable_notification=True, reply_to_message_id=msg_id)
 			#assumptions autoreply
 			elif (any(x in msg_text for x in assumptgreet)):
