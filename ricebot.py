@@ -48,9 +48,9 @@ def handle(msg):
 			if (("reply_to_message" in msg) and (msg_text == "landi mo") and (msg["from"]["id"] == msg["reply_to_message"]["from"]["id"])):
 				print("same user ID")
 			elif ("atom" in msg_text):
-				atomchance = random.randint(1,4) % 4
-				print (atomchance)
-				ricebot.sendSticker(chat_id, "CAADBQADHgADKGW-C2i6PBdd6c9ZAg", disable_notification=None, reply_to_message_id=msg_id)
+				atomchance = random.randint(1,6) % 6
+				if (atomchance != 0):
+					ricebot.sendSticker(chat_id, "CAADBQADHgADKGW-C2i6PBdd6c9ZAg", disable_notification=None, reply_to_message_id=msg_id)
 		#check if GC is production
 		elif (chat_id == -1001043875036):
 			#give 20% chance for Jerome landigif, 80% chance for generic landigif
