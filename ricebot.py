@@ -23,7 +23,7 @@ werewolfcommands = ["/werewolf@riceCookerisnotAbot", "/startchaos@werewolfbot", 
 unpluggif = "CgADBQADNwADtjzaDXzFsIuaINkHAg"
 landigif = ["CgADBQADHQAD6QuQV_mxPdwxj0s2Ag", "CgADBQADKQADvG2JVi4mEJDnylDvAg"]
 atomgreet = ["atom", "nambabakod"]
-leigreetphrase = ["cute ako", "maganda ako", "pinaka cute", "pinaka maganda", "i am beautiful"]
+leigreetphrase = ["cute ako", "maganda ako", "pinaka cute", "pinaka maganda", "i am beautiful", "sexy ako"]
 leigreetword = ["pinakacute", "cute", "pinakamaganda"]
 leisticker = ["CAADBQADIQEAAiO4mBCSjVKUWk7MNwI", "CAADBQADHAEAAiO4mBCeaC0LYAlkowI", "CAADBQADIAEAAiO4mBD3UdIBPEO6WwI", "CAADBQADGwEAAiO4mBC51PR572t9EgI", "CAADBQADHwEAAiO4mBBJWiwq_cjWdQI", "CAADBQADHgEAAiO4mBBMQuYcpcSX2AI"]
 leigif = ["CgADBQADEAADS754VtIwitA5NUHkAg", "CgADBQADEQADNNrpV60jLcRPC3vrAg", "CgADBQADFQADDHrhVVV44PYXjIm7Ag"]
@@ -44,6 +44,9 @@ def handle(msg):
 	content_type = _find_first_key(msg, all_content_types)
 	msg_id = msg["message_id"]
 	chat_id = msg["chat"]["id"]
+
+	if (content_type == "document" and chat_id == -234762812):
+		print(msg["document"]["file_id"])
 
 	if content_type == "text":
 		msg_text = msg["text"].lower()
