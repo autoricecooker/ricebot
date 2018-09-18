@@ -26,7 +26,7 @@ atomgreet = ["atom", "nambabakod"]
 leigreetphrase = ["cute ako", "maganda ako", "pinaka cute", "pinaka maganda", "i am beautiful", "sexy ako"]
 leigreetword = ["pinakacute", "cute", "pinakamaganda"]
 leisticker = ["CAADBQADIQEAAiO4mBCSjVKUWk7MNwI", "CAADBQADHAEAAiO4mBCeaC0LYAlkowI", "CAADBQADIAEAAiO4mBD3UdIBPEO6WwI", "CAADBQADGwEAAiO4mBC51PR572t9EgI", "CAADBQADHwEAAiO4mBBJWiwq_cjWdQI", "CAADBQADHgEAAiO4mBBMQuYcpcSX2AI"]
-leigif = ["CgADBQADEAADS754VtIwitA5NUHkAg", "CgADBQADEQADNNrpV60jLcRPC3vrAg", "CgADBQADFQADDHrhVVV44PYXjIm7Ag"]
+leigif = ["CgADBQADEQADNNrpV_JyDVwU2d1rAg", "CgADBQADFQADDHrhVeaTS0bvbyRWAg", "CgADBQADEAADS754Vha1dmKytEvNAg"]
 landichance = 0
 angerychance = 0
 atomchance = 0
@@ -45,6 +45,7 @@ def handle(msg):
 	msg_id = msg["message_id"]
 	chat_id = msg["chat"]["id"]
 
+	#Fetch correct document file_id. Telegram Raw Bot is a liar
 	if (content_type == "document" and chat_id == -234762812):
 		print(msg["document"]["file_id"])
 
@@ -60,10 +61,10 @@ def handle(msg):
 				print("same user ID")
 			#elif ((msg["from"]["id"] == 477167517) and (any (x in msg_text for x in leigreet))):
 			elif (any(x in msg_text for x in leigreetphrase) or  any(y in msg_split for y in leigreetword)):
-				#if (leichance == 0):
-				ricebot.sendSticker(chat_id, random.choice(leisticker))
-				#else :
-				#ricebot.sendAnimation(chat_id, random.choice(leigif))
+				if (leichance == 0):
+					ricebot.sendSticker(chat_id, random.choice(leisticker))
+				else:
+					ricebot.sendDocument(chat_id, random.choice(leigif))
 		#check if GC is production
 		elif (chat_id == -1001043875036):
 			#give 20% chance for Jerome landigif, 80% chance for generic landigif
