@@ -23,7 +23,8 @@ werewolfcommands = ["/werewolf@riceCookerisnotAbot", "/startchaos@werewolfbot", 
 unpluggif = "CgADBQADNwADtjzaDXzFsIuaINkHAg"
 landigif = ["CgADBQADHQAD6QuQV_mxPdwxj0s2Ag", "CgADBQADKQADvG2JVi4mEJDnylDvAg"]
 atomgreet = ["atom", "nambabakod"]
-leigreet = ["cute ako", "maganda ako", "pinaka cute", "pinaka maganda", "pinakacute"]
+leigreetphrase = ["cute ako", "maganda ako", "pinaka cute", "pinaka maganda", "i am beautiful"]
+leigreetword = ["pinakacute", "cute", "pinakamaganda"]
 leisticker = ["CAADBQADIQEAAiO4mBCSjVKUWk7MNwI", "CAADBQADHAEAAiO4mBCeaC0LYAlkowI", "CAADBQADIAEAAiO4mBD3UdIBPEO6WwI", "CAADBQADGwEAAiO4mBC51PR572t9EgI", "CAADBQADHwEAAiO4mBBJWiwq_cjWdQI", "CAADBQADHgEAAiO4mBBMQuYcpcSX2AI"]
 leigif = ["CgADBQADEAADS754VtIwitA5NUHkAg", "CgADBQADEQADNNrpV60jLcRPC3vrAg", "CgADBQADFQADDHrhVVV44PYXjIm7Ag"]
 landichance = 0
@@ -55,7 +56,7 @@ def handle(msg):
 			if (("reply_to_message" in msg) and (msg_text == "landi mo") and (msg["from"]["id"] == msg["reply_to_message"]["from"]["id"])):
 				print("same user ID")
 			#elif ((msg["from"]["id"] == 477167517) and (any (x in msg_text for x in leigreet))):
-			elif (any (x in msg_text for x in leigreet) or "cute" in msg_split):
+			elif (any(x in msg_text for x in leigreetphrase) or  any(y in msg_split for y in leigreetword)):
 				#if (leichance == 0):
 				ricebot.sendSticker(chat_id, random.choice(leisticker))
 				#else :
