@@ -8,7 +8,7 @@ import random
 
 from telepot.loop import MessageLoop
 
-
+#big ol' blob of variables
 ricebot = telepot.Bot(os.environ["BOT_TOKEN"])
 wwgc = os.environ["WW_GC"]
 riceID = ricebot.getMe()
@@ -22,10 +22,10 @@ angerygreet = ["Shooo", "...", "Wag ka na", ":|"]
 werewolfcommands = ["/werewolf@riceCookerisnotAbot", "/startchaos@werewolfbot", "/nextgame@werewolfbot", "/start@werewolfbot",]
 unpluggif = "CgADBQADNwADtjzaDXzFsIuaINkHAg"
 landigif = ["CgADBQADHQAD6QuQV_mxPdwxj0s2Ag", "CgADBQADKQADvG2JVi4mEJDnylDvAg"]
-atomgreet = ["atom", "nambabakod", "malupet sa bakod"]
+atomgreet = ["atom", "nambabakod"]
 leigreet = ["cute ako", "maganda ako", "pinaka cute", "pinaka maganda", "pinakacute"]
-leisticker = [""]
-leigif = [""]
+leisticker = ["CAADBQADIQEAAiO4mBCSjVKUWk7MNwI", "CAADBQADHAEAAiO4mBCeaC0LYAlkowI", "CAADBQADIAEAAiO4mBD3UdIBPEO6WwI", "CAADBQADGwEAAiO4mBC51PR572t9EgI", "CAADBQADHwEAAiO4mBBJWiwq_cjWdQI", "CAADBQADHgEAAiO4mBBMQuYcpcSX2AI"]
+leigif = ["CgADBQADEAADS754VtIwitA5NUHkAg", "CgADBQADEQADNNrpV60jLcRPC3vrAg", "CgADBQADFQADDHrhVVV44PYXjIm7Ag"]
 landichance = 0
 angerychance = 0
 atomchance = 0
@@ -51,16 +51,22 @@ def handle(msg):
 
 		#check if GC is for testing
 		if chat_id == -234762812:
+			leichance = random.randint(1,3) % 3
 			if (("reply_to_message" in msg) and (msg_text == "landi mo") and (msg["from"]["id"] == msg["reply_to_message"]["from"]["id"])):
 				print("same user ID")
-			
+			#elif ((msg["from"]["id"] == 477167517) and (any (x in msg_text for x in leigreet))):
+			elif (any (x in msg_text for x in leigreet) or "cute" in msg_split):
+				if (leichance == 0):
+					ricebot.sendSticker(chat_id, random.choice(leisticker))
+				else :
+					ricebot.sendDocument(chat_id, random.choice(leigif))
 		#check if GC is production
 		elif (chat_id == -1001043875036):
 			#give 20% chance for Jerome landigif, 80% chance for generic landigif
 			landichance = random.randint(1,5) % 5
 			angerychance = random.randint(1,4) % 4
 			atomchance = random.randint(1,6) % 6
-			leichance = random.randint(1,3) % 3
+			#leichance = random.randint(1,3) % 3
 
 			#autoreply for hipo messages
 			if (msg["from"]["id"] == 322520879 and angerychance == 0 and (msg_text == "hipo" or msg_text == "landi mo")):
