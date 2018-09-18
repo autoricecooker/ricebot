@@ -56,10 +56,10 @@ def handle(msg):
 				print("same user ID")
 			#elif ((msg["from"]["id"] == 477167517) and (any (x in msg_text for x in leigreet))):
 			elif (any (x in msg_text for x in leigreet) or "cute" in msg_split):
-				if (leichance == 0):
-					ricebot.sendSticker(chat_id, random.choice(leisticker))
-				else :
-					ricebot.sendDocument(chat_id, random.choice(leigif))
+				#if (leichance == 0):
+				ricebot.sendSticker(chat_id, random.choice(leisticker))
+				#else :
+				#ricebot.sendAnimation(chat_id, random.choice(leigif))
 		#check if GC is production
 		elif (chat_id == -1001043875036):
 			#give 20% chance for Jerome landigif, 80% chance for generic landigif
