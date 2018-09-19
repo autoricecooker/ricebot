@@ -5,7 +5,7 @@ import sys
 import telepot
 import telepot.text
 import random
-
+from pprint import pprint
 from telepot.loop import MessageLoop
 
 #big ol' blob of variables
@@ -24,7 +24,7 @@ unpluggif = "CgADBQADNwADtjzaDXzFsIuaINkHAg"
 landigif = ["CgADBQADHQAD6QuQV_mxPdwxj0s2Ag", "CgADBQADKQADvG2JVi4mEJDnylDvAg"]
 atomgreet = ["atom", "nambabakod"]
 leigreetphrase = ["cute ako", "maganda ako", "pinaka cute", "pinaka maganda", "i am beautiful", "sexy ako", "most beautiful"]
-leigreetword = ["pinakacute", "cute", "pinakamaganda"]
+leigreetword = ["pinakacute", "cute", "pinakamaganda", "5'11"]
 leisticker = ["CAADBQADIQEAAiO4mBCSjVKUWk7MNwI", "CAADBQADHAEAAiO4mBCeaC0LYAlkowI", "CAADBQADIAEAAiO4mBD3UdIBPEO6WwI", "CAADBQADGwEAAiO4mBC51PR572t9EgI", "CAADBQADHwEAAiO4mBBJWiwq_cjWdQI", "CAADBQADHgEAAiO4mBBMQuYcpcSX2AI"]
 leigif = ["CgADBQADEQADNNrpV_JyDVwU2d1rAg", "CgADBQADFQADDHrhVeaTS0bvbyRWAg", "CgADBQADEAADS754Vha1dmKytEvNAg"]
 landichance = 0
@@ -56,22 +56,23 @@ def handle(msg):
 
 		#check if GC is for testing
 		if chat_id == -234762812:
-			leichance = random.randint(1,3) % 3
+			pprint (msg)
+			#leichance = random.randint(1,3) % 3
 			if (("reply_to_message" in msg) and (msg_text == "landi mo") and (msg["from"]["id"] == msg["reply_to_message"]["from"]["id"])):
 				print("same user ID")
 			#elif ((msg["from"]["id"] == 477167517) and (any (x in msg_text for x in leigreet))):
-			elif (any(x in msg_text for x in leigreetphrase) or  any(y in msg_split for y in leigreetword)):
-				if (leichance == 0):
-					ricebot.sendSticker(chat_id, random.choice(leisticker))
-				else:
-					ricebot.sendDocument(chat_id, random.choice(leigif))
+			# elif (any(x in msg_text for x in leigreetphrase) or any(y in msg_split for y in leigreetword)):
+			# 	if (leichance == 0):
+			# 		ricebot.sendSticker(chat_id, random.choice(leisticker))
+			# 	else:
+			# 		ricebot.sendDocument(chat_id, random.choice(leigif))
 		#check if GC is production
 		elif (chat_id == -1001043875036):
 			#give 20% chance for Jerome landigif, 80% chance for generic landigif
 			landichance = random.randint(1,5) % 5
 			angerychance = random.randint(1,4) % 4
 			atomchance = random.randint(1,6) % 6
-			#leichance = random.randint(1,3) % 3
+			leichance = random.randint(1,3) % 3
 
 			#autoreply for hipo messages
 			if (msg["from"]["id"] == 322520879 and angerychance == 0 and (msg_text == "hipo" or msg_text == "landi mo")):
@@ -88,11 +89,11 @@ def handle(msg):
 				else:
 					ricebot.sendDocument(chat_id, landigif[0], caption=None, parse_mode="Markdown", disable_notification=True, reply_to_message_id=msg["reply_to_message"]["message_id"])
 			#autoreply for lei's narcissism
-			#elif ((msg["from"]["id"] == 477167517) and (any (x in msg_text for x in leigreet))):
-			#	if (leichance == 0):
-			#		ricebot.sendSticker(chat_id, random.choice(leisticker))
-			#	else :
-			#		ricebot.sendDocument(chat_id, random.choice(leigif))
+			elif ((msg["from"]["id"] == 477167517) and (any(x in msg_text for x in leigreetphrase) or any(y in msg_split for y in leigreetword))):
+				if (leichance == 0):
+					ricebot.sendSticker(chat_id, random.choice(leisticker))
+				else :
+					ricebot.sendDocument(chat_id, random.choice(leigif))
 			#autosend atom sticker
 			elif ((any(x in msg_split for x in atomgreet)) and (atomchance != 0)):
 				ricebot.sendSticker(chat_id, "CAADBQADHgADKGW-C2i6PBdd6c9ZAg", disable_notification=None, reply_to_message_id=msg_id)
