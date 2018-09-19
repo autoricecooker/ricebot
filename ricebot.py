@@ -44,7 +44,7 @@ def handle(msg):
 	content_type = _find_first_key(msg, all_content_types)
 	msg_id = msg["message_id"]
 	chat_id = msg["chat"]["id"]
-
+	pprint (msg)
 	#Fetch correct document file_id. Telegram Raw Bot is a liar
 	if (content_type == "document" and chat_id == -234762812):
 		print(msg["document"]["file_id"])
@@ -56,7 +56,7 @@ def handle(msg):
 
 		#check if GC is for testing
 		if chat_id == -234762812:
-			pprint (msg)
+			
 			#leichance = random.randint(1,3) % 3
 			if (("reply_to_message" in msg) and (msg_text == "landi mo") and (msg["from"]["id"] == msg["reply_to_message"]["from"]["id"])):
 				print("same user ID")
