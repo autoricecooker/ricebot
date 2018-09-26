@@ -21,7 +21,7 @@ athensgreet =["athens", "ganda ako", "ganda ko", "cute ako", "cute me"]
 stressgreet = ["stress"]
 werewolfcommands = ["/werewolf@riceCookerisnotAbot", "/startchaos@werewolfbot", "/nextgame@werewolfbot", "/start@werewolfbot",]
 atomgreet = ["atom", "nambabakod"]
-leigreetphrase = ["cute ako", "maganda ako", "pinaka cute", "pinaka maganda", "i am beautiful", "sexy ako", "most beautiful", "ganda ko", "5'11"]
+leigreetphrase = ["cute ako", "maganda ako", "pinaka cute", "pinaka maganda", "i am beautiful", "sexy ako", "most beautiful", "ganda ko", "5'11", "qt ko", "qt ako"]
 leigreetword = ["pinakacute", "cute", "pinakamaganda"]
 leisticker = ["CAADBQADIQEAAiO4mBCSjVKUWk7MNwI", "CAADBQADHAEAAiO4mBCeaC0LYAlkowI", "CAADBQADIAEAAiO4mBD3UdIBPEO6WwI", "CAADBQADGwEAAiO4mBC51PR572t9EgI", "CAADBQADHwEAAiO4mBBJWiwq_cjWdQI", "CAADBQADHgEAAiO4mBBMQuYcpcSX2AI"]
 #leigif = ["CgADBQADEAADS754Vj0cIPOA5fAWAg", "CgADBQADFQADDHrhVXLWPyi-fVESAg", "CgADBQADEQADNNrpV0yGyX3SyadcAg", "CgADBQADHwADYlzxVd_bBWXEyqHUAg"]
@@ -129,18 +129,17 @@ def handle(ricebot):
 							ricebot.sendAnimation(chat_id, landigif[0], caption=None, parse_mode="Markdown", disable_notification=True, reply_to_message_id=reply_msg_id)
 						else:
 							ricebot.sendAnimation(chat_id, landigif[1], caption=None, parse_mode="Markdown", disable_notification=True, reply_to_message_id=reply_msg_id)
-					#autoreply for lei shenanigans
-					elif (update.message.animation and anm_id == "CgADBQADIQAD1PpYV8uam3a7hV41Ag"):
-						ricebot.sendSticker(chat_id, random.choice(leisticker))
 					#autoreply for assumption greetings
 					elif (any(x in msg_text for x in assumptgreet)):
 						time.sleep(1)			
 						ricebot.sendMessage(chat_id, "Di ako yun", parse_mode="Markdown", disable_web_page_preview=None, disable_notification=True, reply_to_message_id=msg_id)
+					#autoreply for athens
 					elif (user_id == 322520879 and any (x in msg_text for x in athensgreet)):
 						ricebot.sendSticker(chat_id, "CAADBQADCQADL0c5E0v6frqfrAl0Ag", reply_to_message_id=msg_id)
 					#autosend atom sticker
 					elif ((any(x in msg_split for x in atomgreet)) and (atomchance != 0)):
 						ricebot.sendSticker(chat_id, "CAADBQADHgADKGW-C2i6PBdd6c9ZAg", disable_notification=None, reply_to_message_id=msg_id)
+				#Check if message is a certain GIF
 				elif (anm_id and anm_id == "CgADBQADIQAD1PpYV9Q8SLVB8kHHAg"):
 					if (leichance):
 						ricebot.sendSticker(chat_id, random.choice(leisticker), reply_to_message_id=msg_id)
