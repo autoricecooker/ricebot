@@ -126,9 +126,9 @@ def handle(ricebot):
 					elif (update.message.reply_to_message and msg_text == "landi mo"):
 						print(msg_text)
 						if (landichance):
-							ricebot.sendDocument(chat_id, landigif[0], caption=None, parse_mode="Markdown", disable_notification=True, reply_to_message_id=reply_msg_id)
+							ricebot.sendAnimation(chat_id, landigif[0], caption=None, parse_mode="Markdown", disable_notification=True, reply_to_message_id=reply_msg_id)
 						else:
-							ricebot.sendDocument(chat_id, landigif[1], caption=None, parse_mode="Markdown", disable_notification=True, reply_to_message_id=reply_msg_id)
+							ricebot.sendAnimation(chat_id, landigif[1], caption=None, parse_mode="Markdown", disable_notification=True, reply_to_message_id=reply_msg_id)
 					#autoreply for lei shenanigans
 					elif (update.message.animation and anm_id == "CgADBQADIQAD1PpYV8uam3a7hV41Ag"):
 						ricebot.sendSticker(chat_id, random.choice(leisticker))
@@ -141,7 +141,11 @@ def handle(ricebot):
 					#autosend atom sticker
 					elif ((any(x in msg_split for x in atomgreet)) and (atomchance != 0)):
 						ricebot.sendSticker(chat_id, "CAADBQADHgADKGW-C2i6PBdd6c9ZAg", disable_notification=None, reply_to_message_id=msg_id)
-					
+				elif (anm_id and anm_id == "CgADBQADIQAD1PpYV9Q8SLVB8kHHAg"):
+					if (leichance):
+						ricebot.sendSticker(chat_id, random.choice(leisticker), reply_to_message_id=msg_id)
+					else :
+						ricebot.sendAnimation(chat_id, random.choice(leigif), reply_to_message_id=msg_id)
 					
 				if (reply_user_id):
 					ricebot.sendMessage(chat_id,"Reply user ID: " + str(reply_user_id))
@@ -172,18 +176,18 @@ def handle(ricebot):
 				#autoreply for landi mo reply
 				elif ((update.message.reply_to_message) and (msg_text == "landi mo") and (user_id != update.message.reply_to_message.from_user.id) and (user_id != 322520879)):
 					if (landichance):
-						ricebot.sendDocument(chat_id, landigif[0], caption=None, parse_mode="Markdown", disable_notification=True, reply_to_message_id=reply_user_id)
+						ricebot.sendAnimation(chat_id, landigif[0], caption=None, parse_mode="Markdown", disable_notification=True, reply_to_message_id=reply_user_id)
 					else:
-						ricebot.sendDocument(chat_id, landigif[1], caption=None, parse_mode="Markdown", disable_notification=True, reply_to_message_id=reply_user_id)
+						ricebot.sendAnimation(chat_id, landigif[1], caption=None, parse_mode="Markdown", disable_notification=True, reply_to_message_id=reply_user_id)
 				#autoreply for stress
 				elif (any (x in msg_split for x in stressgreet) and random.randint(0,1)):
 					ricebot.sendAnimation(chat_id, random.choice(stressgif), reply_to_message_id=msg_id)
 				#autoreply for lei's narcissism
 				elif ((user_id == 477167517) and (any(x in msg_text for x in leigreetphrase) or any(y in msg_split for y in leigreetword))):
 					if (leichance):
-						ricebot.sendDocument(chat_id, random.choice(leigif))
-					else :
 						ricebot.sendSticker(chat_id, random.choice(leisticker))
+					else :
+						ricebot.sendAnimation(chat_id, random.choice(leigif))
 				#autosend atom sticker
 				elif ((any(x in msg_split for x in atomgreet)) and (atomchance == 0)):
 					ricebot.sendSticker(chat_id, "CAADBQADHgADKGW-C2i6PBdd6c9ZAg", disable_notification=None, reply_to_message_id=msg_id)
@@ -194,7 +198,13 @@ def handle(ricebot):
 				elif (any(x in msg_text for x in assumptgreet)):
 					time.sleep(1)			
 					ricebot.sendMessage(chat_id, "Di ako yun", parse_mode="Markdown", disable_web_page_preview=None, disable_notification=True, reply_to_message_id=msg_id)
-		
+			elif (anm_id and chat_id == -1001043875036 and anm_id == "CgADBQADIQAD1PpYV9Q8SLVB8kHHAg"):
+				if (leichance):
+					ricebot.sendSticker(chat_id, random.choice(leisticker), reply_to_message_id=msg_id)
+				else :
+					ricebot.sendAnimation(chat_id, random.choice(leigif), reply_to_message_id=msg_id)
+					
+
 		
 		#non-gc specific autoreply
 		#send greetings
