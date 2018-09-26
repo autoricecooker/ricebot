@@ -34,7 +34,8 @@ genieferdzgif = "CgADBQADEgADUT_BVqvCsq_FYDT-Ag"
 unpluggif = "CgADBQADNwADtjzaDXzFsIuaINkHAg"
 #landigif = ["CgADBQADKQADvG2JViq33V_DvoF9Ag", "CgADBQADHQAD6QuQVwZwVsITdN6hAg"]
 landigif = ["CgADBQADHQAD6QuQV_mxPdwxj0s2Ag", "CgADBQADKQADvG2JVi4mEJDnylDvAg"]
-louisegif =["CgADBQADHAADVMqxV2iqwCWWKYXRAg", "CgADBQADRQADggs5VTtpVvYfIcqBAg", "CgADBQADGwADwI9BVYEBhY4qglXKAg", "CgADBQADWwADfhjQVy2VyBHiS3kWAg", "CgADBQADXQADlN5hVIkXruw21LEsAg"]
+louisegif = ["CgADBQADHAADVMqxV2iqwCWWKYXRAg", "CgADBQADRQADggs5VTtpVvYfIcqBAg", "CgADBQADGwADwI9BVYEBhY4qglXKAg", "CgADBQADWwADfhjQVy2VyBHiS3kWAg", "CgADBQADXQADlN5hVIkXruw21LEsAg"]
+toastiesgif = ["CgADBQADLwADv4dBVFVtZJ9jdSwFAg"]
 landichance = 0
 angerychance = 0
 atomchance = 0
@@ -136,6 +137,9 @@ def handle(ricebot):
 							ricebot.sendAnimation(chat_id, louisegif[0], reply_to_message_id=msg_id)
 						else:
 							ricebot.sendAnimation(chat_id, louisegif[random.randint(1,4)], reply_to_message_id=msg_id)
+					#autoreply for toasties
+					elif ("toasties" in msg_split):
+						ricebot.sendAnimation(chat_id, toastiesgif[0], reply_to_message_id=msg_id)
 					#autoreply for assumption greetings
 					elif (any(x in msg_text for x in assumptgreet)):
 						time.sleep(1)			
