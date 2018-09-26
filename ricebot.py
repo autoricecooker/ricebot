@@ -186,7 +186,7 @@ def handle(ricebot):
 					else:
 						ricebot.sendDocument(chat_id, landigif[1], caption=None, parse_mode="Markdown", disable_notification=True, reply_to_message_id=msg_id)
 				#autoreply for landi mo reply
-				elif ((update.message.reply_to_message) and (msg_text == "landi mo") and (user_id != update.message.reply_to_message.from_user.id) and (user_id != 322520879)):
+				elif (update.message.reply_to_message and msg_text == "landi mo" and user_id != reply_user_id):
 					if (landichance):
 						ricebot.sendAnimation(chat_id, landigif[0], caption=None, parse_mode="Markdown", disable_notification=True, reply_to_message_id=reply_user_id)
 					else:
