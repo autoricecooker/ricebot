@@ -125,7 +125,7 @@ def handle(ricebot):
 					elif (any (x in msg_split for x in stressgreet) and random.randint(0,1)):
 						ricebot.sendAnimation(chat_id, random.choice(stressgif), reply_to_message_id=msg_id)
 					#autoreply for landi mo reply
-					elif (update.message.reply_to_message and msg_text == "landi mo"):
+					elif (update.message.reply_to_message and msg_text == "landi mo" and user_id != reply_user_id):
 						ricebot.sendMessage(chat_id, "User ID: " + str(user_id) + " Reply user ID: " + str(reply_user_id), reply_to_message_id=reply_msg_id)
 						print(landichance)
 						if (landichance):
