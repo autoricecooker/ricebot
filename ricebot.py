@@ -13,7 +13,7 @@ ricebot = telepot.Bot(os.environ["BOT_TOKEN"])
 wwgc = os.environ["WW_GC"]
 riceID = ricebot.getMe()
 ricecontent = 0
-all_content_types = ["text", "audio", "document", "game", "photo", "sticker", "video", "voice", "video_note","contact", "location", "venue", "new_chat_member", "left_chat_member", "new_chat_title","new_chat_photo",  "delete_chat_photo", "group_chat_created", "supergroup_chat_created","channel_chat_created", "migrate_to_chat_id", "migrate_from_chat_id", "pinned_message","new_chat_members", "invoice", "successful_payment"]
+all_content_types = ["text", "audio", "document", "game", "photo", "sticker", "animation", "video", "voice", "video_note","contact", "location", "venue", "new_chat_member", "left_chat_member", "new_chat_title","new_chat_photo",  "delete_chat_photo", "group_chat_created", "supergroup_chat_created","channel_chat_created", "migrate_to_chat_id", "migrate_from_chat_id", "pinned_message","new_chat_members", "invoice", "successful_payment"]
 sadgreet = ["spill", "trip", "eat", "bite", "tips", "tips over"]
 killgreet = ["unplug", "bang", "kill", "rip"]
 randomgreet = ["Hello", "Hi", "Greetings", "Good day", "How are ya?", "Yes", "No", "What's up?"]
@@ -45,9 +45,11 @@ def handle(msg):
 	msg_id = msg["message_id"]
 	chat_id = msg["chat"]["id"]
 	pprint (msg)
-	#Fetch correct document file_id. Telegram Raw Bot is a liar
-	if (content_type == "document" and chat_id == -234762812):
-		print(msg["document"]["file_id"])
+
+	if (chat_id == -1001255652659):
+		if ("animation" in msg):
+			ricebot.sendMessage (chat_id, msg["animation"]["file_id"])
+		
 
 	if content_type == "text":
 		msg_text = msg["text"].lower()
@@ -60,12 +62,7 @@ def handle(msg):
 			#leichance = random.randint(1,3) % 3
 			if (("reply_to_message" in msg) and (msg_text == "landi mo") and (msg["from"]["id"] == msg["reply_to_message"]["from"]["id"])):
 				print("same user ID")
-			#elif ((msg["from"]["id"] == 477167517) and (any (x in msg_text for x in leigreet))):
-			# elif (any(x in msg_text for x in leigreetphrase) or any(y in msg_split for y in leigreetword)):
-			# 	if (leichance == 0):
-			# 		ricebot.sendSticker(chat_id, random.choice(leisticker))
-			# 	else:
-			# 		ricebot.sendDocument(chat_id, random.choice(leigif))
+
 		#check if GC is production
 		elif (chat_id == -1001043875036):
 			#give 20% chance for Jerome landigif, 80% chance for generic landigif
