@@ -124,7 +124,7 @@ def handle(ricebot):
 						ricebot.sendAnimation(chat_id, random.choice(stressgif), reply_to_message_id=msg_id)
 					#autoreply for landi mo reply
 					elif (update.message.reply_to_message and msg_text == "landi mo"):
-						print(msg_text)
+						print(landichance)
 						if (landichance):
 							ricebot.sendAnimation(chat_id, landigif[0], caption=None, parse_mode="Markdown", disable_notification=True, reply_to_message_id=reply_msg_id)
 						else:
@@ -162,11 +162,12 @@ def handle(ricebot):
 			#For production GC text input
 			elif (msg_text and chat_id == -1001043875036):
 
-				#autoreply for hipo messages
+				#autoreply for athens
 				if (user_id == 322520879 and angerychance == 0 and (msg_text == "hipo" or msg_text == "landi mo")):
 					ricebot.sendMessage(chat_id, random.choice(angerygreet), parse_mode="Markdown", disable_web_page_preview=None, disable_notification=True, reply_to_message_id=msg_id)
 				elif (user_id == 322520879 and any (x in msg_text for x in athensgreet)):
 					ricebot.sendSticker(chat_id, "CAADBQADCQADL0c5E0v6frqfrAl0Ag", reply_to_message_id=msg_id)
+				#autoreply for hipo messages
 				elif (msg_text == "hipo" and user_id != 322520879):
 					if (landichance):
 						ricebot.sendDocument(chat_id, landigif[0], caption=None, parse_mode="Markdown", disable_notification=True, reply_to_message_id=msg_id)
