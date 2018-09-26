@@ -209,6 +209,9 @@ def handle(ricebot):
 				elif (any(x in msg_text for x in assumptgreet)):
 					time.sleep(1)			
 					ricebot.sendMessage(chat_id, "Di ako yun", parse_mode="Markdown", disable_web_page_preview=None, disable_notification=True, reply_to_message_id=msg_id)
+				#autoreply for genie ferdz gif
+				elif (("genie" in msg_text or "happy" in msg_text) and ("ferdz" in msg_text or "ferds" in msg_text)):
+					ricebot.sendAnimation(chat_id, genieferdzgif)
 			elif (anm_id and chat_id == -1001043875036 and anm_id == "CgADBQADIQAD1PpYV9Q8SLVB8kHHAg"):
 				if (leichance):
 					ricebot.sendSticker(chat_id, random.choice(leisticker), reply_to_message_id=msg_id)
