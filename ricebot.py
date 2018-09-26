@@ -223,7 +223,7 @@ def handle(ricebot):
 		#non-gc specific autoreply
 		#send greetings
 		if (msg_text):
-			if (user_id == "339707076" and msg_text == "hi"):
+			if (user_id == 339707076 and msg_text == "hi"):
 				ricebot.sendMessage(chat_id, "<code>Pass</code>", parse_mode="HTML")
 			elif (angerychance and (msg_text == "hi" or msg_text == "hi rice")):
 				time.sleep(1)
