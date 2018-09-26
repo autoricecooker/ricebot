@@ -72,7 +72,7 @@ def handle(ricebot):
 
 	for update in ricebot.get_updates(offset=update_id, timeout=10):
 		update_id = update.update_id + 1
-		landichance = random.randint(1,5) % 5
+		landichance = random.randint(1,6) % 5
 		angerychance = random.randint(1,4) % 4
 		atomchance = random.randint(1,6) % 6
 		leichance = random.randint(1,3) % 3
