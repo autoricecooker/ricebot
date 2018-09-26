@@ -2,127 +2,218 @@ import json
 import time
 import os
 import sys
-import telepot
-import telepot.text
 import random
+import telegram
+import telegram.ext
 from pprint import pprint
-from telepot.loop import MessageLoop
+from telegram.error import NetworkError, Unauthorized
+from time import sleep
 
 #big ol' blob of variables
-ricebot = telepot.Bot(os.environ["BOT_TOKEN"])
-wwgc = os.environ["WW_GC"]
-riceID = ricebot.getMe()
-ricecontent = 0
-all_content_types = ["text", "audio", "document", "game", "photo", "sticker", "animation", "video", "voice", "video_note","contact", "location", "venue", "new_chat_member", "left_chat_member", "new_chat_title","new_chat_photo",  "delete_chat_photo", "group_chat_created", "supergroup_chat_created","channel_chat_created", "migrate_to_chat_id", "migrate_from_chat_id", "pinned_message","new_chat_members", "invoice", "successful_payment"]
+
+#wwgc = os.environ["WW_GC"]
 sadgreet = ["spill", "trip", "eat", "bite", "tips", "tips over"]
 killgreet = ["unplug", "bang", "kill", "rip"]
 randomgreet = ["Hello", "Hi", "Greetings", "Good day", "How are ya?", "Yes", "No", "What's up?"]
 assumptgreet = ["akala ko si rice", "akala ko si ricecooker", "akala ko si @ricecooker", "kala ko si rice", "kala ko si @ricecooker", "kala ko si ricecooker", "ikaw ba yan rice", "kaw ba yan rice", "rice ikaw ba yan", "rice kaw ba yan", "ikaw ba yan @ricecooker"]
 angerygreet = ["Shooo", "...", "Wag ka na", ":|"]
+athensgreet =["athens", "ganda ako", "ganda ko", "cute ako", "cute me"]
+stressgreet = ["stress"]
 werewolfcommands = ["/werewolf@riceCookerisnotAbot", "/startchaos@werewolfbot", "/nextgame@werewolfbot", "/start@werewolfbot",]
-unpluggif = "CgADBQADNwADtjzaDXzFsIuaINkHAg"
-landigif = ["CgADBQADHQAD6QuQV_mxPdwxj0s2Ag", "CgADBQADKQADvG2JVi4mEJDnylDvAg"]
 atomgreet = ["atom", "nambabakod"]
-leigreetphrase = ["cute ako", "maganda ako", "pinaka cute", "pinaka maganda", "i am beautiful", "sexy ako", "most beautiful"]
-leigreetword = ["pinakacute", "cute", "pinakamaganda", "5'11"]
+leigreetphrase = ["cute ako", "maganda ako", "pinaka cute", "pinaka maganda", "i am beautiful", "sexy ako", "most beautiful", "ganda ko", "5'11"]
+leigreetword = ["pinakacute", "cute", "pinakamaganda"]
 leisticker = ["CAADBQADIQEAAiO4mBCSjVKUWk7MNwI", "CAADBQADHAEAAiO4mBCeaC0LYAlkowI", "CAADBQADIAEAAiO4mBD3UdIBPEO6WwI", "CAADBQADGwEAAiO4mBC51PR572t9EgI", "CAADBQADHwEAAiO4mBBJWiwq_cjWdQI", "CAADBQADHgEAAiO4mBBMQuYcpcSX2AI"]
-leigif = ["CgADBQADEQADNNrpV_JyDVwU2d1rAg", "CgADBQADFQADDHrhVeaTS0bvbyRWAg", "CgADBQADEAADS754Vha1dmKytEvNAg"]
+#leigif = ["CgADBQADEAADS754Vj0cIPOA5fAWAg", "CgADBQADFQADDHrhVXLWPyi-fVESAg", "CgADBQADEQADNNrpV0yGyX3SyadcAg", "CgADBQADHwADYlzxVd_bBWXEyqHUAg"]
+leigif = ["CgADBQADEQADNNrpV_JyDVwU2d1rAg", "CgADBQADFQADDHrhVeaTS0bvbyRWAg", "CgADBQADEAADS754Vha1dmKytEvNAg", "CgADBQADHwADYlzxVfOzb9cCUkuqAg"]
+#stressgif = ["CgADBQADNgAD1k_RVO3goPd_-i6UAg", "CgADBQADeAADXqhQVB4H-vGgquQBAg", "CgADBQADagADIQNZVQwwt6F0hhTnAg", "CgADBQADMQADSQ5QVWEW6SjSG4KYAg"]
+stressgif = ["CgADBQADeAADXqhQVCksGu6IfbQMAg", "CgADBQADMQADSQ5QVUn-yBLRrDvBAg", "CgADBQADagADIQNZVdJEKrwDU24lAg", "CgADBQADNgAD1k_RVFSZibSpxmu4Ag"]
+#genieferdzgif = "CgADBQADEgADUT_BVphVHpXa9x1UAg"
+genieferdzgif = "CgADBQADEgADUT_BVqvCsq_FYDT-Ag"
+#unpluggif = "CgADBQADNwADtjzaDem_pNtFz2CxAg"
+unpluggif = "CgADBQADNwADtjzaDXzFsIuaINkHAg"
+#landigif = ["CgADBQADKQADvG2JViq33V_DvoF9Ag", "CgADBQADHQAD6QuQVwZwVsITdN6hAg"]
+landigif = ["CgADBQADKQADvG2JVi4mEJDnylDvAg", "CgADBQADHQAD6QuQV_mxPdwxj0s2Ag"]
 landichance = 0
 angerychance = 0
 atomchance = 0
 leichance = 0
+update_id = 0
 
-#get content type
-def _find_first_key(d, keys):
-	for k in keys:
-		if k in d:
-			return k
-	raise KeyError("No suggested keys %s in %s" % (str(keys), str(d)))
+def main():
+	global update_id
+	ricebot = telegram.Bot(os.environ["BOT_TOKEN"])
 
-def handle(msg):
-	#content_type, chat_type, chat_id = telepot.glance(msg, flavor="chat", long="False")
-	content_type = _find_first_key(msg, all_content_types)
-	msg_id = msg["message_id"]
-	chat_id = msg["chat"]["id"]
-	pprint (msg)
+	try:
+		#Fetch only the latest update
+		update_id = ricebot.get_updates()[-1].update_id
+	except IndexError:
+		update_id = None
 
-	if (chat_id == -1001255652659):
-		if ("animation" in msg):
-			ricebot.sendMessage (chat_id, msg["animation"]["file_id"])
-		
-
-	if content_type == "text":
-		msg_text = msg["text"].lower()
-		msg_split = msg_text.split()
-		#gc specific autoreply
-
-		#check if GC is for testing
-		if chat_id == -234762812:
-			
-			#leichance = random.randint(1,3) % 3
-			if (("reply_to_message" in msg) and (msg_text == "landi mo") and (msg["from"]["id"] == msg["reply_to_message"]["from"]["id"])):
-				print("same user ID")
-
-		#check if GC is production
-		elif (chat_id == -1001043875036):
-			#give 20% chance for Jerome landigif, 80% chance for generic landigif
-			landichance = random.randint(1,5) % 5
-			angerychance = random.randint(1,4) % 4
-			atomchance = random.randint(1,6) % 6
-			leichance = random.randint(1,3) % 3
-
-			#autoreply for hipo messages
-			if (msg["from"]["id"] == 322520879 and angerychance == 0 and (msg_text == "hipo" or msg_text == "landi mo")):
-				ricebot.sendMessage(chat_id, random.choice(angerygreet), parse_mode="Markdown", disable_web_page_preview=None, disable_notification=True, reply_to_message_id=msg_id)
-			elif (msg_text == "hipo"):
-				if (landichance == 0):
-					ricebot.sendDocument(chat_id, landigif[1], caption=None, parse_mode="Markdown", disable_notification=True, reply_to_message_id=msg_id)
-				else:
-					ricebot.sendDocument(chat_id, landigif[0], caption=None, parse_mode="Markdown", disable_notification=True, reply_to_message_id=msg_id)
-			#autoreply for landi mo reply
-			elif (("reply_to_message" in msg) and (msg_text == "landi mo") and (msg["from"]["id"] != msg["reply_to_message"]["from"]["id"])):
-				if (landichance == 0):
-					ricebot.sendDocument(chat_id, landigif[1], caption=None, parse_mode="Markdown", disable_notification=True, reply_to_message_id=msg["reply_to_message"]["message_id"])
-				else:
-					ricebot.sendDocument(chat_id, landigif[0], caption=None, parse_mode="Markdown", disable_notification=True, reply_to_message_id=msg["reply_to_message"]["message_id"])
-			#autoreply for lei's narcissism
-			elif ((msg["from"]["id"] == 477167517) and (any(x in msg_text for x in leigreetphrase) or any(y in msg_split for y in leigreetword))):
-				if (leichance == 0):
-					ricebot.sendSticker(chat_id, random.choice(leisticker))
-				else :
-					ricebot.sendDocument(chat_id, random.choice(leigif))
-			#autosend atom sticker
-			elif ((any(x in msg_split for x in atomgreet)) and (atomchance != 0)):
-				ricebot.sendSticker(chat_id, "CAADBQADHgADKGW-C2i6PBdd6c9ZAg", disable_notification=None, reply_to_message_id=msg_id)
-			#werewolf command invite autoreply
-			elif ((any(x in msg["text"] for x in werewolfcommands)) and "entities" in msg):
-				ricebot.sendMessage(chat_id, "Hi, you may join this GC's werewolf game channel at https://t.me/joinchat/" + wwgc, parse_mode="Markdown", disable_web_page_preview=None, disable_notification=True, reply_to_message_id=msg_id)
-			#assumptions autoreply
-			elif (any(x in msg_text for x in assumptgreet)):
-				time.sleep(1)			
-				ricebot.sendMessage(chat_id, "Di ako yun", parse_mode="Markdown", disable_web_page_preview=None, disable_notification=True, reply_to_message_id=msg_id)
+	while True:
+		try:
+			handle(ricebot)
+		except NetworkError:
+			sleep(1)
+		except Unauthorized:
+			update_id += 1
 	
+
+def handle(ricebot):
+	global update_id
+
+	#Initialize variables
+	msg_text = None
+	msg_split = None
+	anm_id = None
+	reply_user_id = None
+	fwd_user_id = None
+	sticker_id = None
+
+	for update in ricebot.get_updates(offset=update_id, timeout=10):
+		update_id = update.update_id + 1
+		landichance = random.randint(1,5) % 5
+		angerychance = random.randint(1,4) % 4
+		atomchance = random.randint(1,6) % 6
+		leichance = random.randint(1,3) % 3
+
+		#Check if message has content
+		if update.message:
+
+			chat_id = update.message.chat_id
+			msg_id = update.message.message_id
+			user_id = update.message.from_user.id
+
+			#Get message text if not none
+			if (update.message.text):
+				msg_text = update.message.text.lower()
+				msg_split = msg_text.split()	
+			#Get original user ID from reply message
+			if (update.message.reply_to_message):
+				reply_user_id = update.message.reply_to_message.from_user.id
+				reply_msg_id = update.message.reply_to_message.message_id
+			#Get GIF file ID
+			if (update.message.animation):
+				anm_id = update.message.animation.file_id
+			#Get user ID from forwarded messages
+			if (update.message.forward_from):
+				fwd_user_id = update.message.forward_from.id
+			#Get sticker file ID
+			if (update.message.sticker):
+				sticker_id = update.message.sticker.file_id
+
+			#For testGC input
+			if chat_id == -1001255652659:
+
+				#Send motd when new members are added
+				if (update.message.new_chat_members):
+					ricebot.sendMessage(-1001255652659, "<code>All contents/events in this group chat are confidential. Disclosure is prohibited</code>", parse_mode="HTML")
+				
+				#Check if message is text
+				if (msg_text):
+					if (msg_text == "hipo"):
+						if (landichance):
+							ricebot.sendDocument(chat_id, landigif[0], caption=None, parse_mode="Markdown", disable_notification=True, reply_to_message_id=msg_id)
+						else:
+							ricebot.sendDocument(chat_id, landigif[1], caption=None, parse_mode="Markdown", disable_notification=True, reply_to_message_id=msg_id)
+					#autoreply for genie ferdz gif
+					elif (("genie" in msg_text or "happy" in msg_text) and ("ferdz" in msg_text or "ferds" in msg_text)):
+						ricebot.sendAnimation(chat_id, genieferdzgif)
+					#autoreply for stress
+					elif (any (x in msg_split for x in stressgreet) and random.randint(0,1)):
+						ricebot.sendAnimation(chat_id, random.choice(stressgif), reply_to_message_id=msg_id)
+					#autoreply for landi mo reply
+					elif (update.message.reply_to_message and msg_text == "landi mo"):
+						print(msg_text)
+						if (landichance):
+							ricebot.sendDocument(chat_id, landigif[0], caption=None, parse_mode="Markdown", disable_notification=True, reply_to_message_id=reply_msg_id)
+						else:
+							ricebot.sendDocument(chat_id, landigif[1], caption=None, parse_mode="Markdown", disable_notification=True, reply_to_message_id=reply_msg_id)
+					#autoreply for lei shenanigans
+					elif (update.message.animation and anm_id == "CgADBQADIQAD1PpYV8uam3a7hV41Ag"):
+						ricebot.sendSticker(chat_id, random.choice(leisticker))
+					#autoreply for assumption greetings
+					elif (any(x in msg_text for x in assumptgreet)):
+						time.sleep(1)			
+						ricebot.sendMessage(chat_id, "Di ako yun", parse_mode="Markdown", disable_web_page_preview=None, disable_notification=True, reply_to_message_id=msg_id)
+					elif (user_id == 322520879 and any (x in msg_text for x in athensgreet)):
+						ricebot.sendSticker(chat_id, "CAADBQADCQADL0c5E0v6frqfrAl0Ag", reply_to_message_id=msg_id)
+					#autosend atom sticker
+					elif ((any(x in msg_split for x in atomgreet)) and (atomchance != 0)):
+						ricebot.sendSticker(chat_id, "CAADBQADHgADKGW-C2i6PBdd6c9ZAg", disable_notification=None, reply_to_message_id=msg_id)
+					
+					
+				if (reply_user_id):
+					ricebot.sendMessage(chat_id,"Reply user ID: " + str(reply_user_id))
+				if (anm_id):
+					if (anm_id == "CgADBQADIQAD1PpYV8uam3a7hV41Ag"):
+						ricebot.sendSticker(chat_id, random.choice(leisticker), reply_to_message_id=msg_id)
+					ricebot.sendMessage(chat_id, anm_id)
+				elif (sticker_id):
+					ricebot.sendMessage(chat_id, sticker_id)
+				
+				#Check if message is forwarded
+				if (fwd_user_id):
+						ricebot.sendMessage(chat_id, "Forwarded message user ID: " + str(fwd_user_id))
+			
+			#For production GC text input
+			elif (msg_text and chat_id == -1001043875036):
+
+				#autoreply for hipo messages
+				if (user_id == 322520879 and angerychance == 0 and (msg_text == "hipo" or msg_text == "landi mo")):
+					ricebot.sendMessage(chat_id, random.choice(angerygreet), parse_mode="Markdown", disable_web_page_preview=None, disable_notification=True, reply_to_message_id=msg_id)
+				elif (user_id == 322520879 and any (x in msg_text for x in athensgreet)):
+					ricebot.sendSticker(chat_id, "CAADBQADCQADL0c5E0v6frqfrAl0Ag", reply_to_message_id=msg_id)
+				elif (msg_text == "hipo" and user_id != 322520879):
+					if (landichance):
+						ricebot.sendDocument(chat_id, landigif[0], caption=None, parse_mode="Markdown", disable_notification=True, reply_to_message_id=msg_id)
+					else:
+						ricebot.sendDocument(chat_id, landigif[1], caption=None, parse_mode="Markdown", disable_notification=True, reply_to_message_id=msg_id)
+				#autoreply for landi mo reply
+				elif ((update.message.reply_to_message) and (msg_text == "landi mo") and (user_id != update.message.reply_to_message.from_user.id) and (user_id != 322520879)):
+					if (landichance):
+						ricebot.sendDocument(chat_id, landigif[0], caption=None, parse_mode="Markdown", disable_notification=True, reply_to_message_id=reply_user_id)
+					else:
+						ricebot.sendDocument(chat_id, landigif[1], caption=None, parse_mode="Markdown", disable_notification=True, reply_to_message_id=reply_user_id)
+				#autoreply for stress
+				elif (any (x in msg_split for x in stressgreet) and random.randint(0,1)):
+					ricebot.sendAnimation(chat_id, random.choice(stressgif), reply_to_message_id=msg_id)
+				#autoreply for lei's narcissism
+				elif ((user_id == 477167517) and (any(x in msg_text for x in leigreetphrase) or any(y in msg_split for y in leigreetword))):
+					if (leichance):
+						ricebot.sendDocument(chat_id, random.choice(leigif))
+					else :
+						ricebot.sendSticker(chat_id, random.choice(leisticker))
+				#autosend atom sticker
+				elif ((any(x in msg_split for x in atomgreet)) and (atomchance == 0)):
+					ricebot.sendSticker(chat_id, "CAADBQADHgADKGW-C2i6PBdd6c9ZAg", disable_notification=None, reply_to_message_id=msg_id)
+				#werewolf command invite autoreply
+				# elif any(x in update.message.text for x in werewolfcommands):
+				# 	ricebot.sendMessage(chat_id, "Hi, you may join this GC's werewolf game channel at https://t.me/joinchat/" + wwgc, parse_mode="Markdown", disable_web_page_preview=None, disable_notification=True, reply_to_message_id=msg_id)
+				#assumptions autoreply
+				elif (any(x in msg_text for x in assumptgreet)):
+					time.sleep(1)			
+					ricebot.sendMessage(chat_id, "Di ako yun", parse_mode="Markdown", disable_web_page_preview=None, disable_notification=True, reply_to_message_id=msg_id)
+		
 		
 		#non-gc specific autoreply
 		#send greetings
-		if (msg_text == "hi" or msg_text == "hi rice"):
-			time.sleep(1)
-			ricebot.sendMessage(chat_id, random.choice(randomgreet), parse_mode="Markdown", disable_web_page_preview=None, disable_notification=True, reply_to_message_id=msg_id)
-		#sad greetings autoreply
-		elif (any(x in msg_text for x in sadgreet) and "ricecooker" in msg_text):
-			ricebot.sendMessage(chat_id,"<.<", parse_mode="Markdown", disable_web_page_preview=None, disable_notification=True, reply_to_message_id=msg_id)
-			time.sleep(1)
-			ricebot.sendMessage(chat_id, ">.>", parse_mode="Markdown")
-			ricebot.sendMessage(chat_id, "_spills rice_", parse_mode="Markdown")
-		#send unplug GIF if a kill greeting has been sent 
-		elif (any(x in msg_text for x in killgreet) and "ricecooker" in msg_text): 
-			ricebot.sendDocument(chat_id, unpluggif)
+		if (msg_text):
+			if (angerychance and (msg_text == "hi" or msg_text == "hi rice")):
+				time.sleep(1)
+				ricebot.sendMessage(chat_id, random.choice(randomgreet), parse_mode="Markdown", disable_web_page_preview=None, disable_notification=True, reply_to_message_id=msg_id)
+			#sad greetings autoreply
+			elif (any(x in msg_text for x in sadgreet) and "rice" in msg_text):
+				ricebot.sendMessage(chat_id,"<.<", parse_mode="Markdown", disable_web_page_preview=None, disable_notification=True, reply_to_message_id=msg_id)
+				time.sleep(1)
+				ricebot.sendMessage(chat_id, ">.>", parse_mode="Markdown")
+				ricebot.sendMessage(chat_id, "_spills rice_", parse_mode="Markdown")
+			#send unplug GIF if a kill greeting has been sent 
+			elif (any(x in msg_text for x in killgreet) and "rice" in msg_text): 
+				ricebot.sendAnimation(chat_id, unpluggif, reply_to_message_id=msg_id)
+			
 
+if __name__ == "__main__":
+    main()
 
-MessageLoop(ricebot, handle).run_as_thread()
-
-while 1:
-	time.sleep(10)
-
-
-#Credits to Nick Lee for the telepot python framework for Telegram bot API
+#Credits to the Python Telegram Bot team for the wonderful API and examples
