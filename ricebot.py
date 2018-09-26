@@ -126,7 +126,7 @@ def handle(ricebot):
 						ricebot.sendAnimation(chat_id, random.choice(stressgif), reply_to_message_id=msg_id)
 					#autoreply for landi mo reply
 					elif (update.message.reply_to_message and msg_text == "landi mo"):
-						ricebot.sendMessage(chat_id, user_id + reply_user_id, reply_to_message_id=reply_msg_id)
+						ricebot.sendMessage(chat_id, "User ID: " + str(user_id) + " Reply user ID: " + str(reply_user_id), reply_to_message_id=reply_msg_id)
 						print(landichance)
 						if (landichance):
 							ricebot.sendAnimation(chat_id, landigif[0], caption=None, parse_mode="Markdown", disable_notification=True, reply_to_message_id=reply_msg_id)
