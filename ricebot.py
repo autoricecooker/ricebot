@@ -131,12 +131,11 @@ def handle(ricebot):
 						else:
 							ricebot.sendAnimation(chat_id, landigif[1], caption=None, parse_mode="Markdown", disable_notification=True, reply_to_message_id=reply_msg_id)
 					#autoreply for luh with louise shrug
-					elif ("luh" in msg_split):
-						ricebot.sendAnimation(chat_id, louisegif[random.randint(1,4)], reply_to_message_id=msg_id)
-						# if (random.randint(0,19)):
-						# 	ricebot.sendAnimation(chat_id, louisegif[0], reply_to_message_id=msg_id)
-						# else:
-						# 	ricebot.sendAnimation(chat_id, louisegif[random.randint(1,4)], reply_to_message_id=msg_id)
+					elif ("luh" in msg_split and leichance):
+						if (random.randint(0,19)):
+							ricebot.sendAnimation(chat_id, louisegif[0], reply_to_message_id=msg_id)
+						else:
+							ricebot.sendAnimation(chat_id, louisegif[random.randint(1,4)], reply_to_message_id=msg_id)
 					#autoreply for assumption greetings
 					elif (any(x in msg_text for x in assumptgreet)):
 						time.sleep(1)			
