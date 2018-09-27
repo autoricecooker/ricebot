@@ -134,7 +134,7 @@ def handle(ricebot):
 						else:
 							ricebot.sendAnimation(chat_id, landigif[1], caption=None, parse_mode="Markdown", disable_notification=True, reply_to_message_id=reply_msg_id)
 					#autoreply for luh with louise shrug
-					elif ("luh" in msg_split and leichance):
+					elif ("luh" in msg_split and (random.randrange(0,100) < 40)):
 						if (random.randint(0,19)):
 							ricebot.sendAnimation(chat_id, louisegif[0], reply_to_message_id=msg_id)
 						else:
@@ -216,7 +216,10 @@ def handle(ricebot):
 					ricebot.sendAnimation(chat_id, genieferdzgif)
 				elif ("happy" in msg_split and "jake" in msg_split):
 					ricebot.sendAnimation(chat_id, jakegif[0])
-			elif (anm_id and chat_id == -1001043875036 and anm_id == "CgADBQADIQAD1PpYV9Q8SLVB8kHHAg"):
+				#autoreply for toasties
+				elif ("toasties" in msg_split and random.randint(0, 1)):
+					ricebot.sendAnimation(chat_id, toastiesgif[0], reply_to_message_id=msg_id)
+			elif (anm_id and chat_id == -1001043875036 and (anm_id == "CgADBQADIQAD1PpYV9Q8SLVB8kHHAg" or anm_id == "CgADBQADCQAD2MkBV-93jXgFs7gBAg")):
 				if (leichance):
 					ricebot.sendSticker(chat_id, random.choice(leisticker), reply_to_message_id=msg_id)
 				else :
@@ -233,13 +236,13 @@ def handle(ricebot):
 				time.sleep(1)
 				ricebot.sendMessage(chat_id, random.choice(randomgreet), parse_mode="Markdown", disable_web_page_preview=None, disable_notification=True, reply_to_message_id=msg_id)
 			#sad greetings autoreply
-			elif (any(x in msg_text for x in sadgreet) and "rice" in msg_text):
+			elif (any(x in msg_split for x in sadgreet) and "rice" in msg_split):
 				ricebot.sendMessage(chat_id,"<.<", parse_mode="Markdown", disable_web_page_preview=None, disable_notification=True, reply_to_message_id=msg_id)
 				time.sleep(1)
 				ricebot.sendMessage(chat_id, ">.>", parse_mode="Markdown")
 				ricebot.sendMessage(chat_id, "_spills rice_", parse_mode="Markdown")
 			#send unplug GIF if a kill greeting has been sent 
-			elif (any(x in msg_text for x in killgreet) and "rice" in msg_text): 
+			elif (any(x in msg_split for x in killgreet) and "rice" in msg_split): 
 				ricebot.sendAnimation(chat_id, unpluggif, reply_to_message_id=msg_id)
 			
 
