@@ -135,7 +135,7 @@ def handle(ricebot):
 							ricebot.sendAnimation(chat_id, landigif[1], caption=None, parse_mode="Markdown", disable_notification=True, reply_to_message_id=reply_msg_id)
 					#autoreply for luh with louise shrug
 					elif ("luh" in msg_split and (random.randrange(0,100) < 40)):
-						if (random.randint(0,19)):
+						if (random.randint(0,15)):
 							ricebot.sendAnimation(chat_id, louisegif[0], reply_to_message_id=msg_id)
 						else:
 							ricebot.sendAnimation(chat_id, louisegif[random.randint(1,4)], reply_to_message_id=msg_id)
