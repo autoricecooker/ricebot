@@ -106,7 +106,7 @@ def handle(ricebot):
 				sticker_id = update.message.sticker.file_id
 
 			#For testGC input
-			if chat_id == -1001255652659:
+			if (chat_id == -1001255652659):
 
 				#Send motd when new members are added
 				if (update.message.new_chat_members):
@@ -172,58 +172,64 @@ def handle(ricebot):
 				if (fwd_user_id):
 						ricebot.sendMessage(chat_id, "Forwarded message user ID: " + str(fwd_user_id))
 			
-			#For production GC text input
-			elif (msg_text and chat_id == -1001043875036):
-
-				#autoreply for athens
-				if (user_id == 322520879 and angerychance == 0 and (msg_text == "hipo" or msg_text == "landi mo")):
-					ricebot.sendMessage(chat_id, random.choice(angerygreet), parse_mode="Markdown", disable_web_page_preview=None, disable_notification=True, reply_to_message_id=msg_id)
-				elif (user_id == 322520879 and any (x in msg_text for x in athensgreet)):
-					ricebot.sendSticker(chat_id, "CAADBQADCQADL0c5E0v6frqfrAl0Ag", reply_to_message_id=msg_id)
-				#autoreply for landi mo 
-				elif (update.message.reply_to_message and msg_text == "landi mo" and user_id != reply_user_id):
-					if (landichance):
-						ricebot.sendAnimation(chat_id, landigif[0], caption=None, parse_mode="Markdown", disable_notification=True, reply_to_message_id=reply_msg_id)
-					else:
-						ricebot.sendAnimation(chat_id, landigif[1], caption=None, parse_mode="Markdown", disable_notification=True, reply_to_message_id=reply_msg_id)
-				#autoreply for hipo messages
-				elif (msg_text == "hipo" and user_id != 322520879):
-					if (landichance):
-						ricebot.sendDocument(chat_id, landigif[0], caption=None, parse_mode="Markdown", disable_notification=True, reply_to_message_id=msg_id)
-					else:
-						ricebot.sendDocument(chat_id, landigif[1], caption=None, parse_mode="Markdown", disable_notification=True, reply_to_message_id=msg_id)
-				#autoreply for stress
-				elif (any (x in msg_split for x in stressgreet) and random.randint(0,1)):
-					ricebot.sendAnimation(chat_id, random.choice(stressgif), reply_to_message_id=msg_id)
-				#autoreply for lei's narcissism
-				elif ((user_id == 477167517) and (any(x in msg_text for x in leigreetphrase) or any(y in msg_split for y in leigreetword))):
+			#For production GC input
+			elif (chat_id == -1001043875036):
+				if (msg_text):
+					#autoreply for athens
+					if (user_id == 322520879 and angerychance == 0 and (msg_text == "hipo" or msg_text == "landi mo")):
+						ricebot.sendMessage(chat_id, random.choice(angerygreet), parse_mode="Markdown", disable_web_page_preview=None, disable_notification=True, reply_to_message_id=msg_id)
+					elif (user_id == 322520879 and any (x in msg_text for x in athensgreet)):
+						ricebot.sendSticker(chat_id, "CAADBQADCQADL0c5E0v6frqfrAl0Ag", reply_to_message_id=msg_id)
+					#autoreply for landi mo 
+					elif (update.message.reply_to_message and msg_text == "landi mo" and user_id != reply_user_id):
+						if (landichance):
+							ricebot.sendAnimation(chat_id, landigif[0], caption=None, parse_mode="Markdown", disable_notification=True, reply_to_message_id=reply_msg_id)
+						else:
+							ricebot.sendAnimation(chat_id, landigif[1], caption=None, parse_mode="Markdown", disable_notification=True, reply_to_message_id=reply_msg_id)
+					#autoreply for hipo messages
+					elif (msg_text == "hipo" and user_id != 322520879):
+						if (landichance):
+							ricebot.sendDocument(chat_id, landigif[0], caption=None, parse_mode="Markdown", disable_notification=True, reply_to_message_id=msg_id)
+						else:
+							ricebot.sendDocument(chat_id, landigif[1], caption=None, parse_mode="Markdown", disable_notification=True, reply_to_message_id=msg_id)
+					#autoreply for stress
+					elif (any (x in msg_split for x in stressgreet) and random.randint(0,1)):
+						ricebot.sendAnimation(chat_id, random.choice(stressgif), reply_to_message_id=msg_id)
+					#autoreply for lei's narcissism
+					elif ((user_id == 477167517) and (any(x in msg_text for x in leigreetphrase) or any(y in msg_split for y in leigreetword))):
+						if (leichance):
+							ricebot.sendSticker(chat_id, random.choice(leisticker))
+						else :
+							ricebot.sendAnimation(chat_id, random.choice(leigif))
+					#autoreply for luh with louise shrug
+					elif ("luh" in msg_split and (random.randrange(0,100) < 40)):
+						if (random.randint(0,15)):
+							ricebot.sendAnimation(chat_id, louisegif[0], reply_to_message_id=msg_id)
+						else:
+							ricebot.sendAnimation(chat_id, louisegif[random.randint(1,4)], reply_to_message_id=msg_id)
+					#autosend atom sticker
+					elif ((any(x in msg_split for x in atomgreet)) and (atomchance == 0)):
+						ricebot.sendSticker(chat_id, "CAADBQADHgADKGW-C2i6PBdd6c9ZAg", disable_notification=None, reply_to_message_id=msg_id)
+					#werewolf command invite autoreply
+					# elif any(x in update.message.text for x in werewolfcommands):
+					# 	ricebot.sendMessage(chat_id, "Hi, you may join this GC's werewolf game channel at https://t.me/joinchat/" + wwgc, parse_mode="Markdown", disable_web_page_preview=None, disable_notification=True, reply_to_message_id=msg_id)
+					#assumptions autoreply
+					elif (any(x in msg_text for x in assumptgreet)):
+						time.sleep(1)			
+						ricebot.sendMessage(chat_id, "Di ako yun", parse_mode="Markdown", disable_web_page_preview=None, disable_notification=True, reply_to_message_id=msg_id)
+					#autoreply for genie ferdz gif
+					elif (("genie" in msg_split or "happy" in msg_split) and ("ferdz" in msg_split or "ferds" in msg_split)):
+						ricebot.sendAnimation(chat_id, genieferdzgif)
+					elif ("happy" in msg_split and "jake" in msg_split):
+						ricebot.sendAnimation(chat_id, jakegif[0])
+					#autoreply for toasties
+					elif ("toasties" in msg_split and random.randint(0, 1)):
+						ricebot.sendAnimation(chat_id, toastiesgif[0], reply_to_message_id=msg_id)
+				elif (anm_id and (anm_id == "CgADBQADIQAD1PpYV9Q8SLVB8kHHAg" or anm_id == "CgADBQADCQAD2MkBV-93jXgFs7gBAg")):
 					if (leichance):
-						ricebot.sendSticker(chat_id, random.choice(leisticker))
+						ricebot.sendSticker(chat_id, random.choice(leisticker), reply_to_message_id=msg_id)
 					else :
-						ricebot.sendAnimation(chat_id, random.choice(leigif))
-				#autosend atom sticker
-				elif ((any(x in msg_split for x in atomgreet)) and (atomchance == 0)):
-					ricebot.sendSticker(chat_id, "CAADBQADHgADKGW-C2i6PBdd6c9ZAg", disable_notification=None, reply_to_message_id=msg_id)
-				#werewolf command invite autoreply
-				# elif any(x in update.message.text for x in werewolfcommands):
-				# 	ricebot.sendMessage(chat_id, "Hi, you may join this GC's werewolf game channel at https://t.me/joinchat/" + wwgc, parse_mode="Markdown", disable_web_page_preview=None, disable_notification=True, reply_to_message_id=msg_id)
-				#assumptions autoreply
-				elif (any(x in msg_text for x in assumptgreet)):
-					time.sleep(1)			
-					ricebot.sendMessage(chat_id, "Di ako yun", parse_mode="Markdown", disable_web_page_preview=None, disable_notification=True, reply_to_message_id=msg_id)
-				#autoreply for genie ferdz gif
-				elif (("genie" in msg_split or "happy" in msg_split) and ("ferdz" in msg_split or "ferds" in msg_split)):
-					ricebot.sendAnimation(chat_id, genieferdzgif)
-				elif ("happy" in msg_split and "jake" in msg_split):
-					ricebot.sendAnimation(chat_id, jakegif[0])
-				#autoreply for toasties
-				elif ("toasties" in msg_split and random.randint(0, 1)):
-					ricebot.sendAnimation(chat_id, toastiesgif[0], reply_to_message_id=msg_id)
-			elif (anm_id and chat_id == -1001043875036 and (anm_id == "CgADBQADIQAD1PpYV9Q8SLVB8kHHAg" or anm_id == "CgADBQADCQAD2MkBV-93jXgFs7gBAg")):
-				if (leichance):
-					ricebot.sendSticker(chat_id, random.choice(leisticker), reply_to_message_id=msg_id)
-				else :
-					ricebot.sendAnimation(chat_id, random.choice(leigif), reply_to_message_id=msg_id)
+						ricebot.sendAnimation(chat_id, random.choice(leigif), reply_to_message_id=msg_id)
 					
 
 		
