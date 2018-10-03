@@ -242,13 +242,13 @@ def handle(ricebot):
 					time.sleep(1)
 					ricebot.sendMessage(chat_id, random.choice(randomgreet), parse_mode="Markdown", disable_web_page_preview=None, disable_notification=True, reply_to_message_id=msg_id)
 				#sad greetings autoreply
-				elif (any(x in msg_split for x in sadgreet) and "rice" in msg_split):
+				elif (any(x in msg_split for x in sadgreet) and "rice" in msg_text):
 					ricebot.sendMessage(chat_id,"<.<", parse_mode="Markdown", disable_web_page_preview=None, disable_notification=True, reply_to_message_id=msg_id)
 					time.sleep(1)
 					ricebot.sendMessage(chat_id, ">.>", parse_mode="Markdown")
 					ricebot.sendMessage(chat_id, "_spills rice_", parse_mode="Markdown")
 				#send unplug GIF if a kill greeting has been sent 
-				elif (any(x in msg_split for x in killgreet) and "rice" in msg_split): 
+				elif (any(x in msg_split for x in killgreet) and "rice" in msg_text): 
 					ricebot.sendAnimation(chat_id, unpluggif, reply_to_message_id=msg_id)
 			
 
