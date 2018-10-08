@@ -13,7 +13,7 @@ from time import sleep
 
 #wwgc = os.environ["WW_GC"]
 sadgreet = ["spill", "trip", "eat", "bite", "tips", "tips over"]
-killgreet = ["unplug", "bang", "kill", "rip"]
+killgreet = ["unplug", "kill", "rip", "destroy"]
 randomgreet = ["Hello", "Hi", "Greetings", "Good day", "How are ya?", "Yes", "No", "What's up?"]
 assumptgreet = ["akala ko si rice", "akala ko si ricecooker", "akala ko si @ricecooker", "kala ko si rice", "kala ko si @ricecooker", "kala ko si ricecooker", "ikaw ba yan rice", "kaw ba yan rice", "rice ikaw ba yan", "rice kaw ba yan", "ikaw ba yan @ricecooker"]
 angerygreet = ["Shooo", "...", "Wag ka na", ":|"]
