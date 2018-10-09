@@ -148,7 +148,10 @@ def handle(ricebot):
 						ricebot.sendMessage(chat_id, "Di ako yun", parse_mode="Markdown", disable_web_page_preview=None, disable_notification=True, reply_to_message_id=msg_id)
 					#autoreply for athens
 					elif (user_id == 322520879 and any (x in msg_text for x in athensgreet)):
-						ricebot.sendSticker(chat_id, "CAADBQADCQADL0c5E0v6frqfrAl0Ag", reply_to_message_id=msg_id)
+						if (random.randint(0,3)):
+							ricebot.sendSticker(chat_id, "CAADBQADCQADL0c5E0v6frqfrAl0Ag", reply_to_message_id=msg_id)
+						else:
+							ricebot.sendAnimation(chat_id, "CgADBQADTQADUt_RVJBsyb0ugbBkAg", reply_to_message_id=msg_id)
 					#autosend atom sticker
 					elif ((any(x in msg_split for x in atomgreet)) and (atomchance != 0)):
 						ricebot.sendSticker(chat_id, "CAADBQADHgADKGW-C2i6PBdd6c9ZAg", disable_notification=None, reply_to_message_id=msg_id)
