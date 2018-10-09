@@ -176,7 +176,7 @@ def handle(ricebot):
 			elif (chat_id == -1001043875036):
 				if (msg_text):
 					#autoreply for athens
-					if (user_id == 322520879 and angerychance == 0 and (msg_text == "hipo" or msg_text == "landi mo")):
+					if (user_id == 322520879 and angerychance == 0 and (msg_text == "hipo" or msg_text == "landi mo" or msg_split == "hi")):
 						ricebot.sendMessage(chat_id, random.choice(angerygreet), parse_mode="Markdown", disable_web_page_preview=None, disable_notification=True, reply_to_message_id=msg_id)
 					elif (user_id == 322520879 and any (x in msg_text for x in athensgreet)):
 						ricebot.sendSticker(chat_id, "CAADBQADCQADL0c5E0v6frqfrAl0Ag", reply_to_message_id=msg_id)
