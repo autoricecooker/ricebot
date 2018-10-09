@@ -18,7 +18,8 @@ randomgreet = ["Hello", "Hi", "Greetings", "Good day", "How are ya?", "Yes", "No
 assumptgreet = ["akala ko si rice", "akala ko si ricecooker", "akala ko si @ricecooker", "kala ko si rice", "kala ko si @ricecooker", "kala ko si ricecooker", "ikaw ba yan rice", "kaw ba yan rice", "rice ikaw ba yan", "rice kaw ba yan", "ikaw ba yan @ricecooker"]
 angerygreet = ["Shooo", "...", "Wag ka na", ":|"]
 athensgreet =["athens", "ganda ako", "ganda ko", "cute ako", "cute me"]
-stressgreet = ["stress"]
+stressgreet = ["stress", "stresss", "stressss"]
+blessgreet = ["bless", "blesss"]
 werewolfcommands = ["/werewolf@riceCookerisnotAbot", "/startchaos@werewolfbot", "/nextgame@werewolfbot", "/start@werewolfbot",]
 atomgreet = ["atom", "nambabakod"]
 leigreetphrase = ["cute ako", "maganda ako", "pinaka cute", "pinaka maganda", "i am beautiful", "sexy ako", "most beautiful", "ganda ko", "5'11", "qt ko", "qt ako"]
@@ -28,6 +29,7 @@ leisticker = ["CAADBQADIQEAAiO4mBCSjVKUWk7MNwI", "CAADBQADHAEAAiO4mBCeaC0LYAlkow
 leigif = ["CgADBQADEQADNNrpV_JyDVwU2d1rAg", "CgADBQADFQADDHrhVeaTS0bvbyRWAg", "CgADBQADEAADS754Vha1dmKytEvNAg", "CgADBQADHwADYlzxVfOzb9cCUkuqAg"]
 #stressgif = ["CgADBQADNgAD1k_RVO3goPd_-i6UAg", "CgADBQADeAADXqhQVB4H-vGgquQBAg", "CgADBQADagADIQNZVQwwt6F0hhTnAg", "CgADBQADMQADSQ5QVWEW6SjSG4KYAg"]
 stressgif = ["CgADBQADeAADXqhQVCksGu6IfbQMAg", "CgADBQADMQADSQ5QVUn-yBLRrDvBAg", "CgADBQADagADIQNZVdJEKrwDU24lAg", "CgADBQADNgAD1k_RVFSZibSpxmu4Ag"]
+blessgif =["CgADBQADQwADUt_RVJbf7QgSjFMQAg"]
 #genieferdzgif = "CgADBQADEgADUT_BVphVHpXa9x1UAg"
 genieferdzgif = "CgADBQADEgADUT_BVqvCsq_FYDT-Ag"
 #unpluggif = "CgADBQADNwADtjzaDem_pNtFz2CxAg"
@@ -122,6 +124,9 @@ def handle(ricebot):
 					#autoreply for genie ferdz gif
 					elif (("genie" in msg_text or "happy" in msg_text) and ("ferdz" in msg_text or "ferds" in msg_text)):
 						ricebot.sendAnimation(chat_id, genieferdzgif)
+					#autoreply for bless
+					elif (any (x in msg_split for x in blessgreet) and random.randint(0,3)):
+						ricebot.sendAnimation(chat_id, random.choice(blessgif), reply_to_message_id=msg_id)
 					#autoreply for stress
 					elif (any (x in msg_split for x in stressgreet) and random.randint(0,1)):
 						ricebot.sendAnimation(chat_id, random.choice(stressgif), reply_to_message_id=msg_id)
@@ -198,6 +203,9 @@ def handle(ricebot):
 					#autoreply for stress
 					elif (any (x in msg_split for x in stressgreet) and random.randint(0,1)):
 						ricebot.sendAnimation(chat_id, random.choice(stressgif), reply_to_message_id=msg_id)
+					#autoreply for bless
+					# elif (any (x in msg_split for x in blessgreet) and random.randint(0,3)):
+					# 	ricebot.sendAnimation(chat_id, random.choice(blessgif), reply_to_message_id=msg_id)
 					#autoreply for lei's narcissism
 					elif ((user_id == 477167517) and (any(x in msg_text for x in leigreetphrase) or any(y in msg_split for y in leigreetword))):
 						if (leichance):
@@ -239,7 +247,7 @@ def handle(ricebot):
 			#non-gc specific autoreply
 			#send greetings
 			if (msg_text):
-				if ((user_id == 339707076 or user_id == 574787216) and msg_text == "hi"):
+				if ((user_id == 339707076 or user_id == 574787216) and ("hi" in msg_split or "hello" in msg_split)):
 					ricebot.sendMessage(chat_id, "<code>Pass</code>", parse_mode="HTML")
 				elif (angerychance and (msg_text == "hi" or msg_text == "hi rice")):
 					time.sleep(1)
