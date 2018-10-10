@@ -237,7 +237,7 @@ def handle(ricebot):
 					elif ("toasties" in msg_split and random.randint(0, 1)):
 						ricebot.sendAnimation(chat_id, toastiesgif[0], reply_to_message_id=msg_id)
 				elif (update.message.new_chat_members):
-					ricebot.sendMessage(-1001255652659, "<code>Hi! Welcome to rph tele! As part of catfish verification standard procedures, we ask for a selfie of you with a tabo (tabofie) and a tinidor (tinidorfie). Have fun and stay fake!</code>", parse_mode="HTML")
+					ricebot.sendMessage(chat_id, "<code>Hi! Welcome to rph tele! As part of catfish verification standard procedures, we ask for a selfie of you with a tabo (tabofie) and a tinidor (tinidorfie). Have fun and stay fake!</code>", parse_mode="HTML")
 				elif (anm_id and (anm_id == "CgADBQADIQAD1PpYV9Q8SLVB8kHHAg" or anm_id == "CgADBQADCQAD2MkBV-93jXgFs7gBAg")):
 					if (leichance):
 						ricebot.sendSticker(chat_id, random.choice(leisticker), reply_to_message_id=msg_id)
