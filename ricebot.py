@@ -182,12 +182,13 @@ def handle(ricebot):
 			
 			#For production GC input
 			elif (chat_id == -1001043875036):
-				if (msg_text):
+				if (msg_text and user_id != 456128183):
 					#autoreply for athens
-					if (user_id == 322520879 and angerychance == 0 and (msg_text == "hipo" or msg_text == "landi mo" or msg_split == "hi")):
-						ricebot.sendMessage(chat_id, random.choice(angerygreet), parse_mode="Markdown", disable_web_page_preview=None, disable_notification=True, reply_to_message_id=msg_id)
-					elif (user_id == 322520879 and any (x in msg_text for x in athensgreet)):
-						ricebot.sendSticker(chat_id, "CAADBQADCQADL0c5E0v6frqfrAl0Ag", reply_to_message_id=msg_id)
+					if (user_id == 322520879):
+						if (msg_text == "hipo" or msg_text == "landi mo" or msg_split == "hi" or any(x in msg_split for x in stressgreet) or "luh" in msg_split):
+							ricebot.sendMessage(chat_id, random.choice(angerygreet), parse_mode="Markdown", disable_web_page_preview=None, disable_notification=True, reply_to_message_id=msg_id)
+						elif (any (x in msg_text for x in athensgreet)):
+							ricebot.sendSticker(chat_id, "CAADBQADCQADL0c5E0v6frqfrAl0Ag", reply_to_message_id=msg_id)
 					#autoreply for landi mo 
 					elif (update.message.reply_to_message and msg_text == "landi mo" and user_id != reply_user_id):
 						if (landichance):
@@ -201,7 +202,7 @@ def handle(ricebot):
 						else:
 							ricebot.sendDocument(chat_id, landigif[1], caption=None, parse_mode="Markdown", disable_notification=True, reply_to_message_id=msg_id)
 					#autoreply for stress
-					elif (any (x in msg_split for x in stressgreet) and random.randint(0,1)):
+					elif (any(x in msg_split for x in stressgreet) and random.randint(0,1)):
 						ricebot.sendAnimation(chat_id, random.choice(stressgif), reply_to_message_id=msg_id)
 					#autoreply for bless
 					# elif (any (x in msg_split for x in blessgreet) and random.randint(0,3)):
@@ -249,7 +250,9 @@ def handle(ricebot):
 			#non-gc specific autoreply
 			#send greetings
 			if (msg_text):
-				if ((user_id == 339707076 or user_id == 574787216) and ("hi" in msg_split or "hello" in msg_split)):
+				if (user_id == 456128183):
+					ricebot.sendMessage(chat_id, "<code>Negative</code>", parse_mode="HTML")
+				elif ((user_id == 339707076 or user_id == 574787216) and ("hi" in msg_split or "hello" in msg_split)):
 					ricebot.sendMessage(chat_id, "<code>Pass</code>", parse_mode="HTML")
 				elif (angerychance and (msg_text == "hi" or msg_text == "hi rice")):
 					time.sleep(1)
