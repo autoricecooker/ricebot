@@ -250,8 +250,8 @@ def handle(ricebot):
 			#non-gc specific autoreply
 			#send greetings
 			if (msg_text):
-				if (user_id == 456128183):
-					ricebot.sendMessage(chat_id, "<code>Negative</code>", parse_mode="HTML")
+				if (user_id == 456128183 and "hi" in msg_split):
+					ricebot.sendMessage(chat_id, "<code>Negative</code>", parse_mode="HTML", reply_to_message_id=msg_id)
 				elif ((user_id == 339707076 or user_id == 574787216) and ("hi" in msg_split or "hello" in msg_split)):
 					ricebot.sendMessage(chat_id, "<code>Pass</code>", parse_mode="HTML")
 				elif (angerychance and (msg_text == "hi" or msg_text == "hi rice")):
