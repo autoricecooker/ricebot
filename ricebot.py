@@ -175,6 +175,9 @@ def handle(ricebot):
 					ricebot.sendMessage(chat_id, anm_id)
 				elif (sticker_id):
 					ricebot.sendMessage(chat_id, sticker_id)
+				elif (update.message.photo):
+					ricebot.sendMessage(chat_id, update.message.photo.file_id)
+					ricebot.sendPhoto(chat_id, update.message.photo.file_id)
 				
 				#Check if message is forwarded
 				if (fwd_user_id):
