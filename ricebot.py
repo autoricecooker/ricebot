@@ -20,6 +20,7 @@ angerygreet = ["Shooo", "...", "Wag ka na", ":|"]
 athensgreet =["athens", "ganda ako", "ganda ko", "cute ako", "cute me", "cute kasi ako", "cute talaga ako","maganda talaga ako", "maganda kasi ako"]
 stressgreet = ["stress", "stresss", "stressss"]
 blessgreet = ["bless", "blesss"]
+drunkgreet = ["lasing"]
 werewolfcommands = ["/werewolf@riceCookerisnotAbot", "/startchaos@werewolfbot", "/nextgame@werewolfbot", "/start@werewolfbot",]
 atomgreet = ["atom", "nambabakod"]
 leigreetphrase = ["cute ako", "maganda ako", "pinaka cute", "pinaka maganda", "i am beautiful", "sexy ako", "most beautiful", "ganda ko", "5'11", "qt ko", "qt ako"]
@@ -39,6 +40,7 @@ landigif = ["CgADBQADHQAD6QuQV_mxPdwxj0s2Ag", "CgADBQADKQADvG2JVi4mEJDnylDvAg"]
 louisegif = ["CgADBQADHAADVMqxV2iqwCWWKYXRAg", "CgADBQADRQADggs5VTtpVvYfIcqBAg", "CgADBQADGwADwI9BVYEBhY4qglXKAg", "CgADBQADWwADfhjQVy2VyBHiS3kWAg", "CgADBQADXQADlN5hVIkXruw21LEsAg"]
 toastiesgif = ["CgADBQADLwADv4dBVFVtZJ9jdSwFAg"]
 jakegif = ["CgADBQADBwADGIgpVpF8EgH6Mc-9Ag"]
+drunkpic = ["AgADBQADOagxGxB_aVZNfo9wNUvyYvGl1jIABMOR93PzURnicEMDAAEC", "AgADBQADOqgxGxB_aVav5vKmhLduCGqk1jIABOQDiHpGpExCJUMDAAEC"]
 landichance = 0
 angerychance = 0
 atomchance = 0
@@ -127,6 +129,9 @@ def handle(ricebot):
 					#autoreply for bless
 					elif (any (x in msg_split for x in blessgreet) and random.randint(0,3)):
 						ricebot.sendAnimation(chat_id, random.choice(blessgif), reply_to_message_id=msg_id)
+					#autoreply for drunk
+					elif (any (x in msg_split for x in drunkgreet)):
+						ricebot.sendPhoto(chat_id, random.choice(drunkpic), reply_to_message_id=msg_id)
 					#autoreply for stress
 					elif (any (x in msg_split for x in stressgreet) and random.randint(0,1)):
 						ricebot.sendAnimation(chat_id, random.choice(stressgif), reply_to_message_id=msg_id)
@@ -177,7 +182,6 @@ def handle(ricebot):
 					ricebot.sendMessage(chat_id, sticker_id)
 				elif (update.message.photo):
 					ricebot.sendMessage(chat_id, update.message.photo[1].file_id)
-					ricebot.sendPhoto(chat_id, update.message.photo[1].file_id)
 				
 				#Check if message is forwarded
 				if (fwd_user_id):
