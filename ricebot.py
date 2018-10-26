@@ -230,6 +230,8 @@ def handle(ricebot):
 							ricebot.sendAnimation(chat_id, louisegif[0], reply_to_message_id=msg_id)
 						else:
 							ricebot.sendAnimation(chat_id, louisegif[random.randint(1,4)], reply_to_message_id=msg_id)
+					elif (any (x in msg_split for x in drunkgreet)):
+						ricebot.sendPhoto(chat_id, random.choice(drunkpic), reply_to_message_id=msg_id)
 					#autosend atom sticker
 					elif ((any(x in msg_split for x in atomgreet)) and (atomchance == 0)):
 						ricebot.sendSticker(chat_id, "CAADBQADHgADKGW-C2i6PBdd6c9ZAg", disable_notification=None, reply_to_message_id=msg_id)
