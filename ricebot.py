@@ -23,7 +23,7 @@ blessgreet = ["bless", "blesss", "blessed"]
 drunkgreet = ["lasing"]
 werewolfcommands = ["/werewolf@riceCookerisnotAbot", "/startchaos@werewolfbot", "/nextgame@werewolfbot", "/start@werewolfbot",]
 atomgreet = ["atom", "nambabakod"]
-parrotgreet = ["party parrot"]
+parrotgreet = ["party parrot", "partyparrot"]
 leigreetphrase = ["cute ako", "maganda ako", "pinaka cute", "pinaka maganda", "i am beautiful", "sexy ako", "most beautiful", "ganda ko", "5'11", "qt ko", "qt ako"]
 leigreetword = ["pinakacute", "cute", "pinakamaganda"]
 leisticker = ["CAADBQADIQEAAiO4mBCSjVKUWk7MNwI", "CAADBQADHAEAAiO4mBCeaC0LYAlkowI", "CAADBQADIAEAAiO4mBD3UdIBPEO6WwI", "CAADBQADGwEAAiO4mBC51PR572t9EgI", "CAADBQADHwEAAiO4mBBJWiwq_cjWdQI", "CAADBQADHgEAAiO4mBBMQuYcpcSX2AI"]
@@ -236,6 +236,8 @@ def handle(ricebot):
 					#werewolf command invite autoreply
 					# elif any(x in update.message.text for x in werewolfcommands):
 					# 	ricebot.sendMessage(chat_id, "Hi, you may join this GC's werewolf game channel at https://t.me/joinchat/" + wwgc, parse_mode="Markdown", disable_web_page_preview=None, disable_notification=True, reply_to_message_id=msg_id)
+					elif (any (x in msg_text for x in parrotgreet)):
+						ricebot.sendAnimation(chat_id, random.choice(parrotgif), reply_to_message_id=msg_id)
 					#assumptions autoreply
 					elif (any(x in msg_text for x in assumptgreet)):
 						time.sleep(1)			
