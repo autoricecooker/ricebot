@@ -18,11 +18,12 @@ randomgreet = ["Hello", "Hi", "Greetings", "Good day", "How are ya?", "Yes", "No
 assumptgreet = ["akala ko si rice", "akala ko si ricecooker", "akala ko si @ricecooker", "kala ko si rice", "kala ko si @ricecooker", "kala ko si ricecooker", "ikaw ba yan rice", "kaw ba yan rice", "rice ikaw ba yan", "rice kaw ba yan", "ikaw ba yan @ricecooker"]
 angerygreet = ["Shooo", "...", "Wag ka na", ":|"]
 athensgreet =["athens", "ganda ako", "ganda ko", "cute ako", "cute me", "cute kasi ako", "cute talaga ako","maganda talaga ako", "maganda kasi ako"]
-stressgreet = ["stress", "stresss", "stressss", "stressed", "stressssss"]
+stressgreet = ["stress", "stresss", "stressss", "stressed", "stressssss", "overstress", "megastress"]
 blessgreet = ["bless", "blesss", "blessed"]
 drunkgreet = ["lasing"]
 werewolfcommands = ["/werewolf@riceCookerisnotAbot", "/startchaos@werewolfbot", "/nextgame@werewolfbot", "/start@werewolfbot",]
 atomgreet = ["atom", "nambabakod"]
+parrotgreet = ["party parrot"]
 leigreetphrase = ["cute ako", "maganda ako", "pinaka cute", "pinaka maganda", "i am beautiful", "sexy ako", "most beautiful", "ganda ko", "5'11", "qt ko", "qt ako"]
 leigreetword = ["pinakacute", "cute", "pinakamaganda"]
 leisticker = ["CAADBQADIQEAAiO4mBCSjVKUWk7MNwI", "CAADBQADHAEAAiO4mBCeaC0LYAlkowI", "CAADBQADIAEAAiO4mBD3UdIBPEO6WwI", "CAADBQADGwEAAiO4mBC51PR572t9EgI", "CAADBQADHwEAAiO4mBBJWiwq_cjWdQI", "CAADBQADHgEAAiO4mBBMQuYcpcSX2AI"]
@@ -41,6 +42,7 @@ louisegif = ["CgADBQADHAADVMqxV2iqwCWWKYXRAg", "CgADBQADRQADggs5VTtpVvYfIcqBAg",
 toastiesgif = ["CgADBQADLwADv4dBVFVtZJ9jdSwFAg"]
 jakegif = ["CgADBQADBwADGIgpVpF8EgH6Mc-9Ag"]
 drunkpic = ["AgADBQADOagxGxB_aVZNfo9wNUvyYvGl1jIABMOR93PzURnicEMDAAEC", "AgADBQADOqgxGxB_aVav5vKmhLduCGqk1jIABOQDiHpGpExCJUMDAAEC"]
+parrotgif = ["CgADBQADLQADkxKZVrE-Wx30uXiNAg"]
 landichance = 0
 angerychance = 0
 atomchance = 0
@@ -165,6 +167,8 @@ def handle(ricebot):
 					#autosend atom sticker
 					elif ((any(x in msg_split for x in atomgreet)) and (atomchance != 0)):
 						ricebot.sendSticker(chat_id, "CAADBQADHgADKGW-C2i6PBdd6c9ZAg", disable_notification=None, reply_to_message_id=msg_id)
+					elif (any (x in msg_text for x in parrotgreet)):
+						ricebot.sendAnimation(chat_id, random.choice(parrotgif), reply_to_message_id=msg_id)
 				#Check if message is a certain GIF
 				elif (anm_id and anm_id == "CgADBQADIQAD1PpYV9Q8SLVB8kHHAg"):
 					if (leichance):
