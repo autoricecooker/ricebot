@@ -29,6 +29,7 @@ parrotgreet = ["party parrot", "partyparrot"]
 tikigreet = ["meaty", "thicc", "thick", "tiki"]
 ferdzgreet = ["happy", "genie"]
 jakegreet = ["happy", "joyful"]
+justgreet = ["hi", "hello", "henlo", "hallu", "elo", "hellu", "haller"]
 leigreetphrase = ["cute ako", "maganda ako", "pinaka cute", "pinaka maganda", "i am beautiful", "sexy ako", "most beautiful", "ganda ko", "5'11", "qt ko", "qt ako"]
 leigreetword = ["pinakacute", "cute", "pinakamaganda"]
 leisticker = ["CAADBQADIQEAAiO4mBCSjVKUWk7MNwI", "CAADBQADHAEAAiO4mBCeaC0LYAlkowI", "CAADBQADIAEAAiO4mBD3UdIBPEO6WwI", "CAADBQADGwEAAiO4mBC51PR572t9EgI", "CAADBQADHwEAAiO4mBBJWiwq_cjWdQI", "CAADBQADHgEAAiO4mBBMQuYcpcSX2AI"]
@@ -274,7 +275,7 @@ def handle(ricebot, update):
 		if (msg_text):
 			if (user_id == 456128183 and "hi" in msg_split):
 				ricebot.send_message(chat_id, "<code>Negative</code>", parse_mode="HTML", reply_to_message_id=msg_id)
-			elif ((user_id == 339707076 or user_id == 574787216) and ("hi" in msg_split or "hello" in msg_split)):
+			elif ((user_id == 339707076 or user_id == 574787216) and (any(x in msg_split for x in justgreet))):
 				ricebot.send_message(chat_id, "<code>Pass</code>", parse_mode="HTML")
 			elif (angerychance and msg_text == "hi rice"):
 				time.sleep(1)
