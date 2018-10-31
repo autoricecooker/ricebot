@@ -273,10 +273,21 @@ def handle(ricebot, update):
 				ricebot.send_message(chat_id, random.choice(randomgreet), parse_mode="Markdown", disable_web_page_preview=None, disable_notification=True, reply_to_message_id=msg_id)
 			#sad greetings autoreply
 			elif (any(x in msg_split for x in sadgreet) and "rice" in msg_text):
-				ricebot.send_message(chat_id,"<.<", parse_mode="Markdown", disable_web_page_preview=None, disable_notification=True, reply_to_message_id=msg_id)
-				time.sleep(1)
-				ricebot.send_message(chat_id, ">.>", parse_mode="Markdown")
-				ricebot.send_message(chat_id, "_spills rice_", parse_mode="Markdown")
+				if searchinString(killgreet, msg_text, searchparam=r"(\S+) @ricecooker"):
+					ricebot.send_message(chat_id,"<.<", parse_mode="Markdown", disable_web_page_preview=None, disable_notification=True, reply_to_message_id=msg_id)
+					time.sleep(1)
+					ricebot.send_message(chat_id, ">.>", parse_mode="Markdown")
+					ricebot.send_message(chat_id, "_spills rice_", parse_mode="Markdown")
+				elif searchinString(killgreet, msg_text, searchparam=r"(\S+) ricecooker"):
+					ricebot.send_message(chat_id,"<.<", parse_mode="Markdown", disable_web_page_preview=None, disable_notification=True, reply_to_message_id=msg_id)
+					time.sleep(1)
+					ricebot.send_message(chat_id, ">.>", parse_mode="Markdown")
+					ricebot.send_message(chat_id, "_spills rice_", parse_mode="Markdown")
+				elif searchinString(killgreet, msg_text, searchparam=r"(\S+) rice"):
+					ricebot.send_message(chat_id,"<.<", parse_mode="Markdown", disable_web_page_preview=None, disable_notification=True, reply_to_message_id=msg_id)
+					time.sleep(1)
+					ricebot.send_message(chat_id, ">.>", parse_mode="Markdown")
+					ricebot.send_message(chat_id, "_spills rice_", parse_mode="Markdown")
 			#send unplug GIF if a kill greeting has been sent 
 			elif (any(x in msg_split for x in killgreet) and "rice" in msg_text): 
 				if searchinString(killgreet, msg_text, searchparam=r"(\S+) @ricecooker"):
