@@ -28,6 +28,7 @@ atomgreet = ["atom", "nambabakod"]
 parrotgreet = ["party parrot", "partyparrot"]
 tikigreet = ["meaty", "thicc", "thick"]
 ferdzgreet = ["happy", "genie"]
+jakegreet = ["happy", "joyful"]
 leigreetphrase = ["cute ako", "maganda ako", "pinaka cute", "pinaka maganda", "i am beautiful", "sexy ako", "most beautiful", "ganda ko", "5'11", "qt ko", "qt ako"]
 leigreetword = ["pinakacute", "cute", "pinakamaganda"]
 leisticker = ["CAADBQADIQEAAiO4mBCSjVKUWk7MNwI", "CAADBQADHAEAAiO4mBCeaC0LYAlkowI", "CAADBQADIAEAAiO4mBD3UdIBPEO6WwI", "CAADBQADGwEAAiO4mBC51PR572t9EgI", "CAADBQADHwEAAiO4mBBJWiwq_cjWdQI", "CAADBQADHgEAAiO4mBBMQuYcpcSX2AI"]
@@ -245,9 +246,12 @@ def handle(ricebot, update):
 					ricebot.send_message(chat_id, "Di ako yun", parse_mode="Markdown", disable_web_page_preview=None, disable_notification=True, reply_to_message_id=msg_id)
 				#autoreply for genie ferdz gif
 				elif (("genie" in msg_split or "happy" in msg_split) and ("ferdz" in msg_split or "ferds" in msg_split)):
-					ricebot.send_animation(chat_id, genieferdzgif)
+					if searchinString(ferdzgreet, msg_text, searchparam=r"(\S+) ferdz"):
+						ricebot.send_animation(chat_id, genieferdzgif)
+				#autoreply for happy jake gif
 				elif ("happy" in msg_split and "jake" in msg_split):
-					ricebot.send_animation(chat_id, jakegif[0])
+					if searchinString(jakegreet, msg_text, searchparam=r"(\S+) jake"):
+						ricebot.send_animation(chat_id, jakegif[0])
 				#autoreply for toasties
 				elif ("toasties" in msg_split and random.randint(0, 1)):
 					ricebot.send_animation(chat_id, toastiesgif[0], reply_to_message_id=msg_id)
