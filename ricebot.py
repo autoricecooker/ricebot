@@ -2,6 +2,7 @@ import json
 import time
 import datetime
 import os
+import re
 import sys
 import random
 import telegram
@@ -18,7 +19,7 @@ killgreet = ["unplug", "kill", "rip", "destroy"]
 randomgreet = ["Hello", "Hi", "Greetings", "Good day", "How are ya?", "Yes", "No", "What's up?"]
 assumptgreet = ["akala ko si rice", "akala ko si ricecooker", "akala ko si @ricecooker", "kala ko si rice", "kala ko si @ricecooker", "kala ko si ricecooker", "ikaw ba yan rice", "kaw ba yan rice", "rice ikaw ba yan", "rice kaw ba yan", "ikaw ba yan @ricecooker"]
 angerygreet = ["Shooo", "...", "Wag ka na", ":|"]
-athensgreet =["athens", "ganda ako", "ganda ko", "cute ako", "cute me", "cute kasi ako", "cute ko", "cute talaga ako","maganda talaga ako", "maganda kasi ako"]
+athensgreet =["athens", "ganda ako", "ganda ko", "cute ako", "cute me", "cute kasi ako", "cute ko", "cute talaga ako","maganda talaga ako", "maganda kasi ako", "im beautiful", "i am beautiful", "i'm beautiful"]
 stressgreet = ["stress", "stresss", "stressss", "stressed", "stressssss", "overstress", "megastress"]
 blessgreet = ["bless", "blesss", "blessed"]
 drunkgreet = ["lasing"]
@@ -26,6 +27,7 @@ werewolfcommands = ["/werewolf@riceCookerisnotAbot", "/startchaos@werewolfbot", 
 atomgreet = ["atom", "nambabakod"]
 parrotgreet = ["party parrot", "partyparrot"]
 tikigreet = ["meaty", "thicc", "thick"]
+ferdzgreet = ["happy", "genie"]
 leigreetphrase = ["cute ako", "maganda ako", "pinaka cute", "pinaka maganda", "i am beautiful", "sexy ako", "most beautiful", "ganda ko", "5'11", "qt ko", "qt ako"]
 leigreetword = ["pinakacute", "cute", "pinakamaganda"]
 leisticker = ["CAADBQADIQEAAiO4mBCSjVKUWk7MNwI", "CAADBQADHAEAAiO4mBCeaC0LYAlkowI", "CAADBQADIAEAAiO4mBD3UdIBPEO6WwI", "CAADBQADGwEAAiO4mBC51PR572t9EgI", "CAADBQADHwEAAiO4mBBJWiwq_cjWdQI", "CAADBQADHgEAAiO4mBBMQuYcpcSX2AI"]
@@ -51,20 +53,24 @@ atomchance = 0
 leichance = 0
 update_id = 0
 
-def main():
-	updater = telegram.ext.Updater(os.environ["BOT_TOKEN"])
-	dp = updater.dispatcher
-	jq = updater.job_queue
+#Search if keywords in list are located in the string, based on regex pattern
+def searchinString(keylist, msg, searchparam):
+	found = 0
+	matches = re.finditer(searchparam, msg)
 
-	dp.add_handler(telegram.ext.MessageHandler(telegram.ext.Filters.all, handle))
-	
-	crontest = jq.run_daily(cronjob, datetime.time(17,31,0,0))
-	updater.start_polling()
-	
-	crontest.enabled = True
+	for matchNum, match in enumerate(matches):
+		matchNum = matchNum + 1
+		
+		# print ("Match {matchNum} was found at {start}-{end}: {match}".format(matchNum = matchNum, start = match.start(), end = match.end(), match = match.group()))
+		for groupNum in range(0, len(match.groups())):
+			groupNum = groupNum + 1
+		
+			# print ("Group {groupNum} found at {start}-{end}: {group}".format(groupNum = groupNum, start = match.start(groupNum), end = match.end(groupNum), group = match.group(groupNum)))
+			#   print (match.group(groupNum))
+			if (match.group(groupNum) in keylist):
+				found = 1
 
-	updater.idle()
-	
+	return found
 
 def handle(ricebot, update):
 	#Initialize variables
@@ -110,7 +116,6 @@ def handle(ricebot, update):
 			#Send motd when new members are added
 			if (update.message.new_chat_members):
 				ricebot.send_message(-1001255652659, "<code>All contents/events in this group chat are confidential. Disclosure is prohibited</code>", parse_mode="HTML")
-			
 			#Check if message is text
 			if (msg_text):
 				if (msg_text == "hipo"):
@@ -121,16 +126,17 @@ def handle(ricebot, update):
 				elif (msg_text == "jerathens"):
 					ricebot.send_photo(chat_id, "AgADBQADaKgxGxkiqVY_JVTuMuedfslY2zIABJbu2s0dgEudZNAAAgI")
 				#autoreply for genie ferdz gif
-				elif (("genie" in msg_text or "happy" in msg_text) and ("ferdz" in msg_text or "ferds" in msg_text)):
-					ricebot.send_animation(chat_id, genieferdzgif)
+				elif (any(x in msg_split for x in ferdzgreet) and "ferdz" in msg_split):
+					if searchinString(ferdzgreet, msg_text, searchparam=r"(\S+) ferdz"):
+						ricebot.send_animation(chat_id, genieferdzgif)
 				#autoreply for bless
-				elif (any (x in msg_split for x in blessgreet) and random.randint(0,3)):
+				elif (any(x in msg_split for x in blessgreet) and random.randint(0,3)):
 					ricebot.send_animation(chat_id, random.choice(blessgif), reply_to_message_id=msg_id)
 				#autoreply for drunk
-				elif (any (x in msg_split for x in drunkgreet)):
+				elif (any(x in msg_split for x in drunkgreet)):
 					ricebot.send_photo(chat_id, random.choice(drunkpic), reply_to_message_id=msg_id)
 				#autoreply for stress
-				elif (any (x in msg_split for x in stressgreet) and random.randint(0,1)):
+				elif (any(x in msg_split for x in stressgreet) and random.randint(0,1)):
 					ricebot.send_animation(chat_id, random.choice(stressgif), reply_to_message_id=msg_id)
 				#autoreply for landi mo reply
 				elif (update.message.reply_to_message and msg_text == "landi mo" and user_id != reply_user_id):
@@ -211,8 +217,8 @@ def handle(ricebot, update):
 				elif (any(x in msg_split for x in stressgreet) and random.randint(0,1)):
 					ricebot.send_animation(chat_id, random.choice(stressgif), reply_to_message_id=msg_id)
 				#autoreply for bless
-				# elif (any (x in msg_split for x in blessgreet) and random.randint(0,3)):
-				# 	ricebot.send_animation(chat_id, random.choice(blessgif), reply_to_message_id=msg_id)
+				elif (any (x in msg_split for x in blessgreet) and random.randint(0,3)):
+					ricebot.send_animation(chat_id, random.choice(blessgif), reply_to_message_id=msg_id)
 				#autoreply for lei's narcissism
 				elif ((user_id == 477167517) and (any(x in msg_text for x in leigreetphrase) or any(y in msg_split for y in leigreetword))):
 					if (leichance):
@@ -230,9 +236,7 @@ def handle(ricebot, update):
 				#autosend atom sticker
 				elif ((any(x in msg_split for x in atomgreet)) and (atomchance == 0)):
 					ricebot.send_sticker(chat_id, "CAADBQADHgADKGW-C2i6PBdd6c9ZAg", disable_notification=None, reply_to_message_id=msg_id)
-				#werewolf command invite autoreply
-				# elif any(x in update.message.text for x in werewolfcommands):
-				# 	ricebot.send_message(chat_id, "Hi, you may join this GC's werewolf game channel at https://t.me/joinchat/" + wwgc, parse_mode="Markdown", disable_web_page_preview=None, disable_notification=True, reply_to_message_id=msg_id)
+				#party parrot autoreply
 				elif (any (x in msg_text for x in parrotgreet)):
 					ricebot.send_animation(chat_id, random.choice(parrotgif), reply_to_message_id=msg_id)
 				#assumptions autoreply
@@ -264,7 +268,7 @@ def handle(ricebot, update):
 				ricebot.send_message(chat_id, "<code>Negative</code>", parse_mode="HTML", reply_to_message_id=msg_id)
 			elif ((user_id == 339707076 or user_id == 574787216) and ("hi" in msg_split or "hello" in msg_split)):
 				ricebot.send_message(chat_id, "<code>Pass</code>", parse_mode="HTML")
-			elif (angerychance and (msg_text == "hi" or msg_text == "hi rice")):
+			elif (angerychance and msg_text == "hi rice"):
 				time.sleep(1)
 				ricebot.send_message(chat_id, random.choice(randomgreet), parse_mode="Markdown", disable_web_page_preview=None, disable_notification=True, reply_to_message_id=msg_id)
 			#sad greetings autoreply
@@ -275,12 +279,30 @@ def handle(ricebot, update):
 				ricebot.send_message(chat_id, "_spills rice_", parse_mode="Markdown")
 			#send unplug GIF if a kill greeting has been sent 
 			elif (any(x in msg_split for x in killgreet) and "rice" in msg_text): 
-				ricebot.send_animation(chat_id, unpluggif, reply_to_message_id=msg_id)
+				if searchinString(killgreet, msg_text, searchparam=r"(\S+) @ricecooker"):
+					ricebot.send_animation(chat_id, unpluggif, reply_to_message_id=msg_id)
+				elif searchinString(killgreet, msg_text, searchparam=r"(\S+) ricecooker"):
+					ricebot.send_animation(chat_id, unpluggif, reply_to_message_id=msg_id)
+				elif searchinString(killgreet, msg_text, searchparam=r"(\S+) rice"):
+					ricebot.send_animation(chat_id, unpluggif, reply_to_message_id=msg_id)
 			
 def cronjob(bot, job):
 	bot.send_message(-1001255652659, "CRON JOB TRIGGER")
 	bot.send_photo(-1001255652659, "AgADBQADaKgxGxkiqVY_JVTuMuedfslY2zIABJbu2s0dgEudZNAAAgI")
 
+def main():
+	updater = telegram.ext.Updater(os.environ["BOT_TOKEN"])
+	dp = updater.dispatcher
+	jq = updater.job_queue
+
+	dp.add_handler(telegram.ext.MessageHandler(telegram.ext.Filters.all, handle))
+	
+	crontest = jq.run_daily(cronjob, datetime.time(17,31,0,0))
+	updater.start_polling()
+	
+	crontest.enabled = True
+
+	updater.idle()
 
 if __name__ == "__main__":
     main()
