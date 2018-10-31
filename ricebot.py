@@ -15,7 +15,7 @@ from time import sleep
 
 #wwgc = os.environ["WW_GC"]
 sadgreet = ["spill", "trip", "eat", "bite", "tips", "tips over"]
-killgreet = ["unplug", "kill", "rip", "destroy"]
+killgreet = ["unplug", "kill", "rip", "destroy", "hate"]
 randomgreet = ["Hello", "Hi", "Greetings", "Good day", "How are ya?", "Yes", "No", "What's up?"]
 assumptgreet = ["akala ko si rice", "akala ko si ricecooker", "akala ko si @ricecooker", "kala ko si rice", "kala ko si @ricecooker", "kala ko si ricecooker", "ikaw ba yan rice", "kaw ba yan rice", "rice ikaw ba yan", "rice kaw ba yan", "ikaw ba yan @ricecooker"]
 angerygreet = ["Shooo", "...", "Wag ka na", ":|"]
@@ -126,6 +126,10 @@ def handle(ricebot, update):
 						ricebot.send_document(chat_id, landigif[1], caption=None, parse_mode="Markdown", disable_notification=True, reply_to_message_id=msg_id)
 				elif (msg_text == "jerathens"):
 					ricebot.send_photo(chat_id, "AgADBQADaKgxGxkiqVY_JVTuMuedfslY2zIABJbu2s0dgEudZNAAAgI")
+				#autoreply for thick thighs
+				elif (any(x in msg_split for x in tikigreet) and "thigh" in msg_text):
+					if searchinString(tikigreet, msg_text, searchparam=r"(\S+) thigh"):
+						ricebot.forward_message(chat_id, -1001255652659, 1496)
 				#autoreply for genie ferdz gif
 				elif (any(x in msg_split for x in ferdzgreet) and "ferdz" in msg_split):
 					if searchinString(ferdzgreet, msg_text, searchparam=r"(\S+) ferdz"):
