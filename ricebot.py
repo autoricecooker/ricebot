@@ -29,7 +29,7 @@ parrotgreet = ["party parrot", "partyparrot"]
 tikigreet = ["meaty", "thicc", "thick", "tiki"]
 ferdzgreet = ["happy", "genie"]
 jakegreet = ["happy", "joyful"]
-justgreet = ["hi", "hello", "henlo", "hallu", "elo", "hellu", "haller"]
+justgreet = ["hi", "hello", "henlo", "hallu", "elo", "hellu", "haller", "haler"]
 leigreetphrase = ["cute ako", "maganda ako", "pinaka cute", "pinaka maganda", "i am beautiful", "sexy ako", "most beautiful", "ganda ko", "5'11", "qt ko", "qt ako"]
 leigreetword = ["pinakacute", "cute", "pinakamaganda"]
 leisticker = ["CAADBQADIQEAAiO4mBCSjVKUWk7MNwI", "CAADBQADHAEAAiO4mBCeaC0LYAlkowI", "CAADBQADIAEAAiO4mBD3UdIBPEO6WwI", "CAADBQADGwEAAiO4mBC51PR572t9EgI", "CAADBQADHwEAAiO4mBBJWiwq_cjWdQI", "CAADBQADHgEAAiO4mBBMQuYcpcSX2AI"]
@@ -307,20 +307,20 @@ def handle(ricebot, update):
 					ricebot.send_animation(chat_id, unpluggif, reply_to_message_id=msg_id)
 			
 def cronjob(bot, job):
-	bot.send_message(-1001255652659, "CRON JOB TRIGGER")
-	bot.send_photo(-1001255652659, "AgADBQADaKgxGxkiqVY_JVTuMuedfslY2zIABJbu2s0dgEudZNAAAgI")
+	bot.send_photo(-1001043875036, "AgADBQADaKgxGxkiqVY_JVTuMuedfslY2zIABJbu2s0dgEudZNAAAgI")
 
 def main():
 	updater = telegram.ext.Updater(os.environ["BOT_TOKEN"])
 	dp = updater.dispatcher
 	jq = updater.job_queue
+	# jqtwo = updater.job_queue
 
 	dp.add_handler(telegram.ext.MessageHandler(telegram.ext.Filters.all, handle))
 	
-	crontest = jq.run_daily(cronjob, datetime.time(17,31,0,0))
+	jerathensone = jq.run_daily(cronjob, datetime.time(7,1,0,0))
 	updater.start_polling()
 	
-	crontest.enabled = True
+	jerathensone.enabled = True
 
 	updater.idle()
 
