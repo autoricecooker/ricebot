@@ -257,6 +257,9 @@ def handle(ricebot, update):
 				elif ("happy" in msg_split and "jake" in msg_split):
 					if searchinString(jakegreet, msg_text, searchparam=r"(\S+) jake"):
 						ricebot.send_animation(chat_id, jakegif[0])
+				elif (any(x in msg_split for x in tikigreet) and "thigh" in msg_text):
+					if searchinString(tikigreet, msg_text, searchparam=r"(\S+) thigh"):
+						ricebot.forward_message(chat_id, -1001255652659, 1496)
 				#autoreply for toasties
 				elif ("toasties" in msg_split and random.randint(0, 1)):
 					ricebot.send_animation(chat_id, toastiesgif[0], reply_to_message_id=msg_id)
@@ -308,6 +311,7 @@ def handle(ricebot, update):
 			
 def cronjob(bot, job):
 	bot.send_photo(-1001043875036, "AgADBQADaKgxGxkiqVY_JVTuMuedfslY2zIABJbu2s0dgEudZNAAAgI")
+	bot.send_message(-1001255652659, "CRON JOB ACTIVATED")
 
 def main():
 	updater = telegram.ext.Updater(os.environ["BOT_TOKEN"])
