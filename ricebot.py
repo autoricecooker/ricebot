@@ -257,6 +257,7 @@ def handle(ricebot, update):
 				elif ("happy" in msg_split and "jake" in msg_split):
 					if searchinString(jakegreet, msg_text, searchparam=r"(\S+) jake"):
 						ricebot.send_animation(chat_id, jakegif[0])
+				#autoreply for thick thighs
 				elif (any(x in msg_split for x in tikigreet) and "thigh" in msg_text):
 					if searchinString(tikigreet, msg_text, searchparam=r"(\S+) thigh"):
 						ricebot.forward_message(chat_id, -1001255652659, 1496)
