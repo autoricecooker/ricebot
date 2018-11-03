@@ -47,7 +47,7 @@ landigif = ["CgADBQADHQAD6QuQV_mxPdwxj0s2Ag", "CgADBQADKQADvG2JVi4mEJDnylDvAg"]
 louisegif = ["CgADBQADHAADVMqxV2iqwCWWKYXRAg", "CgADBQADRQADggs5VTtpVvYfIcqBAg", "CgADBQADGwADwI9BVYEBhY4qglXKAg", "CgADBQADWwADfhjQVy2VyBHiS3kWAg", "CgADBQADXQADlN5hVIkXruw21LEsAg"]
 toastiesgif = ["CgADBQADLwADv4dBVFVtZJ9jdSwFAg"]
 jakegif = ["CgADBQADBwADGIgpVpF8EgH6Mc-9Ag"]
-drunkpic = ["AgADBQADOagxGxB_aVZNfo9wNUvyYvGl1jIABMOR93PzURnicEMDAAEC", "AgADBQADOqgxGxB_aVav5vKmhLduCGqk1jIABOQDiHpGpExCJUMDAAEC"]
+drunkpic = ["AgADBQADOagxGxB_aVZNfo9wNUvyYvGl1jIABMOR93PzURnicEMDAAEC", "AgADBQADOqgxGxB_aVav5vKmhLduCGqk1jIABOQDiHpGpExCJUMDAAEC", "AgADBQADkagxG6Oe8FbPeySNTsva1S5U2zIABHbiq4wGrTTHhxABAAEC", "AgADBQADYKgxGzx76FYspQoUVI_orGFh2zIABPdENNUjOZ6HMQoBAAEC"]
 parrotgif = ["CgADBQADLQADkxKZVrE-Wx30uXiNAg", "CgADBQADWAADeL-YVnw3sjCV8aeLAg", "CgADBQADMAADkxKZVp3RsGgriq4TAg", "CgADBQADWQADeL-YVsV0J7Zx1H3-Ag"]
 landichance = 0
 angerychance = 0
@@ -237,7 +237,8 @@ def handle(ricebot, update):
 						ricebot.send_animation(chat_id, louisegif[0], reply_to_message_id=msg_id)
 					else:
 						ricebot.send_animation(chat_id, louisegif[random.randint(1,4)], reply_to_message_id=msg_id)
-				elif (any (x in msg_split for x in drunkgreet)):
+				#autoreply for drunk
+				elif (any (x in msg_split for x in drunkgreet) and leichance):
 					ricebot.send_photo(chat_id, random.choice(drunkpic), reply_to_message_id=msg_id)
 				#autosend atom sticker
 				elif ((any(x in msg_split for x in atomgreet)) and (atomchance == 0)):
