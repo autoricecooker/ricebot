@@ -126,7 +126,7 @@ def handle(ricebot, update):
 					else:
 						ricebot.send_document(chat_id, landigif[1], caption=None, parse_mode="Markdown", disable_notification=True, reply_to_message_id=msg_id)
 				elif (msg_text == "jerathens"):
-					ricebot.send_photo(chat_id, "AgADBQADaKgxGxkiqVY_JVTuMuedfslY2zIABJbu2s0dgEudZNAAAgI")
+					ricebot.send_photo(chat_id, "AgADBQADCKgxG2phCVcXe5Pm-P8bN8df2zIABK1z6KBKBq0dKSQBAAEC")
 				#autoreply for thick thighs
 				elif (any(x in msg_split for x in tikigreet) and "thigh" in msg_text):
 					if searchinString(tikigreet, msg_text, searchparam=r"(\S+) thigh"):
@@ -312,7 +312,7 @@ def handle(ricebot, update):
 					ricebot.send_animation(chat_id, unpluggif, reply_to_message_id=msg_id)
 			
 def cronjob(bot, job):
-	# bot.send_photo(-1001043875036, "AgADBQADaKgxGxkiqVY_JVTuMuedfslY2zIABJbu2s0dgEudZNAAAgI")
+	# bot.send_photo(-1001043875036, "AgADBQADCKgxG2phCVcXe5Pm-P8bN8df2zIABK1z6KBKBq0dKSQBAAEC")
 	bot.send_message(-1001255652659, "CRON JOB ACTIVATED")
 
 def main():
