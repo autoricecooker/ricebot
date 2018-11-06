@@ -312,7 +312,7 @@ def handle(ricebot, update):
 					ricebot.send_animation(chat_id, unpluggif, reply_to_message_id=msg_id)
 			
 def cronjob(bot, job):
-	# bot.send_photo(-1001043875036, "AgADBQADCKgxG2phCVcXe5Pm-P8bN8df2zIABK1z6KBKBq0dKSQBAAEC")
+	bot.send_photo(-1001043875036, "AgADBQADCKgxG2phCVcXe5Pm-P8bN8df2zIABK1z6KBKBq0dKSQBAAEC")
 	bot.send_message(-1001255652659, "CRON JOB ACTIVATED")
 
 def main():
