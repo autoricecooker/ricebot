@@ -48,7 +48,7 @@ louisegif = ["CgADBQADHAADVMqxV2iqwCWWKYXRAg", "CgADBQADRQADggs5VTtpVvYfIcqBAg",
 toastiesgif = ["CgADBQADLwADv4dBVFVtZJ9jdSwFAg"]
 jakegif = ["CgADBQADBwADGIgpVpF8EgH6Mc-9Ag"]
 drunkpic = ["AgADBQADOagxGxB_aVZNfo9wNUvyYvGl1jIABMOR93PzURnicEMDAAEC", "AgADBQADOqgxGxB_aVav5vKmhLduCGqk1jIABOQDiHpGpExCJUMDAAEC", "AgADBQADkagxG6Oe8FbPeySNTsva1S5U2zIABHbiq4wGrTTHhxABAAEC", "AgADBQADYKgxGzx76FYspQoUVI_orGFh2zIABPdENNUjOZ6HMQoBAAEC"]
-parrotgif = ["CgADBQADLQADkxKZVrE-Wx30uXiNAg", "CgADBQADWAADeL-YVnw3sjCV8aeLAg", "CgADBQADMAADkxKZVp3RsGgriq4TAg", "CgADBQADWQADeL-YVsV0J7Zx1H3-Ag"]
+parrotgif = ["CgADBQADLQADkxKZVrE-Wx30uXiNAg", "CgADBQADWAADeL-YVnw3sjCV8aeLAg", "CgADBQADMAADkxKZVp3RsGgriq4TAg", "CgADBQADWQADeL-YVsV0J7Zx1H3-Ag", "CgADBQADLwADamEJVwABfmqsGruuIAI"]
 landichance = 0
 angerychance = 0
 atomchance = 0
@@ -312,7 +312,7 @@ def handle(ricebot, update):
 					ricebot.send_animation(chat_id, unpluggif, reply_to_message_id=msg_id)
 			
 def cronjob(bot, job):
-	bot.send_photo(-1001043875036, "AgADBQADaKgxGxkiqVY_JVTuMuedfslY2zIABJbu2s0dgEudZNAAAgI")
+	# bot.send_photo(-1001043875036, "AgADBQADaKgxGxkiqVY_JVTuMuedfslY2zIABJbu2s0dgEudZNAAAgI")
 	bot.send_message(-1001255652659, "CRON JOB ACTIVATED")
 
 def main():
@@ -323,10 +323,9 @@ def main():
 
 	dp.add_handler(telegram.ext.MessageHandler(telegram.ext.Filters.all, handle))
 	
-	jerathensone = jq.run_daily(cronjob, datetime.time(7,1,0,0))
-	updater.start_polling()
-	
+	jerathensone = jq.run_daily(cronjob, datetime.time(17,1,0,0))
 	jerathensone.enabled = True
+	updater.start_polling()
 
 	updater.idle()
 
