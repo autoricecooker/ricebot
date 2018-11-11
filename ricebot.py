@@ -186,15 +186,15 @@ def handle(ricebot, update):
 			if (reply_user_id):
 				ricebot.send_message(chat_id,"Reply user ID: " + str(reply_user_id))
 			if (anm_id):
-				if (anm_id == "CgADBQADIQAD1PpYV8uam3a7hV41Ag"):
-					ricebot.send_sticker(chat_id, random.choice(leisticker), reply_to_message_id=msg_id)
+				# if (anm_id == "CgADBQADIQAD1PpYV8uam3a7hV41Ag"):
+				# 	ricebot.send_sticker(chat_id, random.choice(leisticker), reply_to_message_id=msg_id)
 				ricebot.send_message(chat_id, anm_id)
 			if (sticker_id):
 				ricebot.send_message(chat_id, sticker_id)
 			if (update.message.photo):
 				ricebot.send_message(chat_id, update.message.photo[-1].file_id)
-			if (update.message.document):
-				ricebot.send_message(chat_id, str(update.message.document.file_id))
+			# if (update.message.document):
+			# 	ricebot.send_message(chat_id, str(update.message.document.file_id))
 			
 			#Check if message is forwarded
 			if (fwd_user_id):
@@ -320,16 +320,24 @@ def cronjob(bot, job):
 	bot.send_photo(-1001043875036, "AgADBQADVagxG9cuOVfXq7usGDCFAsZo3jIABCF2Vg7uGe3afUIAAgI")
 	bot.send_message(-1001255652659, "CRON JOB ACTIVATED")
 
+def cronjobdos(bot,job):
+	bot.send_message(-1001255652659, "CRON JOB 420 ACTIVATED")
+
 def main():
 	updater = telegram.ext.Updater(os.environ["BOT_TOKEN"])
 	dp = updater.dispatcher
 	jq = updater.job_queue
-	# jqtwo = updater.job_queue
+	rm = updater.job_queue
+
 
 	dp.add_handler(telegram.ext.MessageHandler(telegram.ext.Filters.all, handle))
 	
 	jerathensone = jq.run_daily(cronjob, datetime.time(17,1,0,0))
 	jerathensone.enabled = True
+
+	fourtwenty = rm.run_daily(cronjobdos, datetime.time(20,20,2,0))
+	fourtwenty.enabled = True
+	
 	updater.start_polling()
 
 	updater.idle()
