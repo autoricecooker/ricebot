@@ -194,7 +194,7 @@ def handle(ricebot, update):
 			if (update.message.photo):
 				ricebot.send_message(chat_id, update.message.photo[-1].file_id)
 			if (update.message.document):
-				ricebot.send_document(chat_id, str(update.message.document.file_id))
+				ricebot.send_photo(chat_id, str(update.message.document.file_id))
 			
 			#Check if message is forwarded
 			if (fwd_user_id):
