@@ -192,7 +192,7 @@ def handle(ricebot, update):
 			elif (sticker_id):
 				ricebot.send_message(chat_id, sticker_id)
 			elif (update.message.photo):
-				ricebot.send_message(chat_id, update.message.photo[1].file_id)
+				ricebot.send_message(chat_id, update.message.photo[-1].file_id)
 			
 			#Check if message is forwarded
 			if (fwd_user_id):
@@ -312,7 +312,7 @@ def handle(ricebot, update):
 					ricebot.send_animation(chat_id, unpluggif, reply_to_message_id=msg_id)
 			
 def cronjob(bot, job):
-	bot.send_photo(-1001043875036, "AgADBQADCKgxG2phCVcXe5Pm-P8bN8df2zIABK1z6KBKBq0dKSQBAAEC")
+	bot.send_photo(-1001043875036, "AgADBQADVagxG9cuOVfXq7usGDCFAsZo3jIABPpfjWOY0VPqf0IAAgI")
 	bot.send_message(-1001255652659, "CRON JOB ACTIVATED")
 
 def main():
