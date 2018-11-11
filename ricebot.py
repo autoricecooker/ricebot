@@ -189,11 +189,11 @@ def handle(ricebot, update):
 				if (anm_id == "CgADBQADIQAD1PpYV8uam3a7hV41Ag"):
 					ricebot.send_sticker(chat_id, random.choice(leisticker), reply_to_message_id=msg_id)
 				ricebot.send_message(chat_id, anm_id)
-			elif (sticker_id):
+			if (sticker_id):
 				ricebot.send_message(chat_id, sticker_id)
-			elif (update.message.photo):
+			if (update.message.photo):
 				ricebot.send_message(chat_id, update.message.photo[-1].file_id)
-			elif (update.message.document):
+			if (update.message.document):
 				ricebot.send_document(chat_id, str(update.message.document.file_id))
 			
 			#Check if message is forwarded
