@@ -126,7 +126,7 @@ def handle(ricebot, update):
 					else:
 						ricebot.send_document(chat_id, landigif[1], caption=None, parse_mode="Markdown", disable_notification=True, reply_to_message_id=msg_id)
 				elif (msg_text == "jerathens"):
-					ricebot.send_photo(chat_id, "AgADBQADVagxG9cuOVfXq7usGDCFAsZo3jIABPpfjWOY0VPqf0IAAgI")
+					ricebot.send_photo(chat_id, "AgADBQADVagxG9cuOVfXq7usGDCFAsZo3jIABCF2Vg7uGe3afUIAAgI")
 				#autoreply for thick thighs
 				elif (any(x in msg_split for x in tikigreet) and "thigh" in msg_text):
 					if searchinString(tikigreet, msg_text, searchparam=r"(\S+) thigh"):
@@ -193,6 +193,8 @@ def handle(ricebot, update):
 				ricebot.send_message(chat_id, sticker_id)
 			elif (update.message.photo):
 				ricebot.send_message(chat_id, update.message.photo[-1].file_id)
+			elif (update.message.document):
+				ricebot.send_document(chat_id, str(update.message.document.file_id))
 			
 			#Check if message is forwarded
 			if (fwd_user_id):
@@ -312,7 +314,7 @@ def handle(ricebot, update):
 					ricebot.send_animation(chat_id, unpluggif, reply_to_message_id=msg_id)
 			
 def cronjob(bot, job):
-	bot.send_photo(-1001043875036, "AgADBQADVagxG9cuOVfXq7usGDCFAsZo3jIABPpfjWOY0VPqf0IAAgI")
+	bot.send_photo(-1001043875036, "AgADBQADVagxG9cuOVfXq7usGDCFAsZo3jIABCF2Vg7uGe3afUIAAgI")
 	bot.send_message(-1001255652659, "CRON JOB ACTIVATED")
 
 def main():
