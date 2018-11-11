@@ -126,7 +126,7 @@ def handle(ricebot, update):
 					else:
 						ricebot.send_document(chat_id, landigif[1], caption=None, parse_mode="Markdown", disable_notification=True, reply_to_message_id=msg_id)
 				elif (msg_text == "jerathens"):
-					ricebot.send_photo(chat_id, "AgADBQADCKgxG2phCVcXe5Pm-P8bN8df2zIABK1z6KBKBq0dKSQBAAEC")
+					ricebot.send_photo(chat_id, "AgADBQADVagxG9cuOVfXq7usGDCFAsZo3jIABPpfjWOY0VPqf0IAAgI")
 				#autoreply for thick thighs
 				elif (any(x in msg_split for x in tikigreet) and "thigh" in msg_text):
 					if searchinString(tikigreet, msg_text, searchparam=r"(\S+) thigh"):
