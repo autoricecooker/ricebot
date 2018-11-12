@@ -191,7 +191,7 @@ def handle(ricebot, update):
 				# 	ricebot.send_sticker(chat_id, random.choice(leisticker), reply_to_message_id=msg_id)
 				ricebot.send_message(chat_id, anm_id)
 			if (sticker_id):
-				ricebot.send_message(chat_id, sticker_id)
+				ricebot.send_message(chat_id, "Sticker ID: \n" + sticker_id)
 			if (update.message.photo):
 				ricebot.send_message(chat_id, update.message.photo[-1].file_id)
 			# if (update.message.document):
