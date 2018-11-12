@@ -130,7 +130,7 @@ def handle(ricebot, update):
 					ricebot.send_photo(chat_id, "AgADBQADVagxG9cuOVfXq7usGDCFAsZo3jIABCF2Vg7uGe3afUIAAgI")
 				#autoreply for thick thighs
 				elif (any(x in msg_split for x in tikigreet) and "thigh" in msg_text):
-					if searchinString(tikigreet, msg_text, searchparam=r"(\S+) thigh"):
+					if (searchinString(tikigreet, msg_text, searchparam=r"(\S+) thigh") or searchinString(tikigreet, msg_text, searchparam=r"(\S+) inner thigh")):
 						ricebot.forward_message(chat_id, -1001255652659, 1496)
 				#autoreply for genie ferdz gif
 				elif (any(x in msg_split for x in ferdzgreet) and "ferdz" in msg_split):
@@ -319,7 +319,10 @@ def handle(ricebot, update):
 			
 def cronjob(bot, job):
 	# bot.send_photo(-1001043875036, "AgADBQADVagxG9cuOVfXq7usGDCFAsZo3jIABCF2Vg7uGe3afUIAAgI")
-	bot.send_message(-1001255652659, "CRON JOB ACTIVATED")
+	if (random.randint(0,2)):
+		bot.send_message(-1001255652659, "CRON JOB EXECUTED")
+	else:
+		bot.send_message(-1001255652659, "CRON JOB SKIPPED")
 
 def cronjobdos(bot,job):
 	bot.send_message(-1001255652659, "CRON JOB 420 ACTIVATED")
