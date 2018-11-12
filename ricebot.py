@@ -185,15 +185,15 @@ def handle(ricebot, update):
 					ricebot.send_animation(chat_id, random.choice(leigif), reply_to_message_id=msg_id)
 				
 			if (reply_user_id):
-				ricebot.send_message(chat_id,"Reply user ID: " + str(reply_user_id))
+				ricebot.send_message(chat_id,"Reply user ID: \n" + str(reply_user_id))
 			if (anm_id):
 				# if (anm_id == "CgADBQADIQAD1PpYV8uam3a7hV41Ag"):
 				# 	ricebot.send_sticker(chat_id, random.choice(leisticker), reply_to_message_id=msg_id)
-				ricebot.send_message(chat_id, anm_id)
+				ricebot.send_message(chat_id, "GIF ID: \n" + anm_id)
 			if (sticker_id):
 				ricebot.send_message(chat_id, "Sticker ID: \n" + sticker_id)
 			if (update.message.photo):
-				ricebot.send_message(chat_id, update.message.photo[-1].file_id)
+				ricebot.send_message(chat_id, "Photo File ID: \n" + update.message.photo[-1].file_id)
 			# if (update.message.document):
 			# 	ricebot.send_message(chat_id, str(update.message.document.file_id))
 			
