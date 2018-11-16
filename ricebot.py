@@ -204,7 +204,7 @@ def handle(ricebot, update):
 					ricebot.send_message(chat_id, "Forwarded message user ID: " + str(fwd_user_id))
 		
 		#For production GC input
-		elif (chat_id == -1001043875036):
+		elif (chat_id == prodGCID):
 			if (msg_text and user_id != 456128183):
 				#autoreply for athens
 				if (user_id == 322520879):
@@ -322,13 +322,13 @@ def handle(ricebot, update):
 def cronjob(bot, job):
 	# bot.send_photo(-1001043875036, "AgADBQADVagxG9cuOVfXq7usGDCFAsZo3jIABCF2Vg7uGe3afUIAAgI")
 	if (random.randint(0,2)):
-		bot.send_message(-1001255652659, "CRON JOB EXECUTED")
+		bot.send_message(testGCID, "CRON JOB EXECUTED")
 	else:
-		bot.send_message(-1001255652659, "CRON JOB SKIPPED")
+		bot.send_message(testGCID, "CRON JOB SKIPPED")
 
 def cronjobdos(bot,job):
-	bot.send_message(-1001255652659, "CRON JOB 420 ACTIVATED")
-	bot.send_animation(-1001255652659, random.choice(ftwentygif))
+	bot.send_message(testGCID, "CRON JOB 420 ACTIVATED")
+	bot.send_animation(testGCID, random.choice(ftwentygif))
 
 def main():
 	updater = telegram.ext.Updater(os.environ["BOT_TOKEN"])
