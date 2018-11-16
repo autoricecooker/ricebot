@@ -340,7 +340,7 @@ def main():
 	jerathensone = jq.run_daily(cronjob, datetime.time(17,1,0,0))
 	jerathensone.enabled = True
 
-	fourtwenty = rm.run_daily(cronjobdos, datetime.time(8,20,2,0))
+	fourtwenty = rm.run_daily(cronjobdos, datetime.time(8,20,15,0))
 	fourtwenty.enabled = True
 	
 	updater.start_polling()
