@@ -14,6 +14,8 @@ from time import sleep
 #big ol' blob of variables
 
 #wwgc = os.environ["WW_GC"]
+testGCID = os.environ["TEST_GC"]
+prodGCID = os.environ["PROD_GC"]
 sadgreet = ["spill", "trip", "eat", "bite", "tips", "tips over"]
 killgreet = ["unplug", "kill", "rip", "destroy", "hate"]
 randomgreet = ["Hello", "Hi", "Greetings", "Good day", "How are ya?", "Yes", "No", "What's up?"]
@@ -114,7 +116,7 @@ def handle(ricebot, update):
 			sticker_id = update.message.sticker.file_id
 
 		#For testGC input
-		if (chat_id == -1001255652659):
+		if (chat_id == testGCID):
 
 			#Send motd when new members are added
 			if (update.message.new_chat_members):
