@@ -328,7 +328,7 @@ def cronjob(bot, job):
 
 def cronjobdos(bot,job):
 	bot.send_message(testGCID, "CRON JOB 420 ACTIVATED")
-	bot.send_animation(testGCID, random.choice(ftwentygif))
+	bot.send_animation(prodGCID, random.choice(ftwentygif))
 
 def main():
 	updater = telegram.ext.Updater(os.environ["BOT_TOKEN"])
