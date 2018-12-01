@@ -20,7 +20,7 @@ prodGCID = int(os.environ["PROD_GC"])
 sadgreet = ["spill", "trip", "eat", "bite", "tips", "tips over"]
 killgreet = ["unplug", "kill", "rip", "destroy", "hate"]
 randomgreet = ["Hello", "Hi", "Greetings", "Good day", "How are ya?", "Yes", "No", "What's up?"]
-assumptgreet = ["akala ko si rice", "akala ko si ricecooker", "akala ko si @ricecooker", "kala ko si rice", "kala ko si @ricecooker", "kala ko si ricecooker", "ikaw ba yan rice", "kaw ba yan rice", "rice ikaw ba yan", "rice kaw ba yan", "ikaw ba yan @ricecooker"]
+assumptgreet = ["akala ko si rice", "akala ko si ricecooker", "akala ko si @ricecooker", "kala ko si rice", "kala ko si @ricecooker", "kala ko si ricecooker", "ikaw ba yan rice", "kaw ba yan rice", "rice ikaw ba yan", "rice kaw ba yan", "ikaw ba yan @ricecooker", "si rice ba yun", "si @ricecooker ba yun", "si rice ba un", "si @ricecooker ba un", "is that @ricecooker"]
 angerygreet = ["Shooo", "...", "Wag ka na", ":|"]
 athensgreet =["athens", "ganda ako", "ganda ko", "cute ako", "cute me", "cute kasi ako", "cute ko", "cute talaga ako","maganda talaga ako", "maganda kasi ako", "im beautiful", "i am beautiful", "i'm beautiful"]
 stressgreet = ["stress", "stresss", "stressss", "stressed", "stressssss", "overstress", "megastress"]
@@ -39,7 +39,7 @@ leisticker = ["CAADBQADIQEAAiO4mBCSjVKUWk7MNwI", "CAADBQADHAEAAiO4mBCeaC0LYAlkow
 #leigif = ["CgADBQADEAADS754Vj0cIPOA5fAWAg", "CgADBQADFQADDHrhVXLWPyi-fVESAg", "CgADBQADEQADNNrpV0yGyX3SyadcAg", "CgADBQADHwADYlzxVd_bBWXEyqHUAg"]
 leigif = ["CgADBQADEQADNNrpV_JyDVwU2d1rAg", "CgADBQADFQADDHrhVeaTS0bvbyRWAg", "CgADBQADEAADS754Vha1dmKytEvNAg", "CgADBQADHwADYlzxVfOzb9cCUkuqAg"]
 #stressgif = ["CgADBQADNgAD1k_RVO3goPd_-i6UAg", "CgADBQADeAADXqhQVB4H-vGgquQBAg", "CgADBQADagADIQNZVQwwt6F0hhTnAg", "CgADBQADMQADSQ5QVWEW6SjSG4KYAg"]
-stressgif = ["CgADBQADeAADXqhQVCksGu6IfbQMAg", "CgADBQADMQADSQ5QVUn-yBLRrDvBAg", "CgADBQADagADIQNZVdJEKrwDU24lAg", "CgADBQADNgAD1k_RVFSZibSpxmu4Ag"]
+stressgif = ["CgADBQADeAADXqhQVCksGu6IfbQMAg", "CgADBQADMQADSQ5QVUn-yBLRrDvBAg", "CgADBQADagADIQNZVdJEKrwDU24lAg", "CgADBQADNgAD1k_RVFSZibSpxmu4Ag", "CgADBQADFgADjGnIVUDk7DZAN-6XAg", "CgADBQADAwADXbeJVIa-vUgkTDSCAg"]
 blessgif =["CgADBQADQwADUt_RVJbf7QgSjFMQAg"]
 #genieferdzgif = "CgADBQADEgADUT_BVphVHpXa9x1UAg"
 genieferdzgif = "CgADBQADEgADUT_BVqvCsq_FYDT-Ag"
@@ -52,7 +52,7 @@ toastiesgif = ["CgADBQADLwADv4dBVFVtZJ9jdSwFAg"]
 jakegif = ["CgADBQADBwADGIgpVpF8EgH6Mc-9Ag"]
 drunkpic = ["AgADBQADOagxGxB_aVZNfo9wNUvyYvGl1jIABMOR93PzURnicEMDAAEC", "AgADBQADOqgxGxB_aVav5vKmhLduCGqk1jIABOQDiHpGpExCJUMDAAEC", "AgADBQADkagxG6Oe8FbPeySNTsva1S5U2zIABHbiq4wGrTTHhxABAAEC", "AgADBQADYKgxGzx76FYspQoUVI_orGFh2zIABPdENNUjOZ6HMQoBAAEC", "AgADBQADyagxG3vgQFfzWyPyZwABhDpToNYyAARIZLO6JHE6rwHyAwABAg", "AgADBQADyqgxG3vgQFdnwo6v0N37ltKu1jIABImnO1LEv_hLsvgDAAEC", "AgADBQADy6gxG3vgQFdhN5CqLNBoaZps3jIABIzvbj8OdXrYa0EAAgI", "AgADBQADzKgxG3vgQFd0wYPinyYN3Zhq2zIABNpbg4ad52tcN0oBAAEC"]
 parrotgif = ["CgADBQADLQADkxKZVrE-Wx30uXiNAg", "CgADBQADWAADeL-YVnw3sjCV8aeLAg", "CgADBQADMAADkxKZVp3RsGgriq4TAg", "CgADBQADWQADeL-YVsV0J7Zx1H3-Ag", "CgADBQADLwADamEJVwABfmqsGruuIAI"]
-ftwentygif = ["CgADBQADZwADC8sAAVdyPHOcrabSlAI"]
+ftwentygif = ["CgADBQADZwADC8sAAVdyPHOcrabSlAI", "CgADBQADBQADilkQVlcE7H79KrlZAg"]
 landichance = 0
 angerychance = 0
 atomchance = 0
@@ -327,6 +327,7 @@ def testGChandle(ricebot, update):
 	fwd_user_id = None
 	sticker_id = None
 	landichance = random.randint(1,6) % 5
+	angerychance = random.randint(1,4) % 4
 	atomchance = random.randint(1,6) % 6
 	leichance = random.randint(1,3) % 3
 
@@ -405,6 +406,9 @@ def testGChandle(ricebot, update):
 			elif (any(x in msg_text for x in assumptgreet)):
 				time.sleep(1)			
 				ricebot.send_message(chat_id, "Di ako yun", parse_mode="Markdown", disable_web_page_preview=None, disable_notification=True, reply_to_message_id=msg_id)
+			#autoreply for weaboos
+			elif("weeb shit" in msg_text or "anime was a mistake" in msg_text):
+				ricebot.send_animation(chat_id, "CgADBQADOwADyE_wVe3mk7g8DJnwAg")
 			#autoreply for athens
 			elif (user_id == 322520879 and any (x in msg_text for x in athensgreet)):
 				if (random.randint(0,3)):
@@ -422,6 +426,38 @@ def testGChandle(ricebot, update):
 					ricebot.send_sticker(chat_id, random.choice(leisticker), reply_to_message_id=msg_id)
 				else :
 					ricebot.send_animation(chat_id, random.choice(leigif), reply_to_message_id=msg_id)
+			elif (user_id == 456128183 and "hi" in msg_split):
+				ricebot.send_message(chat_id, "<code>Negative</code>", parse_mode="HTML", reply_to_message_id=msg_id)
+			elif ((user_id == 339707076 or user_id == 574787216) and (any(x in msg_split for x in justgreet))):
+				ricebot.send_message(chat_id, "<code>Pass</code>", parse_mode="HTML")
+			elif ("hi rice"):
+				time.sleep(1)
+				ricebot.send_message(chat_id, random.choice(randomgreet), parse_mode="Markdown", disable_web_page_preview=None, disable_notification=True, reply_to_message_id=msg_id)
+			#sad greetings autoreply
+			elif (any(x in msg_split for x in sadgreet) and "rice" in msg_text):
+				if searchinString(sadgreet, msg_text, searchparam=r"(\S+) @ricecooker"):
+					ricebot.send_message(chat_id,"<.<", parse_mode="Markdown", disable_web_page_preview=None, disable_notification=True, reply_to_message_id=msg_id)
+					time.sleep(1)
+					ricebot.send_message(chat_id, ">.>", parse_mode="Markdown")
+					ricebot.send_message(chat_id, "_spills rice_", parse_mode="Markdown")
+				elif searchinString(sadgreet, msg_text, searchparam=r"(\S+) ricecooker"):
+					ricebot.send_message(chat_id,"<.<", parse_mode="Markdown", disable_web_page_preview=None, disable_notification=True, reply_to_message_id=msg_id)
+					time.sleep(1)
+					ricebot.send_message(chat_id, ">.>", parse_mode="Markdown")
+					ricebot.send_message(chat_id, "_spills rice_", parse_mode="Markdown")
+				elif searchinString(sadgreet, msg_text, searchparam=r"(\S+) rice"):
+					ricebot.send_message(chat_id,"<.<", parse_mode="Markdown", disable_web_page_preview=None, disable_notification=True, reply_to_message_id=msg_id)
+					time.sleep(1)
+					ricebot.send_message(chat_id, ">.>", parse_mode="Markdown")
+					ricebot.send_message(chat_id, "_spills rice_", parse_mode="Markdown")
+			#send unplug GIF if a kill greeting has been sent 
+			elif (any(x in msg_split for x in killgreet) and "rice" in msg_text): 
+				if searchinString(killgreet, msg_text, searchparam=r"(\S+) @ricecooker"):
+					ricebot.send_animation(chat_id, unpluggif, reply_to_message_id=msg_id)
+				elif searchinString(killgreet, msg_text, searchparam=r"(\S+) ricecooker"):
+					ricebot.send_animation(chat_id, unpluggif, reply_to_message_id=msg_id)
+				elif searchinString(killgreet, msg_text, searchparam=r"(\S+) rice"):
+					ricebot.send_animation(chat_id, unpluggif, reply_to_message_id=msg_id)
 				
 		if (reply_user_id):
 			ricebot.send_message(chat_id,"Reply user ID: \n" + str(reply_user_id))
@@ -532,20 +568,10 @@ def prodGChandle(ricebot, update):
 			#autoreply for toasties
 			elif ("toasties" in msg_split and random.randint(0, 1)):
 				ricebot.send_animation(chat_id, toastiesgif[0], reply_to_message_id=msg_id)
-		elif (update.message.new_chat_members):
-			ricebot.send_message(chat_id, "<code>Hi! Welcome to rph tele! As part of catfish verification standard procedures, we ask for a selfie of you with a tabo (tabofie) and a tinidor (tinidorfie). Have fun and stay fake!</code>", parse_mode="HTML")
-		elif (anm_id and (anm_id == "CgADBQADIQAD1PpYV9Q8SLVB8kHHAg" or anm_id == "CgADBQADCQAD2MkBV-93jXgFs7gBAg")):
-			if (leichance):
-				ricebot.send_sticker(chat_id, random.choice(leisticker), reply_to_message_id=msg_id)
-			else :
-				ricebot.send_animation(chat_id, random.choice(leigif), reply_to_message_id=msg_id)
-				
-
-	
-		#non-gc specific autoreply
-		#send greetings
-		if (msg_text):
-			if (user_id == 456128183 and "hi" in msg_split):
+			#autoreply for jerome and athens pic
+			elif (msg_split == "jerathens"):
+				ricebot.send_photo(chat_id, "AgADBQADVagxG9cuOVfXq7usGDCFAsZo3jIABCF2Vg7uGe3afUIAAgI")
+			elif (user_id == 456128183 and "hi" in msg_split):
 				ricebot.send_message(chat_id, "<code>Negative</code>", parse_mode="HTML", reply_to_message_id=msg_id)
 			elif ((user_id == 339707076 or user_id == 574787216) and (any(x in msg_split for x in justgreet))):
 				ricebot.send_message(chat_id, "<code>Pass</code>", parse_mode="HTML")
@@ -577,6 +603,13 @@ def prodGChandle(ricebot, update):
 					ricebot.send_animation(chat_id, unpluggif, reply_to_message_id=msg_id)
 				elif searchinString(killgreet, msg_text, searchparam=r"(\S+) rice"):
 					ricebot.send_animation(chat_id, unpluggif, reply_to_message_id=msg_id)
+		elif (update.message.new_chat_members):
+			ricebot.send_message(chat_id, "<code>Hi! Welcome to rph tele! As part of catfish verification standard procedures, we ask for a selfie of you with a tabo (tabofie) and a tinidor (tinidorfie). Have fun and stay fake!</code>", parse_mode="HTML")
+		elif (anm_id and (anm_id == "CgADBQADIQAD1PpYV9Q8SLVB8kHHAg" or anm_id == "CgADBQADCQAD2MkBV-93jXgFs7gBAg")):
+			if (leichance):
+				ricebot.send_sticker(chat_id, random.choice(leisticker), reply_to_message_id=msg_id)
+			else :
+				ricebot.send_animation(chat_id, random.choice(leigif), reply_to_message_id=msg_id)
 			
 def cronjob(bot, job):
 	# bot.send_photo(-1001043875036, "AgADBQADVagxG9cuOVfXq7usGDCFAsZo3jIABCF2Vg7uGe3afUIAAgI")
@@ -596,9 +629,9 @@ def main():
 	rm = updater.job_queue
 
 
-	dp.add_handler(telegram.ext.MessageHandler(telegram.ext.Filters.all, handle))
-	# dp.add_handler(telegram.ext.MessageHandler(telegram.ext.Filters.chat(testGCID), testGChandle))
-	# dp.add_handler(telegram.ext.MessageHandler(telegram.ext.Filters.chat(prodGCID), prodGChandle))
+	# dp.add_handler(telegram.ext.MessageHandler(telegram.ext.Filters.all, handle))
+	dp.add_handler(telegram.ext.MessageHandler(telegram.ext.Filters.chat(testGCID), testGChandle))
+	dp.add_handler(telegram.ext.MessageHandler(telegram.ext.Filters.chat(prodGCID), prodGChandle))
 	jerathensone = jq.run_daily(cronjob, datetime.time(17,1,0,0))
 	jerathensone.enabled = True
 
