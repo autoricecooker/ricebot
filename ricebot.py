@@ -369,6 +369,8 @@ def testGChandle(ricebot, update):
 			elif (msg_text == "jerathens"):
 				ricebot.send_photo(chat_id, "AgADBQADVagxG9cuOVfXq7usGDCFAsZo3jIABCF2Vg7uGe3afUIAAgI")
 			#autoreply for thick thighs
+			elif (msg_text == "send text test"):
+				ricebot.send_message(-1001255652659, "<code>All contents/events in this group chat are confidential. \sDisclosure is prohibited</code>", parse_mode="HTML")
 			elif (any(x in msg_split for x in tikigreet) and "thigh" in msg_text):
 				if (searchinString(tikigreet, msg_text, searchparam=r"(\S+) thigh") or searchinString(tikigreet, msg_text, searchparam=r"(\S+) inner thigh")):
 					ricebot.forward_message(chat_id, -1001255652659, 1496)
@@ -531,6 +533,9 @@ def prodGChandle(ricebot, update):
 					ricebot.send_sticker(chat_id, random.choice(leisticker))
 				else :
 					ricebot.send_animation(chat_id, random.choice(leigif))
+			#autoreply for weaboos
+			elif("weeb shit" in msg_text or "anime was a mistake" in msg_text):
+				ricebot.send_animation(chat_id, "CgADBQADOwADyE_wVe3mk7g8DJnwAg")
 			#autoreply for luh with louise shrug
 			elif ("luh" in msg_split and (random.randrange(0,100) < 40)):
 				if (random.randint(0,15)):
