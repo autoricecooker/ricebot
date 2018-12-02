@@ -78,217 +78,27 @@ def searchinString(keylist, msg, searchparam):
 
 	return found
 
-def handle(ricebot, update):
+@run_async
+def pmhandle(ricebot, update):
 	#Initialize variables
 	msg_text = None
 	msg_split = None
-	anm_id = None
-	reply_user_id = None
-	fwd_user_id = None
-	sticker_id = None
-	landichance = random.randint(1,6) % 5
 	angerychance = random.randint(1,4) % 4
-	atomchance = random.randint(1,6) % 6
-	leichance = random.randint(1,3) % 3
 
 	#Check if message has content
 	if update.message:
 
 		chat_id = update.message.chat_id
 		msg_id = update.message.message_id
-		user_id = update.message.from_user.id
 
 		#Get message text if not none
 		if (update.message.text):
 			msg_text = update.message.text.lower()
 			msg_split = msg_text.split()	
-		#Get original user ID from reply message
-		if (update.message.reply_to_message):
-			reply_user_id = update.message.reply_to_message.from_user.id
-			reply_msg_id = update.message.reply_to_message.message_id
-		#Get GIF file ID
-		if (update.message.animation):
-			anm_id = update.message.animation.file_id
-		#Get user ID from forwarded messages
-		if (update.message.forward_from):
-			fwd_user_id = update.message.forward_from.id
-		#Get sticker file ID
-		if (update.message.sticker):
-			sticker_id = update.message.sticker.file_id
 
-		#For testGC input
-		if (chat_id == testGCID):
-
-			#Send motd when new members are added
-			if (update.message.new_chat_members):
-				ricebot.send_message(-1001255652659, "<code>All contents/events in this group chat are confidential. Disclosure is prohibited</code>", parse_mode="HTML")
-			#Check if message is text
-			if (msg_text):
-				if (msg_text == "hipo"):
-					if (landichance):
-						ricebot.send_document(chat_id, landigif[0], caption=None, parse_mode="Markdown", disable_notification=True, reply_to_message_id=msg_id)
-					else:
-						ricebot.send_document(chat_id, landigif[1], caption=None, parse_mode="Markdown", disable_notification=True, reply_to_message_id=msg_id)
-				elif (msg_text == "jerathens"):
-					ricebot.send_photo(chat_id, "AgADBQADVagxG9cuOVfXq7usGDCFAsZo3jIABCF2Vg7uGe3afUIAAgI")
-				#autoreply for thick thighs
-				elif (any(x in msg_split for x in tikigreet) and "thigh" in msg_text):
-					if (searchinString(tikigreet, msg_text, searchparam=r"(\S+) thigh") or searchinString(tikigreet, msg_text, searchparam=r"(\S+) inner thigh")):
-						ricebot.forward_message(chat_id, -1001255652659, 1496)
-				#autoreply for genie ferdz gif
-				elif (any(x in msg_split for x in ferdzgreet) and "ferdz" in msg_split):
-					if searchinString(ferdzgreet, msg_text, searchparam=r"(\S+) ferdz"):
-						ricebot.send_animation(chat_id, genieferdzgif)
-				#autoreply for bless
-				elif (any(x in msg_split for x in blessgreet) and random.randint(0,3)):
-					ricebot.send_animation(chat_id, random.choice(blessgif), reply_to_message_id=msg_id)
-				#autoreply for drunk
-				elif (any(x in msg_split for x in drunkgreet)):
-					ricebot.send_photo(chat_id, random.choice(drunkpic), reply_to_message_id=msg_id)
-				#autoreply for stress
-				elif (any(x in msg_split for x in stressgreet) and random.randint(0,1)):
-					ricebot.send_animation(chat_id, random.choice(stressgif), reply_to_message_id=msg_id)
-				#autoreply for landi mo reply
-				elif (update.message.reply_to_message and msg_text == "landi mo" and user_id != reply_user_id):
-					ricebot.send_message(chat_id, "User ID: " + str(user_id) + " Reply user ID: " + str(reply_user_id), reply_to_message_id=reply_msg_id)
-					print(landichance)
-					if (landichance):
-						ricebot.send_animation(chat_id, landigif[0], caption=None, parse_mode="Markdown", disable_notification=True, reply_to_message_id=reply_msg_id)
-					else:
-						ricebot.send_animation(chat_id, landigif[1], caption=None, parse_mode="Markdown", disable_notification=True, reply_to_message_id=reply_msg_id)
-				#autoreply for luh with louise shrug
-				elif ("luh" in msg_split and (random.randrange(0,100) < 40)):
-					if (random.randint(0,15)):
-						ricebot.send_animation(chat_id, louisegif[0], reply_to_message_id=msg_id)
-					else:
-						ricebot.send_animation(chat_id, louisegif[random.randint(1,4)], reply_to_message_id=msg_id)
-				#autoreply for toasties
-				elif ("toasties" in msg_split):
-					ricebot.send_animation(chat_id, toastiesgif[0], reply_to_message_id=msg_id)
-				#autoreply for assumption greetings
-				elif (any(x in msg_text for x in assumptgreet)):
-					time.sleep(1)			
-					ricebot.send_message(chat_id, "Di ako yun", parse_mode="Markdown", disable_web_page_preview=None, disable_notification=True, reply_to_message_id=msg_id)
-				#autoreply for athens
-				elif (user_id == 322520879 and any (x in msg_text for x in athensgreet)):
-					if (random.randint(0,3)):
-						ricebot.send_sticker(chat_id, "CAADBQADCQADL0c5E0v6frqfrAl0Ag", reply_to_message_id=msg_id)
-					else:
-						ricebot.send_animation(chat_id, "CgADBQADTQADUt_RVJBsyb0ugbBkAg", reply_to_message_id=msg_id)
-				#autosend atom sticker
-				elif ((any(x in msg_split for x in atomgreet)) and (atomchance != 0)):
-					ricebot.send_sticker(chat_id, "CAADBQADHgADKGW-C2i6PBdd6c9ZAg", disable_notification=None, reply_to_message_id=msg_id)
-				elif (any (x in msg_text for x in parrotgreet)):
-					ricebot.send_animation(chat_id, random.choice(parrotgif), reply_to_message_id=msg_id)
-			#Check if message is a certain GIF
-			elif (anm_id and anm_id == "CgADBQADIQAD1PpYV9Q8SLVB8kHHAg"):
-				if (leichance):
-					ricebot.send_sticker(chat_id, random.choice(leisticker), reply_to_message_id=msg_id)
-				else :
-					ricebot.send_animation(chat_id, random.choice(leigif), reply_to_message_id=msg_id)
-				
-			if (reply_user_id):
-				ricebot.send_message(chat_id,"Reply user ID: \n" + str(reply_user_id))
-			if (anm_id):
-				# if (anm_id == "CgADBQADIQAD1PpYV8uam3a7hV41Ag"):
-				# 	ricebot.send_sticker(chat_id, random.choice(leisticker), reply_to_message_id=msg_id)
-				ricebot.send_message(chat_id, "GIF ID: \n" + anm_id)
-			if (sticker_id):
-				ricebot.send_message(chat_id, "Sticker ID: \n" + sticker_id)
-			if (update.message.photo):
-				ricebot.send_message(chat_id, "Photo File ID: \n" + update.message.photo[-1].file_id)
-			# if (update.message.document):
-			# 	ricebot.send_message(chat_id, str(update.message.document.file_id))
-			
-			#Check if message is forwarded
-			if (fwd_user_id):
-					ricebot.send_message(chat_id, "Forwarded message user ID: " + str(fwd_user_id))
-		
-		#For production GC input
-		elif (chat_id == prodGCID):
-			if (msg_text and user_id != 456128183):
-				#autoreply for athens
-				if (user_id == 322520879 and any (x in msg_text for x in athensgreet)):
-						ricebot.send_sticker(chat_id, "CAADBQADCQADL0c5E0v6frqfrAl0Ag", reply_to_message_id=msg_id)
-				#autoreply for landi mo 
-				elif (update.message.reply_to_message and msg_text == "landi mo" and user_id != reply_user_id):
-					if (landichance):
-						ricebot.send_animation(chat_id, landigif[0], caption=None, parse_mode="Markdown", disable_notification=True, reply_to_message_id=reply_msg_id)
-					else:
-						ricebot.send_animation(chat_id, landigif[1], caption=None, parse_mode="Markdown", disable_notification=True, reply_to_message_id=reply_msg_id)
-				#autoreply for hipo messages
-				elif (msg_text == "hipo" and user_id != 322520879):
-					if (landichance):
-						ricebot.send_document(chat_id, landigif[0], caption=None, parse_mode="Markdown", disable_notification=True, reply_to_message_id=msg_id)
-					else:
-						ricebot.send_document(chat_id, landigif[1], caption=None, parse_mode="Markdown", disable_notification=True, reply_to_message_id=msg_id)
-				#autoreply for stress
-				elif (any(x in msg_split for x in stressgreet) and random.randint(0,1)):
-					ricebot.send_animation(chat_id, random.choice(stressgif), reply_to_message_id=msg_id)
-				#autoreply for bless
-				elif (any (x in msg_split for x in blessgreet) and random.randint(0,3)):
-					ricebot.send_animation(chat_id, random.choice(blessgif), reply_to_message_id=msg_id)
-				#autoreply for lei's narcissism
-				elif ((user_id == 477167517) and (any(x in msg_text for x in leigreetphrase) or any(y in msg_split for y in leigreetword))):
-					if (leichance):
-						ricebot.send_sticker(chat_id, random.choice(leisticker))
-					else :
-						ricebot.send_animation(chat_id, random.choice(leigif))
-				#autoreply for luh with louise shrug
-				elif ("luh" in msg_split and (random.randrange(0,100) < 40)):
-					if (random.randint(0,15)):
-						ricebot.send_animation(chat_id, louisegif[0], reply_to_message_id=msg_id)
-					else:
-						ricebot.send_animation(chat_id, louisegif[random.randint(1,4)], reply_to_message_id=msg_id)
-				#autoreply for drunk
-				elif (any (x in msg_split for x in drunkgreet) and leichance):
-					ricebot.send_photo(chat_id, random.choice(drunkpic), reply_to_message_id=msg_id)
-				#autosend atom sticker
-				elif ((any(x in msg_split for x in atomgreet)) and (atomchance == 0)):
-					ricebot.send_sticker(chat_id, "CAADBQADHgADKGW-C2i6PBdd6c9ZAg", disable_notification=None, reply_to_message_id=msg_id)
-				#party parrot autoreply
-				elif (any (x in msg_text for x in parrotgreet)):
-					if (random.randrange(1,100) < 6):
-						ricebot.send_animation(chat_id, "CgADAQADPQADtY9QRi3NGeEEAmLKAg", reply_to_message_id=msg_id)
-					else:
-						ricebot.send_animation(chat_id, random.choice(parrotgif), reply_to_message_id=msg_id)
-				#assumptions autoreply
-				elif (any(x in msg_text for x in assumptgreet)):
-					time.sleep(1)			
-					ricebot.send_message(chat_id, "Di ako yun", parse_mode="Markdown", disable_web_page_preview=None, disable_notification=True, reply_to_message_id=msg_id)
-				#autoreply for genie ferdz gif
-				elif (("genie" in msg_split or "happy" in msg_split) and ("ferdz" in msg_split or "ferds" in msg_split)):
-					if searchinString(ferdzgreet, msg_text, searchparam=r"(\S+) ferdz"):
-						ricebot.send_animation(chat_id, genieferdzgif)
-				#autoreply for happy jake gif
-				elif ("happy" in msg_split and "jake" in msg_split):
-					if searchinString(jakegreet, msg_text, searchparam=r"(\S+) jake"):
-						ricebot.send_animation(chat_id, jakegif[0])
-				#autoreply for thick thighs
-				elif (any(x in msg_split for x in tikigreet) and "thigh" in msg_text):
-					if searchinString(tikigreet, msg_text, searchparam=r"(\S+) thigh"):
-						ricebot.forward_message(chat_id, -1001255652659, 1496)
-				#autoreply for toasties
-				elif ("toasties" in msg_split and random.randint(0, 1)):
-					ricebot.send_animation(chat_id, toastiesgif[0], reply_to_message_id=msg_id)
-			elif (update.message.new_chat_members):
-				ricebot.send_message(chat_id, "<code>Hi! Welcome to rph tele! As part of catfish verification standard procedures, we ask for a selfie of you with a tabo (tabofie) and a tinidor (tinidorfie). Have fun and stay fake!</code>", parse_mode="HTML")
-			elif (anm_id and (anm_id == "CgADBQADIQAD1PpYV9Q8SLVB8kHHAg" or anm_id == "CgADBQADCQAD2MkBV-93jXgFs7gBAg")):
-				if (leichance):
-					ricebot.send_sticker(chat_id, random.choice(leisticker), reply_to_message_id=msg_id)
-				else :
-					ricebot.send_animation(chat_id, random.choice(leigif), reply_to_message_id=msg_id)
-				
-
-	
-		#non-gc specific autoreply
 		#send greetings
 		if (msg_text):
-			if (user_id == 456128183 and "hi" in msg_split):
-				ricebot.send_message(chat_id, "<code>Negative</code>", parse_mode="HTML", reply_to_message_id=msg_id)
-			elif ((user_id == 339707076 or user_id == 574787216) and (any(x in msg_split for x in justgreet))):
-				ricebot.send_message(chat_id, "<code>Pass</code>", parse_mode="HTML")
-			elif (angerychance and msg_text == "hi rice"):
+			if (angerychance and msg_text == "hi rice"):
 				time.sleep(1)
 				ricebot.send_message(chat_id, random.choice(randomgreet), parse_mode="Markdown", disable_web_page_preview=None, disable_notification=True, reply_to_message_id=msg_id)
 			#sad greetings autoreply
@@ -327,7 +137,6 @@ def testGChandle(ricebot, update):
 	fwd_user_id = None
 	sticker_id = None
 	landichance = random.randint(1,6) % 5
-	angerychance = random.randint(1,4) % 4
 	atomchance = random.randint(1,6) % 6
 	leichance = random.randint(1,3) % 3
 
@@ -634,6 +443,7 @@ def main():
 	# dp.add_handler(telegram.ext.MessageHandler(telegram.ext.Filters.all, handle))
 	dp.add_handler(telegram.ext.MessageHandler(telegram.ext.Filters.chat(testGCID), testGChandle))
 	dp.add_handler(telegram.ext.MessageHandler(telegram.ext.Filters.chat(prodGCID), prodGChandle))
+	dp.add_handler(telegram.ext.MessageHandler(telegram.ext.Filters.private, pmhandle))
 	jerathensone = jq.run_daily(cronjob, datetime.time(17,1,0,0))
 	jerathensone.enabled = True
 
