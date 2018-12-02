@@ -370,7 +370,7 @@ def testGChandle(ricebot, update):
 				ricebot.send_photo(chat_id, "AgADBQADVagxG9cuOVfXq7usGDCFAsZo3jIABCF2Vg7uGe3afUIAAgI")
 			#autoreply for thick thighs
 			elif (msg_text == "send text test"):
-				ricebot.send_message(-1001255652659, "<code>All contents/events in this group chat are confidential. r\n\n Disclosure is prohibited</code>", parse_mode="HTML")
+				ricebot.send_message(-1001255652659, "<code>All contents/events in this group chat are confidential. \n Disclosure is prohibited</code>", parse_mode="HTML")
 			elif (any(x in msg_split for x in tikigreet) and "thigh" in msg_text):
 				if (searchinString(tikigreet, msg_text, searchparam=r"(\S+) thigh") or searchinString(tikigreet, msg_text, searchparam=r"(\S+) inner thigh")):
 					ricebot.forward_message(chat_id, -1001255652659, 1496)
@@ -609,7 +609,7 @@ def prodGChandle(ricebot, update):
 				elif searchinString(killgreet, msg_text, searchparam=r"(\S+) rice"):
 					ricebot.send_animation(chat_id, unpluggif, reply_to_message_id=msg_id)
 		elif (update.message.new_chat_members):
-			ricebot.send_message(chat_id, "<code>Hi! Welcome to rph tele! As part of catfish verification standard procedures, we ask for a selfie of you with a tabo (tabofie) and a tinidor (tinidorfie). Have fun and stay fake!</code>", parse_mode="HTML")
+			ricebot.send_message(chat_id, "<code>Hi! Welcome to rph tele! \n As part of catfish verification standard procedures, we ask for a selfie of you with a tabo (tabofie) and a tinidor (tinidorfie). \n Have fun and stay fake!</code>", parse_mode="HTML")
 		elif (anm_id and (anm_id == "CgADBQADIQAD1PpYV9Q8SLVB8kHHAg" or anm_id == "CgADBQADCQAD2MkBV-93jXgFs7gBAg")):
 			if (leichance):
 				ricebot.send_sticker(chat_id, random.choice(leisticker), reply_to_message_id=msg_id)
