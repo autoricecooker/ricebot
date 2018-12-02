@@ -370,7 +370,7 @@ def testGChandle(ricebot, update):
 				ricebot.send_photo(chat_id, "AgADBQADVagxG9cuOVfXq7usGDCFAsZo3jIABCF2Vg7uGe3afUIAAgI")
 			#autoreply for thick thighs
 			elif (msg_text == "send text test"):
-				ricebot.send_message(-1001255652659, "<code>All contents/events in this group chat are confidential. \sDisclosure is prohibited</code>", parse_mode="HTML")
+				ricebot.send_message(-1001255652659, "<code>All contents/events in this group chat are confidential. r\n\n Disclosure is prohibited</code>", parse_mode="HTML")
 			elif (any(x in msg_split for x in tikigreet) and "thigh" in msg_text):
 				if (searchinString(tikigreet, msg_text, searchparam=r"(\S+) thigh") or searchinString(tikigreet, msg_text, searchparam=r"(\S+) inner thigh")):
 					ricebot.forward_message(chat_id, -1001255652659, 1496)
