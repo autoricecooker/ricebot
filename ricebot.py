@@ -58,7 +58,8 @@ angerychance = 0
 atomchance = 0
 leichance = 0
 update_id = 0
-exprmsg = None
+testexpr = None
+prodexpr = None
 
 #Search if keywords in list are located in the string, based on regex pattern
 def searchinString(keylist, msg, searchparam):
@@ -146,7 +147,7 @@ def testGChandle(ricebot, update):
 	landichance = random.randint(1,6) % 5
 	atomchance = random.randint(1,6) % 6
 	leichance = random.randint(1,3) % 3
-	global exprmsg
+	global testexpr
 	#Check if message has content
 	if update.message:
 
@@ -184,7 +185,7 @@ def testGChandle(ricebot, update):
 					ricebot.send_document(chat_id, landigif[1], caption=None, parse_mode="Markdown", disable_notification=True, reply_to_message_id=msg_id)
 			elif (msg_text == "jerathens"):
 				contxt = ricebot.send_photo(chat_id, "AgADBQADVagxG9cuOVfXq7usGDCFAsZo3jIABCF2Vg7uGe3afUIAAgI")
-				exprmsg.run_once(delmsg, 5, context=contxt)
+				testexpr.run_once(delmsg, 5, context=contxt)
 			#autoreply for thick thighs
 			elif (msg_text == "send text test"):
 				ricebot.send_message(-1001255652659, "<code>All contents/events in this group chat are confidential. \nDisclosure is prohibited</code>", parse_mode="HTML")
@@ -302,6 +303,8 @@ def prodGChandle(ricebot, update):
 	angerychance = random.randint(1,4) % 4
 	atomchance = random.randint(1,6) % 6
 	leichance = random.randint(1,3) % 3
+	global prodexpr
+	msgcontext = None
 
 	#Check if message has content
 	if update.message:
@@ -389,7 +392,8 @@ def prodGChandle(ricebot, update):
 				ricebot.send_animation(chat_id, toastiesgif[0], reply_to_message_id=msg_id)
 			#autoreply for jerome and athens pic
 			elif (msg_split == "jerathens"):
-				ricebot.send_photo(chat_id, "AgADBQADVagxG9cuOVfXq7usGDCFAsZo3jIABCF2Vg7uGe3afUIAAgI")
+				msgcontext = ricebot.send_photo(chat_id, "AgADBQADVagxG9cuOVfXq7usGDCFAsZo3jIABCF2Vg7uGe3afUIAAgI")
+				prodexpr.run_once(delmsg, 5, context=msgcontext)
 			elif (user_id == 456128183 and "hi" in msg_split):
 				ricebot.send_message(chat_id, "<code>Negative</code>", parse_mode="HTML", reply_to_message_id=msg_id)
 			elif ((user_id == 339707076 or user_id == 574787216) and (any(x in msg_split for x in justgreet))):
@@ -447,8 +451,10 @@ def main():
 	dp = updater.dispatcher
 	jq = updater.job_queue
 	rm = updater.job_queue
-	global exprmsg
-	exprmsg = updater.job_queue
+	global testexpr
+	global prodexpr
+	testexpr = updater.job_queue
+	prodexpr = updater.job_queue
 
 	# dp.add_handler(telegram.ext.MessageHandler(telegram.ext.Filters.all, handle))
 	dp.add_handler(telegram.ext.MessageHandler(telegram.ext.Filters.chat(testGCID), testGChandle))
