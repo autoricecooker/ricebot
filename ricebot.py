@@ -391,7 +391,7 @@ def prodGChandle(ricebot, update):
 			elif ("toasties" in msg_split and random.randint(0, 1)):
 				ricebot.send_animation(chat_id, toastiesgif[0], reply_to_message_id=msg_id)
 			#autoreply for jerome and athens pic
-			elif (msg_split == "jerathens"):
+			elif (msg_text == "jerathens"):
 				msgcontext = ricebot.send_photo(chat_id, "AgADBQADVagxG9cuOVfXq7usGDCFAsZo3jIABCF2Vg7uGe3afUIAAgI")
 				prodexpr.run_once(delmsg, 5, context=msgcontext)
 			elif (user_id == 456128183 and "hi" in msg_split):
@@ -449,7 +449,6 @@ def cronjobdos(bot,job):
 def main():
 	updater = telegram.ext.Updater(os.environ["BOT_TOKEN"])
 	dp = updater.dispatcher
-	jq = updater.job_queue
 	rm = updater.job_queue
 	global testexpr
 	global prodexpr
@@ -460,8 +459,6 @@ def main():
 	dp.add_handler(telegram.ext.MessageHandler(telegram.ext.Filters.chat(testGCID), testGChandle))
 	dp.add_handler(telegram.ext.MessageHandler(telegram.ext.Filters.chat(prodGCID), prodGChandle))
 	dp.add_handler(telegram.ext.MessageHandler(telegram.ext.Filters.private, pmhandle))
-	jerathensone = jq.run_daily(cronjob, datetime.time(17,1,0,0))
-	jerathensone.enabled = True
 
 	fourtwenty = rm.run_daily(cronjobdos, datetime.time(8,20,15,0))
 	fourtwenty.enabled = True
