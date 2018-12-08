@@ -58,6 +58,7 @@ angerychance = 0
 atomchance = 0
 leichance = 0
 update_id = 0
+exprmsg = None
 
 #Search if keywords in list are located in the string, based on regex pattern
 def searchinString(keylist, msg, searchparam):
@@ -77,6 +78,11 @@ def searchinString(keylist, msg, searchparam):
 				found = 1
 
 	return found
+
+#Delete message
+def delmsg(bot, job):
+	msg = job.context
+	msg.delete()
 
 @run_async
 def pmhandle(ricebot, update):
@@ -136,10 +142,11 @@ def testGChandle(ricebot, update):
 	reply_user_id = None
 	fwd_user_id = None
 	sticker_id = None
+	contxt = None
 	landichance = random.randint(1,6) % 5
 	atomchance = random.randint(1,6) % 6
 	leichance = random.randint(1,3) % 3
-
+	global exprmsg
 	#Check if message has content
 	if update.message:
 
@@ -176,7 +183,8 @@ def testGChandle(ricebot, update):
 				else:
 					ricebot.send_document(chat_id, landigif[1], caption=None, parse_mode="Markdown", disable_notification=True, reply_to_message_id=msg_id)
 			elif (msg_text == "jerathens"):
-				ricebot.send_photo(chat_id, "AgADBQADVagxG9cuOVfXq7usGDCFAsZo3jIABCF2Vg7uGe3afUIAAgI")
+				contxt = ricebot.send_photo(chat_id, "AgADBQADVagxG9cuOVfXq7usGDCFAsZo3jIABCF2Vg7uGe3afUIAAgI")
+				exprmsg.run_once(delmsg, 5, context=contxt)
 			#autoreply for thick thighs
 			elif (msg_text == "send text test"):
 				ricebot.send_message(-1001255652659, "<code>All contents/events in this group chat are confidential. \nDisclosure is prohibited</code>", parse_mode="HTML")
@@ -433,12 +441,14 @@ def cronjobdos(bot,job):
 	bot.send_message(testGCID, "CRON JOB 420 ACTIVATED")
 	bot.send_animation(prodGCID, random.choice(ftwentygif))
 
+
 def main():
 	updater = telegram.ext.Updater(os.environ["BOT_TOKEN"])
 	dp = updater.dispatcher
 	jq = updater.job_queue
 	rm = updater.job_queue
-
+	global exprmsg
+	exprmsg = updater.job_queue
 
 	# dp.add_handler(telegram.ext.MessageHandler(telegram.ext.Filters.all, handle))
 	dp.add_handler(telegram.ext.MessageHandler(telegram.ext.Filters.chat(testGCID), testGChandle))
