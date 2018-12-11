@@ -398,7 +398,7 @@ def prodGChandle(ricebot, update):
 				ricebot.send_message(chat_id, "<code>Negative</code>", parse_mode="HTML", reply_to_message_id=msg_id)
 			elif ((user_id == 339707076 or user_id == 574787216) and (any(x in msg_split for x in justgreet))):
 				ricebot.send_message(chat_id, "<code>Pass</code>", parse_mode="HTML")
-			elif (angerychance and msg_text == "hi rice"):
+			elif (angerychance and any(x in msg_split for x in justgreet)):
 				time.sleep(1)
 				ricebot.send_message(chat_id, random.choice(randomgreet), parse_mode="Markdown", disable_web_page_preview=None, disable_notification=True, reply_to_message_id=msg_id)
 			#sad greetings autoreply
