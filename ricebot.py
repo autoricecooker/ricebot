@@ -35,6 +35,7 @@ jakegreet = ["happy", "joyful"]
 justgreet = ["hi", "hello", "henlo", "hallu", "elo", "hellu", "haller", "haler"]
 leigreetphrase = ["cute ako", "maganda ako", "pinaka cute", "pinaka maganda", "i am beautiful", "sexy ako", "most beautiful", "ganda ko", "5'11", "qt ko", "qt ako"]
 leigreetword = ["pinakacute", "cute", "pinakamaganda"]
+weebgreet = ["anime was a mistake", "weeb shit", "fucking weeb", "fuckin weeb"]
 leisticker = ["CAADBQADIQEAAiO4mBCSjVKUWk7MNwI", "CAADBQADHAEAAiO4mBCeaC0LYAlkowI", "CAADBQADIAEAAiO4mBD3UdIBPEO6WwI", "CAADBQADGwEAAiO4mBC51PR572t9EgI", "CAADBQADHwEAAiO4mBBJWiwq_cjWdQI", "CAADBQADHgEAAiO4mBBMQuYcpcSX2AI"]
 #leigif = ["CgADBQADEAADS754Vj0cIPOA5fAWAg", "CgADBQADFQADDHrhVXLWPyi-fVESAg", "CgADBQADEQADNNrpV0yGyX3SyadcAg", "CgADBQADHwADYlzxVd_bBWXEyqHUAg"]
 leigif = ["CgADBQADEQADNNrpV_JyDVwU2d1rAg", "CgADBQADFQADDHrhVeaTS0bvbyRWAg", "CgADBQADEAADS754Vha1dmKytEvNAg", "CgADBQADHwADYlzxVfOzb9cCUkuqAg"]
@@ -226,8 +227,8 @@ def testGChandle(ricebot, update):
 			elif (any(x in msg_text for x in assumptgreet)):
 				time.sleep(1)			
 				ricebot.send_message(chat_id, "Di ako yun", parse_mode="Markdown", disable_web_page_preview=None, disable_notification=True, reply_to_message_id=msg_id)
-			#autoreply for weaboos
-			elif("weeb shit" in msg_text or "anime was a mistake" in msg_text):
+			#autoreply for weeaboos
+			elif(any(x in msg_text for x in weebgreet)):
 				ricebot.send_animation(chat_id, "CgADBQADOwADyE_wVe3mk7g8DJnwAg")
 			#autoreply for athens
 			elif (user_id == 322520879 and any (x in msg_text for x in athensgreet)):
@@ -351,7 +352,7 @@ def prodGChandle(ricebot, update):
 				else :
 					ricebot.send_animation(chat_id, random.choice(leigif))
 			#autoreply for weaboos
-			elif("weeb shit" in msg_text or "anime was a mistake" in msg_text):
+			elif(any(x in msg_text for x in weebgreet)):
 				ricebot.send_animation(chat_id, "CgADBQADOwADyE_wVe3mk7g8DJnwAg")
 			#autoreply for luh with louise shrug
 			elif ("luh" in msg_split and (random.randrange(0,100) < 40)):
