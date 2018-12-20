@@ -190,6 +190,7 @@ def testGChandle(ricebot, update):
 			#replace string test
 			elif ("pass" in msg_split):
 				print ("pass keyword found")
+				print (msg_text.replace("pass", "patawad"))
 				ricebot.send_document(chat_id, msg_text.replace("pass", "patawad"), reply_to_message_id=msg_id)
 			#autoreply for thick thighs
 			elif (msg_text == "send text test"):
