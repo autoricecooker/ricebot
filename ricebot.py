@@ -191,7 +191,7 @@ def testGChandle(ricebot, update):
 			elif ("pass" in msg_split):
 				print ("pass keyword found")
 				print (msg_text.replace("pass", "patawad"))
-				ricebot.send_document(chat_id, msg_text.replace("pass", "patawad"), reply_to_message_id=msg_id)
+				ricebot.send_message(chat_id, msg_text.replace("pass", "patawad"), reply_to_message_id=msg_id)
 			#autoreply for thick thighs
 			elif (msg_text == "send text test"):
 				ricebot.send_message(-1001255652659, "<code>All contents/events in this group chat are confidential. \nDisclosure is prohibited</code>", parse_mode="HTML")
@@ -339,6 +339,10 @@ def prodGChandle(ricebot, update):
 				else:
 					ricebot.send_animation(chat_id, landigif[1], caption=None, parse_mode="Markdown", disable_notification=True, reply_to_message_id=reply_msg_id)
 			#autoreply for hipo messages
+			elif ("pass" in msg_split):
+				print ("pass keyword found")
+				print (msg_text.replace("pass", "patawad"))
+				ricebot.send_message(chat_id, msg_text.replace("pass", "patawad"), reply_to_message_id=msg_id)
 			elif (msg_text == "hipo" and user_id != 322520879):
 				if (landichance):
 					ricebot.send_document(chat_id, landigif[0], caption=None, parse_mode="Markdown", disable_notification=True, reply_to_message_id=msg_id)
