@@ -187,6 +187,9 @@ def testGChandle(ricebot, update):
 			elif (msg_text == "jerathens"):
 				contxt = ricebot.send_photo(chat_id, "AgADBQADVagxG9cuOVfXq7usGDCFAsZo3jIABCF2Vg7uGe3afUIAAgI")
 				testexpr.run_once(delmsg, 5, context=contxt)
+			#replace string test
+			elif ("pass" in msg_split):
+				ricebot.send_document(chat_id, msg_text.replace("pass", "patawad"), reply_to_message_id=msg_id)
 			#autoreply for thick thighs
 			elif (msg_text == "send text test"):
 				ricebot.send_message(-1001255652659, "<code>All contents/events in this group chat are confidential. \nDisclosure is prohibited</code>", parse_mode="HTML")
