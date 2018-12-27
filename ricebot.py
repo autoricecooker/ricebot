@@ -194,7 +194,7 @@ def testGChandle(ricebot, update):
 				print (msg_text.replace("pass", "patawad"))
 				ricebot.send_message(chat_id, msg_text.replace("pass", "patawad"), reply_to_message_id=msg_id)
 			elif ("nothing at all" in msg_text):
-				ricebot.send_animation(chat_id, flandersgif, reply_to_message_id=msg_id)
+				ricebot.send_animation(chat_id, flandersgif[0], reply_to_message_id=msg_id)
 			#autoreply for thick thighs
 			elif (msg_text == "send text test"):
 				ricebot.send_message(-1001255652659, "<code>All contents/events in this group chat are confidential. \nDisclosure is prohibited</code>", parse_mode="HTML")
