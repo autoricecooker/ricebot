@@ -54,6 +54,7 @@ jakegif = ["CgADBQADBwADGIgpVpF8EgH6Mc-9Ag"]
 drunkpic = ["AgADBQADOagxGxB_aVZNfo9wNUvyYvGl1jIABMOR93PzURnicEMDAAEC", "AgADBQADOqgxGxB_aVav5vKmhLduCGqk1jIABOQDiHpGpExCJUMDAAEC", "AgADBQADkagxG6Oe8FbPeySNTsva1S5U2zIABHbiq4wGrTTHhxABAAEC", "AgADBQADYKgxGzx76FYspQoUVI_orGFh2zIABPdENNUjOZ6HMQoBAAEC", "AgADBQADyagxG3vgQFfzWyPyZwABhDpToNYyAARIZLO6JHE6rwHyAwABAg", "AgADBQADyqgxG3vgQFdnwo6v0N37ltKu1jIABImnO1LEv_hLsvgDAAEC", "AgADBQADy6gxG3vgQFdhN5CqLNBoaZps3jIABIzvbj8OdXrYa0EAAgI", "AgADBQADzKgxG3vgQFd0wYPinyYN3Zhq2zIABNpbg4ad52tcN0oBAAEC"]
 parrotgif = ["CgADBQADLQADkxKZVrE-Wx30uXiNAg", "CgADBQADWAADeL-YVnw3sjCV8aeLAg", "CgADBQADMAADkxKZVp3RsGgriq4TAg", "CgADBQADWQADeL-YVsV0J7Zx1H3-Ag", "CgADBQADLwADamEJVwABfmqsGruuIAI"]
 ftwentygif = ["CgADBQADZwADC8sAAVdyPHOcrabSlAI", "CgADBQADBQADilkQVlcE7H79KrlZAg"]
+flandersgif = ["CgADBAADOQADvho0UUaTNwGy6fWJAg"]
 landichance = 0
 angerychance = 0
 atomchance = 0
@@ -192,6 +193,8 @@ def testGChandle(ricebot, update):
 				print ("pass keyword found")
 				print (msg_text.replace("pass", "patawad"))
 				ricebot.send_message(chat_id, msg_text.replace("pass", "patawad"), reply_to_message_id=msg_id)
+			elif ("nothing at all" in msg_text):
+				ricebot.send_animation(chat_id, flandersgif, reply_to_message_id=msg_id)
 			#autoreply for thick thighs
 			elif (msg_text == "send text test"):
 				ricebot.send_message(-1001255652659, "<code>All contents/events in this group chat are confidential. \nDisclosure is prohibited</code>", parse_mode="HTML")
