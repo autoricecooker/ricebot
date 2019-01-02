@@ -50,7 +50,7 @@ unpluggif = "CgADBQADNwADtjzaDXzFsIuaINkHAg"
 landigif = ["CgADBQADHQAD6QuQV_mxPdwxj0s2Ag", "CgADBQADKQADvG2JVi4mEJDnylDvAg"]
 louisegif = ["CgADBQADHAADVMqxV2iqwCWWKYXRAg", "CgADBQADRQADggs5VTtpVvYfIcqBAg", "CgADBQADGwADwI9BVYEBhY4qglXKAg", "CgADBQADWwADfhjQVy2VyBHiS3kWAg", "CgADBQADXQADlN5hVIkXruw21LEsAg"]
 toastiesgif = ["CgADBQADLwADv4dBVFVtZJ9jdSwFAg"]
-jakegif = ["CgADBQADBwADGIgpVpF8EgH6Mc-9Ag"]
+jakegif = ["CgADBQADBwADGIgpVpF8EgH6Mc-9Ag", "CgADBQADCgADuNkwVpThek7KAmXsAg"]
 drunkpic = ["AgADBQADOagxGxB_aVZNfo9wNUvyYvGl1jIABMOR93PzURnicEMDAAEC", "AgADBQADOqgxGxB_aVav5vKmhLduCGqk1jIABOQDiHpGpExCJUMDAAEC", "AgADBQADkagxG6Oe8FbPeySNTsva1S5U2zIABHbiq4wGrTTHhxABAAEC", "AgADBQADYKgxGzx76FYspQoUVI_orGFh2zIABPdENNUjOZ6HMQoBAAEC", "AgADBQADyagxG3vgQFfzWyPyZwABhDpToNYyAARIZLO6JHE6rwHyAwABAg", "AgADBQADyqgxG3vgQFdnwo6v0N37ltKu1jIABImnO1LEv_hLsvgDAAEC", "AgADBQADy6gxG3vgQFdhN5CqLNBoaZps3jIABIzvbj8OdXrYa0EAAgI", "AgADBQADzKgxG3vgQFd0wYPinyYN3Zhq2zIABNpbg4ad52tcN0oBAAEC"]
 parrotgif = ["CgADBQADLQADkxKZVrE-Wx30uXiNAg", "CgADBQADWAADeL-YVnw3sjCV8aeLAg", "CgADBQADMAADkxKZVp3RsGgriq4TAg", "CgADBQADWQADeL-YVsV0J7Zx1H3-Ag", "CgADBQADLwADamEJVwABfmqsGruuIAI"]
 ftwentygif = ["CgADBQADZwADC8sAAVdyPHOcrabSlAI", "CgADBQADBQADilkQVlcE7H79KrlZAg"]
@@ -395,7 +395,7 @@ def prodGChandle(ricebot, update):
 			#autoreply for happy jake gif
 			elif ("happy" in msg_split and "jake" in msg_split):
 				if searchinString(jakegreet, msg_text, searchparam=r"(\S+) jake"):
-					ricebot.send_animation(chat_id, jakegif[0])
+					ricebot.send_animation(chat_id, random.choice(jakegif))
 			#autoreply for thick thighs
 			elif (any(x in msg_split for x in tikigreet) and "thigh" in msg_text):
 				if (searchinString(tikigreet, msg_text, searchparam=r"(\S+) thigh") or searchinString(tikigreet, msg_text, searchparam=r"(\S+) inner thigh")):
