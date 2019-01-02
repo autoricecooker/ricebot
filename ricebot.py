@@ -189,10 +189,10 @@ def testGChandle(ricebot, update):
 				contxt = ricebot.send_photo(chat_id, "AgADBQADVagxG9cuOVfXq7usGDCFAsZo3jIABCF2Vg7uGe3afUIAAgI")
 				testexpr.run_once(delmsg, 5, context=contxt)
 			#replace string test
-			elif ("pass" in msg_split):
-				print ("pass keyword found")
-				print (msg_text.replace("pass", "patawad"))
-				ricebot.send_message(chat_id, msg_text.replace("pass", "patawad"), reply_to_message_id=msg_id)
+			# elif ("pass" in msg_split):
+			# 	print ("pass keyword found")
+			# 	print (msg_text.replace("pass", "patawad"))
+			# 	ricebot.send_message(chat_id, msg_text.replace("pass", "patawad"), reply_to_message_id=msg_id)
 			elif ("nothing at all" in msg_text):
 				ricebot.send_animation(chat_id, flandersgif[0], reply_to_message_id=msg_id)
 			#autoreply for thick thighs
@@ -407,14 +407,14 @@ def prodGChandle(ricebot, update):
 			elif (msg_text == "jerathens"):
 				msgcontext = ricebot.send_photo(chat_id, "AgADBQADVagxG9cuOVfXq7usGDCFAsZo3jIABCF2Vg7uGe3afUIAAgI")
 				prodexpr.run_once(delmsg, 5, context=msgcontext)
-			#greetings autoreply
-			elif (user_id == 456128183 and "hi" in msg_split):
-				ricebot.send_message(chat_id, "<code>Negative</code>", parse_mode="HTML", reply_to_message_id=msg_id)
-			elif ((user_id == 339707076 or user_id == 574787216) and (any(x in msg_split for x in justgreet))):
-				ricebot.send_message(chat_id, "<code>Pass</code>", parse_mode="HTML")
-			elif (user_id != 236212097 and angerychance and any(x in msg_split for x in justgreet)):
-				time.sleep(1)
-				ricebot.send_message(chat_id, random.choice(randomgreet), parse_mode="Markdown", disable_web_page_preview=None, disable_notification=True, reply_to_message_id=msg_id)
+			# #greetings autoreply
+			# elif (user_id == 456128183 and "hi" in msg_split):
+			# 	ricebot.send_message(chat_id, "<code>Negative</code>", parse_mode="HTML", reply_to_message_id=msg_id)
+			# elif ((user_id == 339707076 or user_id == 574787216) and (any(x in msg_split for x in justgreet))):
+			# 	ricebot.send_message(chat_id, "<code>Pass</code>", parse_mode="HTML")
+			# elif (user_id != 236212097 and angerychance and any(x in msg_split for x in justgreet)):
+			# 	time.sleep(1)
+			# 	ricebot.send_message(chat_id, random.choice(randomgreet), parse_mode="Markdown", disable_web_page_preview=None, disable_notification=True, reply_to_message_id=msg_id)
 			#sad greetings autoreply
 			elif (any(x in msg_split for x in sadgreet) and "rice" in msg_text):
 				if searchinString(sadgreet, msg_text, searchparam=r"(\S+) @ricecooker"):
