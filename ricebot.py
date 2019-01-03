@@ -187,7 +187,7 @@ def testGChandle(ricebot, update):
 					ricebot.send_document(chat_id, landigif[1], caption=None, parse_mode="Markdown", disable_notification=True, reply_to_message_id=msg_id)
 			elif (msg_text == "jerathens"):
 				contxt = ricebot.send_photo(chat_id, "AgADBQADVagxG9cuOVfXq7usGDCFAsZo3jIABCF2Vg7uGe3afUIAAgI")
-				testexpr.run_once(delmsg, 5, context=contxt)
+				testexpr.run_once(delmsg, 3, context=contxt)
 			#replace string test
 			# elif ("pass" in msg_split):
 			# 	print ("pass keyword found")
@@ -309,7 +309,7 @@ def prodGChandle(ricebot, update):
 	anm_id = None
 	reply_user_id = None
 	landichance = random.randint(1,6) % 5
-	angerychance = random.randint(1,4) % 4
+	# angerychance = random.randint(1,4) % 4
 	atomchance = random.randint(1,6) % 6
 	leichance = random.randint(1,3) % 3
 	global prodexpr
@@ -406,7 +406,7 @@ def prodGChandle(ricebot, update):
 			#autoreply for jerome and athens pic
 			elif (msg_text == "jerathens"):
 				msgcontext = ricebot.send_photo(chat_id, "AgADBQADVagxG9cuOVfXq7usGDCFAsZo3jIABCF2Vg7uGe3afUIAAgI")
-				prodexpr.run_once(delmsg, 5, context=msgcontext)
+				prodexpr.run_once(delmsg, 3, context=msgcontext)
 			# #greetings autoreply
 			# elif (user_id == 456128183 and "hi" in msg_split):
 			# 	ricebot.send_message(chat_id, "<code>Negative</code>", parse_mode="HTML", reply_to_message_id=msg_id)
