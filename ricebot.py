@@ -52,9 +52,10 @@ louisegif = ["CgADBQADHAADVMqxV2iqwCWWKYXRAg", "CgADBQADRQADggs5VTtpVvYfIcqBAg",
 toastiesgif = ["CgADBQADLwADv4dBVFVtZJ9jdSwFAg"]
 jakegif = ["CgADBQADBwADGIgpVpF8EgH6Mc-9Ag", "CgADBQADCgADuNkwVpThek7KAmXsAg"]
 drunkpic = ["AgADBQADOagxGxB_aVZNfo9wNUvyYvGl1jIABMOR93PzURnicEMDAAEC", "AgADBQADOqgxGxB_aVav5vKmhLduCGqk1jIABOQDiHpGpExCJUMDAAEC", "AgADBQADkagxG6Oe8FbPeySNTsva1S5U2zIABHbiq4wGrTTHhxABAAEC", "AgADBQADYKgxGzx76FYspQoUVI_orGFh2zIABPdENNUjOZ6HMQoBAAEC", "AgADBQADyagxG3vgQFfzWyPyZwABhDpToNYyAARIZLO6JHE6rwHyAwABAg", "AgADBQADyqgxG3vgQFdnwo6v0N37ltKu1jIABImnO1LEv_hLsvgDAAEC", "AgADBQADy6gxG3vgQFdhN5CqLNBoaZps3jIABIzvbj8OdXrYa0EAAgI", "AgADBQADzKgxG3vgQFd0wYPinyYN3Zhq2zIABNpbg4ad52tcN0oBAAEC"]
-parrotgif = ["CgADBQADLQADkxKZVrE-Wx30uXiNAg", "CgADBQADWAADeL-YVnw3sjCV8aeLAg", "CgADBQADMAADkxKZVp3RsGgriq4TAg", "CgADBQADWQADeL-YVsV0J7Zx1H3-Ag", "CgADBQADLwADamEJVwABfmqsGruuIAI"]
+parrotgif = ["CgADBQADLQADkxKZVrE-Wx30uXiNAg", "CgADBQADWAADeL-YVnw3sjCV8aeLAg", "CgADBQADMAADkxKZVp3RsGgriq4TAg", "CgADBQADWQADeL-YVsV0J7Zx1H3-Ag", "CgADBQADLwADamEJVwABfmqsGruuIAI", "CgADBQADRQADxKcIVnp4XIZkwZhFAg", "CgADBQADRgADxKcIVtBU7hnUu1vtAg", "CgADBQADSgADFBMRVvS30XYL8EfxAg", "CgADBQADTQADxKcQVqmmDa3r6kUvAg"]
 ftwentygif = ["CgADBQADZwADC8sAAVdyPHOcrabSlAI", "CgADBQADBQADilkQVlcE7H79KrlZAg"]
 flandersgif = ["CgADBAADOQADvho0UUaTNwGy6fWJAg"]
+weebgif = ["CgADBQADOwADyE_wVe3mk7g8DJnwAg", "CgADBQADWAAD5XgIVd4wMCz9ESrCAg"]
 landichance = 0
 angerychance = 0
 atomchance = 0
@@ -237,7 +238,7 @@ def testGChandle(ricebot, update):
 				ricebot.send_message(chat_id, "Di ako yun", parse_mode="Markdown", disable_web_page_preview=None, disable_notification=True, reply_to_message_id=msg_id)
 			#autoreply for weeaboos
 			elif(any(x in msg_text for x in weebgreet)):
-				ricebot.send_animation(chat_id, "CgADBQADOwADyE_wVe3mk7g8DJnwAg")
+				ricebot.send_animation(chat_id, random.choice(weebgif))
 			#autoreply for athens
 			elif (user_id == 322520879 and any (x in msg_text for x in athensgreet)):
 				if (random.randint(0,3)):
@@ -365,7 +366,7 @@ def prodGChandle(ricebot, update):
 					ricebot.send_animation(chat_id, random.choice(leigif))
 			#autoreply for weaboos
 			elif(any(x in msg_text for x in weebgreet)):
-				ricebot.send_animation(chat_id, "CgADBQADOwADyE_wVe3mk7g8DJnwAg")
+				ricebot.send_animation(chat_id, random.choice(weebgif))
 			#autoreply for luh with louise shrug
 			elif ("luh" in msg_split and (random.randrange(0,100) < 40)):
 				if (random.randint(0,15)):
