@@ -408,6 +408,8 @@ def prodGChandle(ricebot, update):
 			elif (msg_text == "jerathens"):
 				msgcontext = ricebot.send_photo(chat_id, "AgADBQADVagxG9cuOVfXq7usGDCFAsZo3jIABCF2Vg7uGe3afUIAAgI")
 				prodexpr.run_once(delmsg, 3, context=msgcontext)
+			elif ("nothing at all" in msg_text):
+				ricebot.send_animation(chat_id, flandersgif[0], reply_to_message_id=msg_id)
 			# #greetings autoreply
 			# elif (user_id == 456128183 and "hi" in msg_split):
 			# 	ricebot.send_message(chat_id, "<code>Negative</code>", parse_mode="HTML", reply_to_message_id=msg_id)
