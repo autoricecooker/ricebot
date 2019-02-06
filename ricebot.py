@@ -137,7 +137,7 @@ def pmhandle(ricebot, update):
 				elif searchinString(killgreet, msg_text, searchparam=r"(\S+) rice"):
 					ricebot.send_animation(chat_id, unpluggif, reply_to_message_id=msg_id)
 
-@run_async
+
 def testGChandle(ricebot, update):
 	#Initialize variables
 	msg_text = None
@@ -302,7 +302,7 @@ def testGChandle(ricebot, update):
 			ricebot.send_message(chat_id, "Forwarded message user ID: " + str(fwd_user_id) + "\nForwarded chat ID: " + str(update.message.forward_from_chat))
 		
 
-@run_async
+
 def prodGChandle(ricebot, update):
 	#Initialize variables
 	msg_text = None
