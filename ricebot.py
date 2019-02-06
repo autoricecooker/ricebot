@@ -333,6 +333,7 @@ def prodGChandle(ricebot, update):
 			reply_msg_id = update.message.reply_to_message.message_id
 
 		if (msg_text and user_id != 456128183):
+			print(chat_id)
 			#autoreply for athens
 			if (user_id == 322520879 and any (x in msg_text for x in athensgreet)):
 				ricebot.send_sticker(chat_id, "CAADBQADCQADL0c5E0v6frqfrAl0Ag", reply_to_message_id=msg_id)
@@ -472,9 +473,9 @@ def main():
 	testexpr = updater.job_queue
 	prodexpr = updater.job_queue
 
-	# dp.add_handler(telegram.ext.MessageHandler(telegram.ext.Filters.all, handle))
+	dp.add_handler(telegram.ext.MessageHandler(telegram.ext.Filters.all, prodGChandle))
 	dp.add_handler(telegram.ext.MessageHandler(telegram.ext.Filters.chat(testGCID), testGChandle))
-	dp.add_handler(telegram.ext.MessageHandler(telegram.ext.Filters.chat(prodGCID), prodGChandle))
+	#dp.add_handler(telegram.ext.MessageHandler(telegram.ext.Filters.chat(prodGCID), prodGChandle))
 	dp.add_handler(telegram.ext.MessageHandler(telegram.ext.Filters.private, pmhandle))
 
 	fourtwenty = rm.run_daily(cronjobdos, datetime.time(8,20,15,0))
