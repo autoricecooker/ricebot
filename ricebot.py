@@ -299,7 +299,7 @@ def testGChandle(ricebot, update):
 		
 		#Check if message is forwarded
 		if (fwd_user_id):
-				ricebot.send_message(chat_id, "Forwarded message user ID: " + str(fwd_user_id))
+			ricebot.send_message(chat_id, "Forwarded message user ID: " + str(fwd_user_id) + "\nForwarded chat ID: " + str(update.message.forward_from_chat))
 		
 
 @run_async
