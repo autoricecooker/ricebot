@@ -400,7 +400,7 @@ def prodGChandle(ricebot, update):
 			#autoreply for thick thighs
 			elif (any(x in msg_split for x in tikigreet) and "thigh" in msg_text):
 				if (searchinString(tikigreet, msg_text, searchparam=r"(\S+) thigh") or searchinString(tikigreet, msg_text, searchparam=r"(\S+) inner thigh")):
-					ricebot.forward_message(chat_id, -1001255652659, 1496)
+					ricebot.send_message(chat_id,"Though I can make an argument for meaty inner thighs as well. Iba tunog pag binabayo ng todo. Ang primal lang ng tunog. Tapos sabayan mo pa na sobrang basa niya kasi mas nababasa ang mga thick.\nDi rin masyado masakit sa singit pag sa matagalan.", reply_to_message_id=msg_id)
 			#autoreply for toasties
 			elif ("toasties" in msg_split and random.randint(0, 1)):
 				ricebot.send_animation(chat_id, toastiesgif[0], reply_to_message_id=msg_id)
