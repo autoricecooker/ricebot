@@ -470,8 +470,8 @@ def main():
 	dp.add_handler(telegram.ext.MessageHandler(telegram.ext.Filters.chat(prodGCID), prodGChandle))
 	dp.add_handler(telegram.ext.MessageHandler(telegram.ext.Filters.private, pmhandle))
 
-	fourtwenty = rm.run_daily(cronjobdos, datetime.time(8,20,15,0))
-	fourtwenty.enabled = False
+	# fourtwenty = rm.run_daily(cronjobdos, datetime.time(8,20,15,0))
+	# fourtwenty.enabled = False
 	
 	updater.start_polling()
 
