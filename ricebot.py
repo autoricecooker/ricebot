@@ -137,7 +137,7 @@ def pmhandle(ricebot, update):
 				elif searchinString(killgreet, msg_text, searchparam=r"(\S+) rice"):
 					ricebot.send_animation(chat_id, unpluggif, reply_to_message_id=msg_id)
 
-
+@run_async
 def testGChandle(ricebot, update):
 	#Initialize variables
 	msg_text = None
@@ -302,7 +302,7 @@ def testGChandle(ricebot, update):
 			ricebot.send_message(chat_id, "Forwarded message user ID: " + str(fwd_user_id) + "\nForwarded chat ID: " + str(update.message.forward_from_chat))
 		
 
-
+@run_async
 def prodGChandle(ricebot, update):
 	#Initialize variables
 	msg_text = None
@@ -332,7 +332,7 @@ def prodGChandle(ricebot, update):
 			reply_user_id = update.message.reply_to_message.from_user.id
 			reply_msg_id = update.message.reply_to_message.message_id
 
-		if (msg_text and user_id != 456128183):
+		if (msg_text):
 			print(chat_id)
 			#autoreply for athens
 			if (user_id == 322520879 and any (x in msg_text for x in athensgreet)):
@@ -451,13 +451,6 @@ def prodGChandle(ricebot, update):
 				ricebot.send_sticker(chat_id, random.choice(leisticker), reply_to_message_id=msg_id)
 			else :
 				ricebot.send_animation(chat_id, random.choice(leigif), reply_to_message_id=msg_id)
-			
-def cronjob(bot, job):
-	# bot.send_photo(-1001043875036, "AgADBQADVagxG9cuOVfXq7usGDCFAsZo3jIABCF2Vg7uGe3afUIAAgI")
-	if (random.randint(0,2)):
-		bot.send_message(testGCID, "CRON JOB EXECUTED")
-	else:
-		bot.send_message(testGCID, "CRON JOB SKIPPED")
 
 def cronjobdos(bot,job):
 	bot.send_message(testGCID, "CRON JOB 420 ACTIVATED")
@@ -473,13 +466,12 @@ def main():
 	testexpr = updater.job_queue
 	prodexpr = updater.job_queue
 
-	dp.add_handler(telegram.ext.MessageHandler(telegram.ext.Filters.all, prodGChandle))
 	dp.add_handler(telegram.ext.MessageHandler(telegram.ext.Filters.chat(testGCID), testGChandle))
-	#dp.add_handler(telegram.ext.MessageHandler(telegram.ext.Filters.chat(prodGCID), prodGChandle))
+	dp.add_handler(telegram.ext.MessageHandler(telegram.ext.Filters.chat(prodGCID), prodGChandle))
 	dp.add_handler(telegram.ext.MessageHandler(telegram.ext.Filters.private, pmhandle))
 
 	fourtwenty = rm.run_daily(cronjobdos, datetime.time(8,20,15,0))
-	fourtwenty.enabled = True
+	fourtwenty.enabled = False
 	
 	updater.start_polling()
 
