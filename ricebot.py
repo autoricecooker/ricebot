@@ -148,7 +148,7 @@ def testGChandle(ricebot, update):
 	leichance = random.randint(1,3) % 3
 	global testexpr
 	#Check if message has content
-	if update.message:
+	if (update.message):
 
 		chat_id = update.message.chat_id
 		msg_id = update.message.message_id
@@ -174,7 +174,7 @@ def testGChandle(ricebot, update):
 
 		#Send motd when new members are added
 		if (update.message.new_chat_members):
-			ricebot.send_message(-1001255652659, "<code>All contents/events in this group chat are confidential. Disclosure is prohibited</code>", parse_mode="HTML")
+			ricebot.send_message(chat_id, "<code>All contents/events in this group chat are confidential. Disclosure is prohibited</code>", parse_mode="HTML")
 		#Check if message is text
 		if (msg_text):
 			if (msg_text == "hipo"):
@@ -313,12 +313,13 @@ def prodGChandle(ricebot, update):
 	msgcontext = None
 
 	#Check if message has content
-	if update.message:
+	if (update.message):
 
 		chat_id = update.message.chat_id
 		msg_id = update.message.message_id
 		user_id = update.message.from_user.id
 
+		print("Update.message not empty")
 		#Get original user ID from reply message
 		if (update.message.reply_to_message):
 			reply_user_id = update.message.reply_to_message.from_user.id
