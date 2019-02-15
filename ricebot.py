@@ -101,13 +101,9 @@ def pmhandle(ricebot, update):
 		chat_id = update.message.chat_id
 		msg_id = update.message.message_id
 
-		#Get message text if not none
 		if (update.message.text):
 			msg_text = update.message.text.lower()
 			msg_split = msg_text.split()	
-
-		#send greetings
-		if (msg_text):
 			if (angerychance and msg_text == "hi rice"):
 				time.sleep(1)
 				ricebot.send_message(chat_id, random.choice(randomgreet), parse_mode="Markdown", disable_web_page_preview=None, disable_notification=True, reply_to_message_id=msg_id)
@@ -323,16 +319,14 @@ def prodGChandle(ricebot, update):
 		msg_id = update.message.message_id
 		user_id = update.message.from_user.id
 
-		#Get message text if not none
-		if (update.message.text):
-			msg_text = update.message.text.lower()
-			msg_split = msg_text.split()	
 		#Get original user ID from reply message
 		if (update.message.reply_to_message):
 			reply_user_id = update.message.reply_to_message.from_user.id
 			reply_msg_id = update.message.reply_to_message.message_id
 
-		if (msg_text):
+		if (update.message.text):
+			msg_text = update.message.text.lower()
+			msg_split = msg_text.split()	
 			print(chat_id)
 			#autoreply for athens
 			if (user_id == 322520879 and any (x in msg_text for x in athensgreet)):
