@@ -154,10 +154,6 @@ def testGChandle(ricebot, update):
 		msg_id = update.message.message_id
 		user_id = update.message.from_user.id
 
-		#Get message text if not none
-		if (update.message.text):
-			msg_text = update.message.text.lower()
-			msg_split = msg_text.split()	
 		#Get original user ID from reply message
 		if (update.message.reply_to_message):
 			reply_user_id = update.message.reply_to_message.from_user.id
@@ -176,7 +172,9 @@ def testGChandle(ricebot, update):
 		if (update.message.new_chat_members):
 			ricebot.send_message(chat_id, "<code>All contents/events in this group chat are confidential. Disclosure is prohibited</code>", parse_mode="HTML")
 		#Check if message is text
-		if (msg_text):
+		if (update.message.text):
+			msg_text = update.message.text.lower()
+			msg_split = msg_text.split()	
 			if (msg_text == "hipo"):
 				if (landichance):
 					ricebot.send_document(chat_id, landigif[0], caption=None, parse_mode="Markdown", disable_notification=True, reply_to_message_id=msg_id)
@@ -338,11 +336,11 @@ def prodGChandle(ricebot, update):
 					ricebot.send_animation(chat_id, landigif[0], caption=None, parse_mode="Markdown", disable_notification=True, reply_to_message_id=reply_msg_id)
 				else:
 					ricebot.send_animation(chat_id, landigif[1], caption=None, parse_mode="Markdown", disable_notification=True, reply_to_message_id=reply_msg_id)
+			# elif ("pass" in msg_split):
+			# 	print ("pass keyword found")
+			# 	print (msg_text.replace("pass", "patawad"))
+			# 	ricebot.send_message(chat_id, msg_text.replace("pass", "patawad"), reply_to_message_id=msg_id)
 			#autoreply for hipo messages
-			elif ("pass" in msg_split):
-				print ("pass keyword found")
-				print (msg_text.replace("pass", "patawad"))
-				ricebot.send_message(chat_id, msg_text.replace("pass", "patawad"), reply_to_message_id=msg_id)
 			elif (msg_text == "hipo" and user_id != 322520879):
 				if (landichance):
 					ricebot.send_document(chat_id, landigif[0], caption=None, parse_mode="Markdown", disable_notification=True, reply_to_message_id=msg_id)
@@ -396,7 +394,7 @@ def prodGChandle(ricebot, update):
 			#autoreply for thick thighs
 			elif (any(x in msg_split for x in tikigreet) and "thigh" in msg_text):
 				if (searchinString(tikigreet, msg_text, searchparam=r"(\S+) thigh") or searchinString(tikigreet, msg_text, searchparam=r"(\S+) inner thigh")):
-					ricebot.send_message(chat_id,"Though I can make an argument for meaty inner thighs as well. Iba tunog pag binabayo ng todo. Ang primal lang ng tunog. Tapos sabayan mo pa na sobrang basa niya kasi mas nababasa ang mga thick.\nDi rin masyado masakit sa singit pag sa matagalan.", reply_to_message_id=msg_id)
+					ricebot.forward_message(chat_id, -1001255652659, 1496)
 			#autoreply for toasties
 			elif ("toasties" in msg_split and random.randint(0, 1)):
 				ricebot.send_animation(chat_id, toastiesgif[0], reply_to_message_id=msg_id)
