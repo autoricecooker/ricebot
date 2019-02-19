@@ -293,7 +293,7 @@ def testGChandle(ricebot, update):
 		
 		#Check if message is forwarded
 		if (fwd_user_id):
-			ricebot.send_message(chat_id, "Forwarded message user ID: " + str(fwd_user_id) + "\nForwarded chat ID: " + str(update.message.forward_from_chat))
+			ricebot.send_message(chat_id, "Forwarded message user ID: " + str(fwd_user_id) + "\nForwarded chat ID: " + str(update.message.forward_from_chat.id))
 		
 
 @run_async
@@ -326,7 +326,7 @@ def prodGChandle(ricebot, update):
 		if (update.message.text):
 			msg_text = update.message.text.lower()
 			msg_split = msg_text.split()	
-			print(chat_id)
+
 			#autoreply for athens
 			if (user_id == 322520879 and any (x in msg_text for x in athensgreet)):
 				ricebot.send_sticker(chat_id, "CAADBQADCQADL0c5E0v6frqfrAl0Ag", reply_to_message_id=msg_id)
@@ -445,6 +445,56 @@ def prodGChandle(ricebot, update):
 			else :
 				ricebot.send_animation(chat_id, random.choice(leigif), reply_to_message_id=msg_id)
 
+def cebGChandle(ricebot, update):
+	#Initialize variables
+	msg_text = None
+	msg_split = None
+	reply_user_id = None
+
+	#Check if message has content
+	if (update.message):
+
+		chat_id = update.message.chat_id
+		msg_id = update.message.message_id
+		user_id = update.message.from_user.id
+
+		print("Update.message not empty")
+		#Get original user ID from reply message
+		if (update.message.reply_to_message):
+			reply_user_id = update.message.reply_to_message.from_user.id
+			reply_msg_id = update.message.reply_to_message.message_id
+
+		if (update.message.text):
+			msg_text = update.message.text.lower()
+			msg_split = msg_text.split()
+			if(any(x in msg_text for x in weebgreet)):
+				ricebot.send_animation(chat_id, random.choice(weebgif))
+			elif (any(x in msg_split for x in sadgreet) and "rice" in msg_text):
+				if searchinString(sadgreet, msg_text, searchparam=r"(\S+) @ricecooker"):
+					ricebot.send_message(chat_id,"<.<", parse_mode="Markdown", disable_web_page_preview=None, disable_notification=True, reply_to_message_id=msg_id)
+					time.sleep(1)
+					ricebot.send_message(chat_id, ">.>", parse_mode="Markdown")
+					ricebot.send_message(chat_id, "_spills rice_", parse_mode="Markdown")
+				elif searchinString(sadgreet, msg_text, searchparam=r"(\S+) ricecooker"):
+					ricebot.send_message(chat_id,"<.<", parse_mode="Markdown", disable_web_page_preview=None, disable_notification=True, reply_to_message_id=msg_id)
+					time.sleep(1)
+					ricebot.send_message(chat_id, ">.>", parse_mode="Markdown")
+					ricebot.send_message(chat_id, "_spills rice_", parse_mode="Markdown")
+				elif searchinString(sadgreet, msg_text, searchparam=r"(\S+) rice"):
+					ricebot.send_message(chat_id,"<.<", parse_mode="Markdown", disable_web_page_preview=None, disable_notification=True, reply_to_message_id=msg_id)
+					time.sleep(1)
+					ricebot.send_message(chat_id, ">.>", parse_mode="Markdown")
+					ricebot.send_message(chat_id, "_spills rice_", parse_mode="Markdown")
+			#send unplug GIF if a kill greeting has been sent 
+			elif (any(x in msg_split for x in killgreet) and "rice" in msg_text): 
+				if searchinString(killgreet, msg_text, searchparam=r"(\S+) @ricecooker"):
+					ricebot.send_animation(chat_id, unpluggif, reply_to_message_id=msg_id)
+				elif searchinString(killgreet, msg_text, searchparam=r"(\S+) ricecooker"):
+					ricebot.send_animation(chat_id, unpluggif, reply_to_message_id=msg_id)
+				elif searchinString(killgreet, msg_text, searchparam=r"(\S+) rice"):
+					ricebot.send_animation(chat_id, unpluggif, reply_to_message_id=msg_id)
+		elif (update.message.new_chat_members):
+			ricebot.send_message(chat_id, "<code>Welcome to r/Sugbo Telegram!\n\nAs part of our verification, kindly post a selfie holding a silhig tukog.</code>", parse_mode="HTML")
 def cronjobdos(bot,job):
 	bot.send_message(testGCID, "CRON JOB 420 ACTIVATED")
 	bot.send_animation(prodGCID, random.choice(ftwentygif))
