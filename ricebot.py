@@ -17,6 +17,7 @@ from telegram.ext.dispatcher import run_async
 #wwgc = os.environ["WW_GC"]
 testGCID = int(os.environ["TEST_GC"])
 prodGCID = int(os.environ["PROD_GC"])
+cebGCID = int(os.environ["CEB_GC"])
 sadgreet = ["spill", "trip", "eat", "bite", "tips", "tips over"]
 killgreet = ["unplug", "kill", "rip", "destroy", "hate"]
 randomgreet = ["Hello", "Hi", "Greetings", "Good day", "How are ya?", "Yes", "No", "What's up?"]
@@ -192,7 +193,7 @@ def testGChandle(ricebot, update):
 				ricebot.send_animation(chat_id, flandersgif[0], reply_to_message_id=msg_id)
 			#autoreply for thick thighs
 			elif (msg_text == "send text test"):
-				ricebot.send_message(-1001255652659, "<code>All contents/events in this group chat are confidential. \nDisclosure is prohibited</code>", parse_mode="HTML")
+				ricebot.send_message(chat_id, "<code>All contents/events in this group chat are confidential. \nDisclosure is prohibited</code>", parse_mode="HTML")
 			elif (any(x in msg_split for x in tikigreet) and "thigh" in msg_text):
 				if (searchinString(tikigreet, msg_text, searchparam=r"(\S+) thigh") or searchinString(tikigreet, msg_text, searchparam=r"(\S+) inner thigh")):
 					ricebot.forward_message(chat_id, -1001255652659, 1496)
@@ -293,9 +294,8 @@ def testGChandle(ricebot, update):
 		
 		#Check if message is forwarded
 		if (fwd_user_id):
-			ricebot.send_message(chat_id, "Forwarded message user ID: " + str(fwd_user_id) + "\nForwarded chat ID: " + str(update.message.forward_from_chat.id))
+			ricebot.send_message(chat_id, "Forwarded message user ID: " + str(fwd_user_id))
 		
-
 @run_async
 def prodGChandle(ricebot, update):
 	#Initialize variables
@@ -317,7 +317,6 @@ def prodGChandle(ricebot, update):
 		msg_id = update.message.message_id
 		user_id = update.message.from_user.id
 
-		print("Update.message not empty")
 		#Get original user ID from reply message
 		if (update.message.reply_to_message):
 			reply_user_id = update.message.reply_to_message.from_user.id
@@ -458,7 +457,6 @@ def cebGChandle(ricebot, update):
 		msg_id = update.message.message_id
 		user_id = update.message.from_user.id
 
-		print("Update.message not empty")
 		#Get original user ID from reply message
 		if (update.message.reply_to_message):
 			reply_user_id = update.message.reply_to_message.from_user.id
@@ -511,6 +509,7 @@ def main():
 
 	dp.add_handler(telegram.ext.MessageHandler(telegram.ext.Filters.chat(testGCID), testGChandle))
 	dp.add_handler(telegram.ext.MessageHandler(telegram.ext.Filters.chat(prodGCID), prodGChandle))
+	dp.add_handler(telegram.ext.MessageHandler(telegram.ext.Filters.chat(cebGCID), prodGChandle))
 	dp.add_handler(telegram.ext.MessageHandler(telegram.ext.Filters.private, pmhandle))
 
 	# fourtwenty = rm.run_daily(cronjobdos, datetime.time(8,20,15,0))
