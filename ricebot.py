@@ -493,6 +493,8 @@ def cebGChandle(ricebot, update):
 					ricebot.send_animation(chat_id, unpluggif, reply_to_message_id=msg_id)
 				elif searchinString(killgreet, msg_text, searchparam=r"(\S+) rice"):
 					ricebot.send_animation(chat_id, unpluggif, reply_to_message_id=msg_id)
+			elif (any (x in msg_text for x in parrotgreet)):
+				ricebot.send_animation(chat_id, random.choice(parrotgif), reply_to_message_id=msg_id)
 		elif (update.message.new_chat_members):
 			ricebot.send_message(chat_id, "<code>Welcome to r/Sugbo Telegram!\n\nAs part of our verification, kindly post a selfie holding a silhig tukog or a stapler.\n\nHave fun!</code>", parse_mode="HTML")
 def cronjobdos(bot,job):
