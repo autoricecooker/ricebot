@@ -509,7 +509,7 @@ def main():
 
 	dp.add_handler(telegram.ext.MessageHandler(telegram.ext.Filters.chat(testGCID), testGChandle))
 	dp.add_handler(telegram.ext.MessageHandler(telegram.ext.Filters.chat(prodGCID), prodGChandle))
-	dp.add_handler(telegram.ext.MessageHandler(telegram.ext.Filters.chat(cebGCID), prodGChandle))
+	dp.add_handler(telegram.ext.MessageHandler(telegram.ext.Filters.chat(cebGCID), cebGChandle))
 	dp.add_handler(telegram.ext.MessageHandler(telegram.ext.Filters.private, pmhandle))
 
 	# fourtwenty = rm.run_daily(cronjobdos, datetime.time(8,20,15,0))
