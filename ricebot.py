@@ -18,8 +18,8 @@ from telegram.ext.dispatcher import run_async
 testGCID = int(os.environ["TEST_GC"])
 prodGCID = int(os.environ["PROD_GC"])
 cebGCID = int(os.environ["CEB_GC"])
-sadgreet = ["spill", "trip", "eat", "bite", "tips", "tips over"]
-killgreet = ["unplug", "kill", "rip", "destroy", "hate"]
+sadgreet = ["spill", "trip", "eat", "eat you", "bite", "bite you","tips", "tips over"]
+killgreet = ["unplug", "unplug you", "kill", "kill you", "rip", "destroy", "hate", "hate you"]
 randomgreet = ["Hello", "Hi", "Greetings", "Good day", "How are ya?", "Yes", "No", "What's up?"]
 assumptgreet = ["akala ko si rice", "akala ko si ricecooker", "akala ko si @ricecooker", "kala ko si rice", "kala ko si @ricecooker", "kala ko si ricecooker", "ikaw ba yan rice", "kaw ba yan rice", "rice ikaw ba yan", "rice kaw ba yan", "ikaw ba yan @ricecooker", "si rice ba yun", "si @ricecooker ba yun", "si rice ba un", "si @ricecooker ba un", "is that @ricecooker"]
 angerygreet = ["Shooo", "...", "Wag ka na", ":|"]
@@ -436,6 +436,8 @@ def prodGChandle(ricebot, update):
 					ricebot.send_animation(chat_id, unpluggif, reply_to_message_id=msg_id)
 				elif searchinString(killgreet, msg_text, searchparam=r"(\S+) rice"):
 					ricebot.send_animation(chat_id, unpluggif, reply_to_message_id=msg_id)
+			elif (any (x in msg_text for x in parrotgreet)):
+					ricebot.send_animation(chat_id, random.choice(parrotgif), reply_to_message_id=msg_id)
 		elif (update.message.new_chat_members):
 			ricebot.send_message(chat_id, "<code>Hi! Welcome to rph tele! \nAs part of catfish verification standard procedures, we ask for a selfie of you with a tabo (tabofie) and a tinidor (tinidorfie). \nHave fun and stay fake!</code>", parse_mode="HTML")
 		elif (anm_id and (anm_id == "CgADBQADIQAD1PpYV9Q8SLVB8kHHAg" or anm_id == "CgADBQADCQAD2MkBV-93jXgFs7gBAg")):
@@ -492,7 +494,7 @@ def cebGChandle(ricebot, update):
 				elif searchinString(killgreet, msg_text, searchparam=r"(\S+) rice"):
 					ricebot.send_animation(chat_id, unpluggif, reply_to_message_id=msg_id)
 		elif (update.message.new_chat_members):
-			ricebot.send_message(chat_id, "<code>Welcome to r/Sugbo Telegram!\n\nAs part of our verification, kindly post a selfie holding a silhig tukog.</code>", parse_mode="HTML")
+			ricebot.send_message(chat_id, "<code>Welcome to r/Sugbo Telegram!\n\nAs part of our verification, kindly post a selfie holding a silhig tukog or a stapler.\n\nHave fun!</code>", parse_mode="HTML")
 def cronjobdos(bot,job):
 	bot.send_message(testGCID, "CRON JOB 420 ACTIVATED")
 	bot.send_animation(prodGCID, random.choice(ftwentygif))
