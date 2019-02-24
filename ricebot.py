@@ -90,8 +90,9 @@ def delmsg(bot, job):
 	msg.delete()
 
 @run_async
-def pmhandle(ricebot, update):
+def pmhandle(update: telegram.Update, context: telegram.ext.CallbackContext):
 	#Initialize variables
+	ricebot = context.bot
 	msg_text = None
 	msg_split = None
 	angerychance = random.randint(1,4) % 4
@@ -298,8 +299,9 @@ def testGChandle(update: telegram.Update, context: telegram.ext.CallbackContext)
 			ricebot.send_message(chat_id, "Forwarded message user ID: " + str(fwd_user_id))
 		
 @run_async
-def prodGChandle(ricebot, update):
+def prodGChandle(update: telegram.Update, context: telegram.ext.CallbackContext):
 	#Initialize variables
+	ricebot = context.bot
 	msg_text = None
 	msg_split = None
 	anm_id = None
@@ -448,8 +450,9 @@ def prodGChandle(ricebot, update):
 				ricebot.send_animation(chat_id, random.choice(leigif), reply_to_message_id=msg_id)
 
 @run_async
-def cebGChandle(ricebot, update):
+def cebGChandle(update: telegram.Update, context: telegram.ext.CallbackContext):
 	#Initialize variables
+	ricebot = context.bot
 	msg_text = None
 	msg_split = None
 	reply_user_id = None
