@@ -135,8 +135,9 @@ def pmhandle(ricebot, update):
 					ricebot.send_animation(chat_id, unpluggif, reply_to_message_id=msg_id)
 
 @run_async
-def testGChandle(ricebot, update):
+def testGChandle(update: telegram.Update, context: telegram.ext.CallbackContext):
 	#Initialize variables
+	ricebot = context.bot
 	msg_text = None
 	msg_split = None
 	anm_id = None
@@ -446,6 +447,7 @@ def prodGChandle(ricebot, update):
 			else :
 				ricebot.send_animation(chat_id, random.choice(leigif), reply_to_message_id=msg_id)
 
+@run_async
 def cebGChandle(ricebot, update):
 	#Initialize variables
 	msg_text = None
@@ -497,13 +499,14 @@ def cebGChandle(ricebot, update):
 				ricebot.send_animation(chat_id, random.choice(parrotgif), reply_to_message_id=msg_id)
 		elif (update.message.new_chat_members):
 			ricebot.send_message(chat_id, "<code>Welcome to r/Sugbo Telegram!\n\nAs part of our verification, kindly post a selfie holding a silhig tukog or a stapler.\n\nHave fun!</code>", parse_mode="HTML")
+
 def cronjobdos(bot,job):
 	bot.send_message(testGCID, "CRON JOB 420 ACTIVATED")
 	bot.send_animation(prodGCID, random.choice(ftwentygif))
 
 
 def main():
-	updater = telegram.ext.Updater(os.environ["BOT_TOKEN"])
+	updater = telegram.ext.Updater(os.environ["BOT_TOKEN"], use_context=True, workers=8)
 	dp = updater.dispatcher
 	rm = updater.job_queue
 	global testexpr
