@@ -57,6 +57,7 @@ parrotgif = ["CgADBQADLQADkxKZVrE-Wx30uXiNAg", "CgADBQADWAADeL-YVnw3sjCV8aeLAg",
 ftwentygif = ["CgADBQADZwADC8sAAVdyPHOcrabSlAI", "CgADBQADBQADilkQVlcE7H79KrlZAg"]
 flandersgif = ["CgADBAADOQADvho0UUaTNwGy6fWJAg"]
 weebgif = ["CgADBQADOwADyE_wVe3mk7g8DJnwAg", "CgADBQADWAAD5XgIVd4wMCz9ESrCAg"]
+prayerpic = "AgADBQADbagxG4ocsVfyRzCWKWz83cBQ9jIABFnbxMn-gKxBdGgBAAEC"
 landichance = 0
 angerychance = 0
 atomchance = 0
@@ -85,6 +86,7 @@ def searchinString(keylist, msg, searchparam):
 	return found
 
 #Delete message
+@run_async
 def delmsg(bot, job):
 	msg = job.context
 	msg.delete()
@@ -507,6 +509,9 @@ def cronjobdos(bot,job):
 	bot.send_message(testGCID, "CRON JOB 420 ACTIVATED")
 	bot.send_animation(prodGCID, random.choice(ftwentygif))
 
+@run_async
+def cronjobpray(bot,job):
+	bot.send_photo(testGCID, prayerpic)
 
 def main():
 	updater = telegram.ext.Updater(os.environ["BOT_TOKEN"], use_context=True, workers=8)
@@ -525,6 +530,10 @@ def main():
 	# fourtwenty = rm.run_daily(cronjobdos, datetime.time(8,20,15,0))
 	# fourtwenty.enabled = False
 	
+	prayersched = rm.run_daily(cronjobpray, datetime.time(7,0,3,0))
+	prayersched.enabled = True
+
+
 	updater.start_polling()
 
 	updater.idle()
