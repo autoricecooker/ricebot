@@ -195,6 +195,9 @@ def testGChandle(update: telegram.Update, context: telegram.ext.CallbackContext)
 			# 	ricebot.send_message(chat_id, msg_text.replace("pass", "patawad"), reply_to_message_id=msg_id)
 			elif ("nothing at all" in msg_text):
 				ricebot.send_animation(chat_id, flandersgif[0], reply_to_message_id=msg_id)
+			#send 3 o' clock prayer pic
+			elif ("3oclockpic" in msg_split):
+				ricebot.send_photo(chat_id, prayerpic)
 			#autoreply for thick thighs
 			elif (msg_text == "send text test"):
 				ricebot.send_message(chat_id, "<code>All contents/events in this group chat are confidential. \nDisclosure is prohibited</code>", parse_mode="HTML")
@@ -509,7 +512,7 @@ def cronjobdos(bot,job):
 	bot.send_message(testGCID, "CRON JOB 420 ACTIVATED")
 	bot.send_animation(prodGCID, random.choice(ftwentygif))
 
-@run_async
+
 def cronjobpray(bot,job):
 	bot.send_photo(testGCID, prayerpic)
 
