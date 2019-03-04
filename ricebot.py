@@ -512,9 +512,9 @@ def cronjobdos(bot,job):
 	bot.send_message(testGCID, "CRON JOB 420 ACTIVATED")
 	bot.send_animation(prodGCID, random.choice(ftwentygif))
 
-
+@run_async
 def cronjobpray(bot,job):
-	bot.send_photo(testGCID, prayerpic)
+	bot.send_photo(testGCID, "AgADBQADbagxG4ocsVfyRzCWKWz83cBQ9jIABFnbxMn-gKxBdGgBAAEC")
 
 def main():
 	updater = telegram.ext.Updater(os.environ["BOT_TOKEN"], use_context=True, workers=8)
