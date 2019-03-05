@@ -7,7 +7,6 @@ import sys
 import random
 import telegram
 import telegram.ext
-from pprint import pprint
 from telegram.error import NetworkError, Unauthorized
 from time import sleep
 from telegram.ext.dispatcher import run_async
@@ -58,6 +57,7 @@ ftwentygif = ["CgADBQADZwADC8sAAVdyPHOcrabSlAI", "CgADBQADBQADilkQVlcE7H79KrlZAg
 flandersgif = ["CgADBAADOQADvho0UUaTNwGy6fWJAg"]
 weebgif = ["CgADBQADOwADyE_wVe3mk7g8DJnwAg", "CgADBQADWAAD5XgIVd4wMCz9ESrCAg"]
 prayerpic = "AgADBQADbagxG4ocsVfyRzCWKWz83cBQ9jIABFnbxMn-gKxBdGgBAAEC"
+morningpic = "AgADBQADRKgxG_aNeFXkzaKcraJiFdOA3zIABKp6ugP3u2PoJjgBAAEC"
 landichance = 0
 angerychance = 0
 atomchance = 0
@@ -337,12 +337,12 @@ def prodGChandle(update: telegram.Update, context: telegram.ext.CallbackContext)
 			#autoreply for athens
 			if (user_id == 322520879 and any (x in msg_text for x in athensgreet)):
 				ricebot.send_sticker(chat_id, "CAADBQADCQADL0c5E0v6frqfrAl0Ag", reply_to_message_id=msg_id)
-			#autoreply for landi mo 
-			elif (update.message.reply_to_message and msg_text == "landi mo" and user_id != reply_user_id):
-				if (landichance):
-					ricebot.send_animation(chat_id, landigif[0], caption=None, parse_mode="Markdown", disable_notification=True, reply_to_message_id=reply_msg_id)
-				else:
-					ricebot.send_animation(chat_id, landigif[1], caption=None, parse_mode="Markdown", disable_notification=True, reply_to_message_id=reply_msg_id)
+			# autoreply for landi mo 
+			# elif (update.message.reply_to_message and msg_text == "landi mo" and user_id != reply_user_id):
+			# 	if (landichance):
+			# 		ricebot.send_animation(chat_id, landigif[0], caption=None, parse_mode="Markdown", disable_notification=True, reply_to_message_id=reply_msg_id)
+			# 	else:
+			# 		ricebot.send_animation(chat_id, landigif[1], caption=None, parse_mode="Markdown", disable_notification=True, reply_to_message_id=reply_msg_id)
 			# elif ("pass" in msg_split):
 			# 	print ("pass keyword found")
 			# 	print (msg_text.replace("pass", "patawad"))
