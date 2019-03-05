@@ -508,13 +508,13 @@ def cebGChandle(update: telegram.Update, context: telegram.ext.CallbackContext):
 		elif (update.message.new_chat_members):
 			ricebot.send_message(chat_id, "<code>Welcome to r/Sugbo Telegram!\n\nAs part of our verification, kindly post a selfie holding a silhig tukog or a stapler.\n\nHave fun!</code>", parse_mode="HTML")
 
-def cronjobdos(bot,job):
-	bot.send_message(testGCID, "CRON JOB 420 ACTIVATED")
-	bot.send_animation(prodGCID, random.choice(ftwentygif))
+def cronjobdos(context):
+	context.bot.send_message(testGCID, "CRON JOB 420 ACTIVATED")
+	context.bot.send_animation(prodGCID, random.choice(ftwentygif))
 
 @run_async
-def cronjobpray(bot,job):
-	bot.send_photo(testGCID, "AgADBQADbagxG4ocsVfyRzCWKWz83cBQ9jIABFnbxMn-gKxBdGgBAAEC")
+def cronjobpray(context):
+	context.bot.send_photo(testGCID, "AgADBQADbagxG4ocsVfyRzCWKWz83cBQ9jIABFnbxMn-gKxBdGgBAAEC")
 
 def main():
 	updater = telegram.ext.Updater(os.environ["BOT_TOKEN"], use_context=True, workers=8)
@@ -533,7 +533,8 @@ def main():
 	# fourtwenty = rm.run_daily(cronjobdos, datetime.time(8,20,15,0))
 	# fourtwenty.enabled = False
 	
-	prayersched = rm.run_daily(cronjobpray, datetime.time(7,0,3,0))
+	# prayersched = rm.run_daily(cronjobpray, datetime.time(7,0,3,0))
+	prayersched = rm.run_repeating(cronjobpray,5)
 	prayersched.enabled = True
 
 
