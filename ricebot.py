@@ -533,8 +533,7 @@ def main():
 	# fourtwenty = rm.run_daily(cronjobdos, datetime.time(8,20,15,0))
 	# fourtwenty.enabled = False
 	
-	# prayersched = rm.run_daily(cronjobpray, datetime.time(7,0,3,0))
-	prayersched = rm.run_repeating(cronjobpray,5)
+	prayersched = rm.run_daily(cronjobpray, datetime.time(7,0,3,0))
 	prayersched.enabled = True
 
 
