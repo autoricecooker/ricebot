@@ -88,7 +88,7 @@ def searchinString(keylist, msg, searchparam):
 #Delete message
 @run_async
 def delmsg(context):
-	msg = context.job
+	msg = context.job.context
 	msg.delete()
 
 @run_async
@@ -512,16 +512,21 @@ def cebGChandle(update: telegram.Update, context: telegram.ext.CallbackContext):
 		elif (update.message.new_chat_members):
 			ricebot.send_message(chat_id, "<code>Welcome to r/Sugbo Telegram!\n\nAs part of our verification, kindly post a selfie holding a silhig tukog or a stapler.\n\nHave fun!</code>", parse_mode="HTML")
 
-def cronjobdos(context):
-	context.bot.send_message(testGCID, "CRON JOB 420 ACTIVATED")
-	context.bot.send_animation(prodGCID, random.choice(ftwentygif))
+# @run_async
+# def cronjobdos(context):
+# 	context.bot.send_message(testGCID, "CRON JOB 420 ACTIVATED")
+# 	context.bot.send_animation(prodGCID, random.choice(ftwentygif))
+
+@run_async
+def cronjobgreet(context):
+	context.bot.send_photo(cebGCID, "AgADBQADRKgxG_aNeFXkzaKcraJiFdOA3zIABKp6ugP3u2PoJjgBAAEC")
 
 @run_async
 def cronjobpray(context):
 	context.bot.send_photo(prodGCID, "AgADBQADbagxG4ocsVfyRzCWKWz83cBQ9jIABFnbxMn-gKxBdGgBAAEC")
 
 def main():
-	updater = telegram.ext.Updater(os.environ["BOT_TOKEN"], use_context=True, workers=8)
+	updater = telegram.ext.Updater(os.environ["BOT_TOKEN"], use_context=True, workers=11)
 	dp = updater.dispatcher
 	rm = updater.job_queue
 	ma = updater.job_queue
@@ -533,7 +538,9 @@ def main():
 
 	# fourtwenty = rm.run_daily(cronjobdos, datetime.time(8,20,15,0))
 	# fourtwenty.enabled = False
-	
+	mnggrtsched = ma.run_daily(cronjobgreet, datetime.time(22,0,4,0))
+	mnggrtsched.enabled = True
+
 	prayersched = rm.run_daily(cronjobpray, datetime.time(7,0,3,0))
 	prayersched.enabled = True
 
