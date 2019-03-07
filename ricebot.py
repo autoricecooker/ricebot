@@ -364,9 +364,9 @@ def prodGChandle(update: telegram.Update, context: telegram.ext.CallbackContext)
 			#autoreply for lei's narcissism
 			elif ((user_id == 477167517) and (any(x in msg_text for x in leigreetphrase) or any(y in msg_split for y in leigreetword))):
 				if (leichance):
-					ricebot.send_sticker(chat_id, random.choice(leisticker))
+					ricebot.send_sticker(chat_id, random.choice(leisticker), reply_to_message_id=msg_id)
 				else :
-					ricebot.send_animation(chat_id, random.choice(leigif))
+					ricebot.send_animation(chat_id, random.choice(leigif), reply_to_message_id=msg_id)
 			#autoreply for weaboos
 			elif(any(x in msg_text for x in weebgreet)):
 				ricebot.send_animation(chat_id, random.choice(weebgif))
