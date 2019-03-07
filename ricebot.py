@@ -287,7 +287,8 @@ def testGChandle(update: telegram.Update, context: telegram.ext.CallbackContext)
 					ricebot.send_animation(chat_id, unpluggif, reply_to_message_id=msg_id)
 				elif searchinString(killgreet, msg_text, searchparam=r"(\S+) rice"):
 					ricebot.send_animation(chat_id, unpluggif, reply_to_message_id=msg_id)
-				
+		elif (anm_id and anm_id == "CgADBQADjwADxbwAAVQdtvEQ-lCPGwI"):
+			ricebot.send_animation(chat_id, random.choice(stressgif), reply_to_message_id=msg_id)	
 		if (reply_user_id):
 			ricebot.send_message(chat_id,"Reply user ID: \n" + str(reply_user_id))
 		if (anm_id):
@@ -348,11 +349,11 @@ def prodGChandle(update: telegram.Update, context: telegram.ext.CallbackContext)
 			# 	print (msg_text.replace("pass", "patawad"))
 			# 	ricebot.send_message(chat_id, msg_text.replace("pass", "patawad"), reply_to_message_id=msg_id)
 			#autoreply for hipo messages
-			elif (msg_text == "hipo" and user_id != 322520879):
-				if (landichance):
-					ricebot.send_document(chat_id, landigif[0], caption=None, parse_mode="Markdown", disable_notification=True, reply_to_message_id=msg_id)
-				else:
-					ricebot.send_document(chat_id, landigif[1], caption=None, parse_mode="Markdown", disable_notification=True, reply_to_message_id=msg_id)
+			# elif (msg_text == "hipo" and user_id != 322520879):
+			# 	if (landichance):
+			# 		ricebot.send_document(chat_id, landigif[0], caption=None, parse_mode="Markdown", disable_notification=True, reply_to_message_id=msg_id)
+			# 	else:
+			# 		ricebot.send_document(chat_id, landigif[1], caption=None, parse_mode="Markdown", disable_notification=True, reply_to_message_id=msg_id)
 			#autoreply for stress
 			elif (any(x in msg_split for x in stressgreet) and random.randint(0,1)):
 				ricebot.send_animation(chat_id, random.choice(stressgif), reply_to_message_id=msg_id)
@@ -448,6 +449,8 @@ def prodGChandle(update: telegram.Update, context: telegram.ext.CallbackContext)
 					ricebot.send_animation(chat_id, random.choice(parrotgif), reply_to_message_id=msg_id)
 		elif (update.message.new_chat_members):
 			ricebot.send_message(chat_id, "<code>Hi! Welcome to rph tele! \nAs part of catfish verification standard procedures, we ask for a selfie of you with a tabo (tabofie) and a tinidor (tinidorfie). \nHave fun and stay fake!</code>", parse_mode="HTML")
+		elif (anm_id and anm_id == "CgADBQADjwADxbwAAVQdtvEQ-lCPGwI"):
+			ricebot.send_animation(chat_id, random.choice(stressgif), reply_to_message_id=msg_id)
 		elif (anm_id and (anm_id == "CgADBQADIQAD1PpYV9Q8SLVB8kHHAg" or anm_id == "CgADBQADCQAD2MkBV-93jXgFs7gBAg")):
 			if (leichance):
 				ricebot.send_sticker(chat_id, random.choice(leisticker), reply_to_message_id=msg_id)
