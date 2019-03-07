@@ -88,7 +88,7 @@ def searchinString(keylist, msg, searchparam):
 #Delete message
 @run_async
 def delmsg(context):
-	msg = context.job.context
+	msg = context.job
 	msg.delete()
 
 @run_async
@@ -148,7 +148,6 @@ def testGChandle(update: telegram.Update, context: telegram.ext.CallbackContext)
 	fwd_user_id = None
 	sticker_id = None
 	contxt = None
-	testexpr = None
 	landichance = random.randint(1,6) % 5
 	atomchance = random.randint(1,6) % 6
 	leichance = random.randint(1,3) % 3
@@ -188,7 +187,7 @@ def testGChandle(update: telegram.Update, context: telegram.ext.CallbackContext)
 					ricebot.send_document(chat_id, landigif[1], caption=None, parse_mode="Markdown", disable_notification=True, reply_to_message_id=msg_id)
 			elif (msg_text == "jerathens"):
 				contxt = ricebot.send_photo(chat_id, "AgADBQADVagxG9cuOVfXq7usGDCFAsZo3jIABCF2Vg7uGe3afUIAAgI")
-				testexpr.run_once(delmsg, 3, context=contxt)
+				context.job_queue.run_once(delmsg, 3, context=contxt)
 			#replace string test
 			# elif ("pass" in msg_split):
 			# 	print ("pass keyword found")
