@@ -87,8 +87,8 @@ def searchinString(keylist, msg, searchparam):
 
 #Delete message
 @run_async
-def delmsg(bot, job):
-	msg = job.context
+def delmsg(context):
+	msg = context.job
 	msg.delete()
 
 @run_async
@@ -148,10 +148,11 @@ def testGChandle(update: telegram.Update, context: telegram.ext.CallbackContext)
 	fwd_user_id = None
 	sticker_id = None
 	contxt = None
+	testexpr = None
 	landichance = random.randint(1,6) % 5
 	atomchance = random.randint(1,6) % 6
 	leichance = random.randint(1,3) % 3
-	global testexpr
+	
 	#Check if message has content
 	if (update.message):
 
@@ -523,10 +524,7 @@ def main():
 	updater = telegram.ext.Updater(os.environ["BOT_TOKEN"], use_context=True, workers=8)
 	dp = updater.dispatcher
 	rm = updater.job_queue
-	global testexpr
-	global prodexpr
-	testexpr = updater.job_queue
-	prodexpr = updater.job_queue
+	ma = updater.job_queue
 
 	dp.add_handler(telegram.ext.MessageHandler(telegram.ext.Filters.chat(testGCID), testGChandle))
 	dp.add_handler(telegram.ext.MessageHandler(telegram.ext.Filters.chat(prodGCID), prodGChandle))
