@@ -58,6 +58,7 @@ flandersgif = ["CgADBAADOQADvho0UUaTNwGy6fWJAg"]
 weebgif = ["CgADBQADOwADyE_wVe3mk7g8DJnwAg", "CgADBQADWAAD5XgIVd4wMCz9ESrCAg"]
 prayerpic = "AgADBQADbagxG4ocsVfyRzCWKWz83cBQ9jIABFnbxMn-gKxBdGgBAAEC"
 morningpic = "AgADBQADRKgxG_aNeFXkzaKcraJiFdOA3zIABKp6ugP3u2PoJjgBAAEC"
+weedjesusgif = "CgADBQADNgADZj7JVEzPU_TiD4UHAg"
 landichance = 0
 angerychance = 0
 atomchance = 0
@@ -89,7 +90,6 @@ def searchinString(keylist, msg, searchparam):
 @run_async
 def delmsg(context):
 	msg = context.job
-	sleep(2)
 	msg.delete()
 
 @run_async
@@ -263,6 +263,9 @@ def testGChandle(update: telegram.Update, context: telegram.ext.CallbackContext)
 				ricebot.send_message(chat_id, "<code>Negative</code>", parse_mode="HTML", reply_to_message_id=msg_id)
 			elif ((user_id == 339707076 or user_id == 574787216) and (any(x in msg_split for x in justgreet))):
 				ricebot.send_message(chat_id, "<code>Pass</code>", parse_mode="HTML")
+			#weed jesus autoreply
+			elif ("weed jesus" in msg_text):
+				ricebot.send_animation(chat_id, weedjesusgif)
 			#sad greetings autoreply
 			elif (any(x in msg_split for x in sadgreet) and "rice" in msg_text):
 				if searchinString(sadgreet, msg_text, searchparam=r"(\S+) @ricecooker"):
