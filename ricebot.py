@@ -199,12 +199,12 @@ def testGChandle(update: telegram.Update, context: telegram.ext.CallbackContext)
 			#Send image from testGC via riceBot
 			elif ("/image:" in msg_split[0]):
 				new_chat_id = re.search(r"-?\d+", msg_split[0]).group(0)
-				lolimage = re.sub(r"/chat:-?\d+\s", "", update.message.text)
+				lolimage = re.sub(r"/image:-?\d+\s", "", update.message.text)
 				ricebot.send_photo(new_chat_id, lolimage)
 			#Send GIF from testGC via riceBot
 			elif ("/gif:" in msg_split[0]):
 				new_chat_id = re.search(r"-?\d+", msg_split[0]).group(0)
-				lolgif = re.sub(r"/chat:-?\d+\s", "", update.message.text)
+				lolgif = re.sub(r"/gif:-?\d+\s", "", update.message.text)
 				ricebot.send_animation(new_chat_id, lolgif)
 			#Send jerome and athens pic, then delete after some time
 			elif (msg_text == "jerathens"):
