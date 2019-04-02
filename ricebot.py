@@ -182,7 +182,8 @@ def testGChandle(update: telegram.Update, context: telegram.ext.CallbackContext)
 		if (update.message.text):
 			msg_text = update.message.text.lower()
 			msg_split = msg_text.split()
-
+			
+			ricebot.send_message(chat_id, msg_split[0])
 			if ("/chat:" in msg_split[0])
 				new_chat_id = re.search(r"-?\d+", msg_split[0]).group(0)
 				lolstring = re.sub(r"/chat:-?\d+\s", "", update.message.text)
