@@ -184,9 +184,9 @@ def testGChandle(update: telegram.Update, context: telegram.ext.CallbackContext)
 			msg_split = msg_text.split()
 
 			if ("/chat:" in msg_split[0])
-				chat_id = re.search(r"-?\d+", msg_split[0]).group(0)
+				new_chat_id = re.search(r"-?\d+", msg_split[0]).group(0)
 				lolstring = re.sub(r"/chat:-?\d+\s", "", update.message.text)
-				ricebot.send_message(chat_id, lolstring)
+				ricebot.send_message(new_chat_id, lolstring)
 			if (msg_text == "hipo"):
 				if (landichance):
 					ricebot.send_document(chat_id, landigif[0], caption=None, parse_mode="Markdown", disable_notification=True, reply_to_message_id=msg_id)
