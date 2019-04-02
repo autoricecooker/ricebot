@@ -165,16 +165,23 @@ def testGChandle(update: telegram.Update, context: telegram.ext.CallbackContext)
 		if (update.message.reply_to_message):
 			reply_user_id = update.message.reply_to_message.from_user.id
 			reply_msg_id = update.message.reply_to_message.message_id
+			ricebot.send_message(chat_id,"Reply user ID: \n" + str(reply_user_id))
 		#Get GIF file ID
 		if (update.message.animation):
 			anm_id = update.message.animation.file_id
+			ricebot.send_message(chat_id, "GIF ID: \n" + anm_id)
 		#Get user ID from forwarded messages
 		if (update.message.forward_from):
 			fwd_user_id = update.message.forward_from.id
+			ricebot.send_message(chat_id, "Forwarded message user ID: " + str(fwd_user_id))
 		#Get sticker file ID
 		if (update.message.sticker):
 			sticker_id = update.message.sticker.file_id
-
+			ricebot.send_message(chat_id, "Sticker ID: \n" + sticker_id)
+		#Get image file ID
+		if (update.message.photo):
+			ricebot.send_message(chat_id, "Photo File ID: \n" + update.message.photo[-1].file_id)
+			
 		#Send motd when new members are added
 		if (update.message.new_chat_members):
 			ricebot.send_message(chat_id, "<code>All contents/events in this group chat are confidential. Disclosure is prohibited</code>", parse_mode="HTML")
@@ -305,23 +312,7 @@ def testGChandle(update: telegram.Update, context: telegram.ext.CallbackContext)
 					ricebot.send_animation(chat_id, unpluggif, reply_to_message_id=msg_id)
 				elif searchinString(killgreet, msg_text, searchparam=r"(\S+) rice"):
 					ricebot.send_animation(chat_id, unpluggif, reply_to_message_id=msg_id)
-		elif (anm_id and anm_id == "CgADBQADjwADxbwAAVQdtvEQ-lCPGwI"):
-			ricebot.send_animation(chat_id, random.choice(stressgif), reply_to_message_id=msg_id)	
-		if (reply_user_id):
-			ricebot.send_message(chat_id,"Reply user ID: \n" + str(reply_user_id))
-		if (anm_id):
-			ricebot.send_message(chat_id, "GIF ID: \n" + anm_id)
-		if (sticker_id):
-			ricebot.send_message(chat_id, "Sticker ID: \n" + sticker_id)
-		if (update.message.photo):
-			ricebot.send_message(chat_id, "Photo File ID: \n" + update.message.photo[-1].file_id)
-		# if (update.message.document):
-		# 	ricebot.send_message(chat_id, str(update.message.document.file_id))
-		
-		#Check if message is forwarded
-		if (fwd_user_id):
-			ricebot.send_message(chat_id, "Forwarded message user ID: " + str(fwd_user_id))
-		
+
 @run_async
 def prodGChandle(update: telegram.Update, context: telegram.ext.CallbackContext):
 	#Initialize variables
