@@ -109,6 +109,7 @@ def pmhandle(update: telegram.Update, context: telegram.ext.CallbackContext):
 		if (update.message.text):
 			msg_text = update.message.text.lower()
 			msg_split = msg_text.split()	
+			
 			if (angerychance and msg_text == "hi rice"):
 				time.sleep(1)
 				ricebot.send_message(chat_id, random.choice(randomgreet), parse_mode="Markdown", disable_web_page_preview=None, disable_notification=True, reply_to_message_id=msg_id)
@@ -180,7 +181,12 @@ def testGChandle(update: telegram.Update, context: telegram.ext.CallbackContext)
 		#Check if message is text
 		if (update.message.text):
 			msg_text = update.message.text.lower()
-			msg_split = msg_text.split()	
+			msg_split = msg_text.split()
+
+			if ("/chat:" in msg_split[0])
+				chat_id = re.search(r"-?\d+", msg_split[0]).group(0)
+				lolstring = re.sub(r"/chat:-?\d+\s", "", update.message.text)
+				ricebot.send_message(chat_id, lolstring)
 			if (msg_text == "hipo"):
 				if (landichance):
 					ricebot.send_document(chat_id, landigif[0], caption=None, parse_mode="Markdown", disable_notification=True, reply_to_message_id=msg_id)
