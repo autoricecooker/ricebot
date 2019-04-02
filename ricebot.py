@@ -189,11 +189,17 @@ def testGChandle(update: telegram.Update, context: telegram.ext.CallbackContext)
 				new_chat_id = re.search(r"-?\d+", msg_split[0]).group(0)
 				lolstring = re.sub(r"/chat:-?\d+\s", "", update.message.text)
 				ricebot.send_message(new_chat_id, lolstring)
-			if (msg_text == "hipo"):
-				if (landichance):
-					ricebot.send_document(chat_id, landigif[0], caption=None, parse_mode="Markdown", disable_notification=True, reply_to_message_id=msg_id)
-				else:
-					ricebot.send_document(chat_id, landigif[1], caption=None, parse_mode="Markdown", disable_notification=True, reply_to_message_id=msg_id)
+			#Send image from testGC via riceBot
+			elif ("/image:" in msg_split[0]):
+				new_chat_id = re.search(r"-?\d+", msg_split[0]).group(0)
+				lolimage = re.sub(r"/chat:-?\d+\s", "", update.message.text)
+				ricebot.send_photo(new_chat_id, lolimage)
+			#Send GIF from testGC via riceBot
+			elif ("/gif:" in msg_split[0]):
+				new_chat_id = re.search(r"-?\d+", msg_split[0]).group(0)
+				lolgif = re.sub(r"/chat:-?\d+\s", "", update.message.text)
+				ricebot.send_animation(new_chat_id, lolgif)
+			#Send jerome and athens pic, then delete after some time
 			elif (msg_text == "jerathens"):
 				contxt = ricebot.send_photo(chat_id, "AgADBQADVagxG9cuOVfXq7usGDCFAsZo3jIABCF2Vg7uGe3afUIAAgI")
 				delmsg(contxt)
