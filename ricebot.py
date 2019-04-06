@@ -149,7 +149,6 @@ def testGChandle(update: telegram.Update, context: telegram.ext.CallbackContext)
 			msg_text = update.message.text.lower()
 			msg_split = msg_text.split()
 			
-			ricebot.send_message(chat_id, msg_split[0])
 			#Send message from testGC via riceBot
 			if ("/chat:" in msg_split[0]):
 				new_chat_id = re.search(r"-?\d+", msg_split[0]).group(0)
@@ -279,9 +278,6 @@ def prodGChandle(update: telegram.Update, context: telegram.ext.CallbackContext)
 	msg_text = None
 	msg_split = None
 	anm_id = None
-	reply_user_id = None
-	landichance = random.randint(1,6) % 5
-	# angerychance = random.randint(1,4) % 4
 	atomchance = random.randint(1,6) % 6
 	leichance = random.randint(1,3) % 3
 	global prodexpr
@@ -380,6 +376,9 @@ def prodGChandle(update: telegram.Update, context: telegram.ext.CallbackContext)
 				prodexpr.run_once(delmsg, 3, context=msgcontext)
 			elif ("nothing at all" in msg_text):
 				ricebot.send_animation(chat_id, flandersgif[0], reply_to_message_id=msg_id)
+			#weed jesus autoreply
+			elif ("weed jesus" in msg_text):
+				ricebot.send_animation(chat_id, weedjesusgif)
 			# #greetings autoreply
 			# elif (user_id == 456128183 and "hi" in msg_split):
 			# 	ricebot.send_message(chat_id, "<code>Negative</code>", parse_mode="HTML", reply_to_message_id=msg_id)
@@ -438,12 +437,6 @@ def cebGChandle(update: telegram.Update, context: telegram.ext.CallbackContext):
 
 		chat_id = update.message.chat_id
 		msg_id = update.message.message_id
-		user_id = update.message.from_user.id
-
-		#Get original user ID from reply message
-		if (update.message.reply_to_message):
-			reply_user_id = update.message.reply_to_message.from_user.id
-			reply_msg_id = update.message.reply_to_message.message_id
 
 		if (update.message.text):
 			msg_text = update.message.text.lower()
@@ -486,11 +479,11 @@ def cebGChandle(update: telegram.Update, context: telegram.ext.CallbackContext):
 
 @run_async
 def cronjobgreet(context):
-	context.bot.send_photo(cebGCID, "AgADBQADRKgxG_aNeFXkzaKcraJiFdOA3zIABKp6ugP3u2PoJjgBAAEC")
+	context.bot.send_photo(cebGCID, morningpic)
 
 @run_async
 def cronjobpray(context):
-	context.bot.send_photo(prodGCID, "AgADBQADbagxG4ocsVfyRzCWKWz83cBQ9jIABFnbxMn-gKxBdGgBAAEC")
+	context.bot.send_photo(prodGCID, prayerpic)
 
 def main():
 	updater = telegram.ext.Updater(os.environ["BOT_TOKEN"], use_context=True, workers=11)
