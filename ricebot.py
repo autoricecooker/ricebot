@@ -497,7 +497,7 @@ def main():
 	dp.add_handler(telegram.ext.MessageHandler(telegram.ext.Filters.private, pmhandle))
 
 	fourtwenty = rm.run_daily(cronjobdos, datetime.time(8,20,15,0))
-	fourtwenty.enabled = False
+	fourtwenty.enabled = True
 	
 	mnggrtsched = ma.run_daily(cronjobgreet, datetime.time(22,0,4,0))
 	mnggrtsched.enabled = True
