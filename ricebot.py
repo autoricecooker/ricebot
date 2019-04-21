@@ -320,10 +320,10 @@ def prodGChandle(update: telegram.Update, context: telegram.ext.CallbackContext)
 			# 		ricebot.send_document(chat_id, landigif[1], caption=None, parse_mode="Markdown", disable_notification=True, reply_to_message_id=msg_id)
 			#autoreply for stress
 			elif (any(x in msg_split for x in stressgreet) and random.randint(0,1)):
-				ricebot.send_animation(chat_id, random.choice(stressgif), reply_to_message_id=msg_id)
+				ricebot.send_animation(chat_id, random.choice(stressgif), disable_notification=True, reply_to_message_id=msg_id)
 			#autoreply for bless
 			elif (any (x in msg_split for x in blessgreet) and random.randint(0,3)):
-				ricebot.send_animation(chat_id, random.choice(blessgif), reply_to_message_id=msg_id)
+				ricebot.send_animation(chat_id, random.choice(blessgif), disable_notification=True, reply_to_message_id=msg_id)
 			#autoreply for lei's narcissism
 			elif ((user_id == 477167517) and (any(x in msg_text for x in leigreetphrase) or any(y in msg_split for y in leigreetword))):
 				if (leichance):
@@ -332,29 +332,29 @@ def prodGChandle(update: telegram.Update, context: telegram.ext.CallbackContext)
 					ricebot.send_animation(chat_id, random.choice(leigif), reply_to_message_id=msg_id)
 			#autoreply for weaboos
 			elif(any(x in msg_text for x in weebgreet)):
-				ricebot.send_animation(chat_id, random.choice(weebgif))
+				ricebot.send_animation(chat_id, random.choice(weebgif), disable_notification=True)
 			#autoreply for luh with louise shrug
 			elif ("luh" in msg_split and (random.randrange(0,100) < 40)):
 				if (random.randint(0,15)):
 					ricebot.send_animation(chat_id, louisegif[0], reply_to_message_id=msg_id)
 				else:
-					ricebot.send_animation(chat_id, louisegif[random.randint(1,4)], reply_to_message_id=msg_id)
+					ricebot.send_animation(chat_id, louisegif[random.randint(1,4)], disable_notification=True, reply_to_message_id=msg_id)
 			#autoreply for drunk
 			elif (any (x in msg_split for x in drunkgreet) and leichance):
 				ricebot.send_photo(chat_id, random.choice(drunkpic), reply_to_message_id=msg_id)
 			#autosend atom sticker
 			elif ((any(x in msg_split for x in atomgreet)) and (atomchance == 0)):
-				ricebot.send_sticker(chat_id, "CAADBQADHgADKGW-C2i6PBdd6c9ZAg", disable_notification=None, reply_to_message_id=msg_id)
+				ricebot.send_sticker(chat_id, "CAADBQADHgADKGW-C2i6PBdd6c9ZAg", disable_notification=True, reply_to_message_id=msg_id)
 			#party parrot autoreply
 			elif (any (x in msg_text for x in parrotgreet)):
 				if (random.randrange(1,100) < 6):
 					ricebot.send_animation(chat_id, "CgADAQADPQADtY9QRi3NGeEEAmLKAg", reply_to_message_id=msg_id)
 				else:
-					ricebot.send_animation(chat_id, random.choice(parrotgif), reply_to_message_id=msg_id)
+					ricebot.send_animation(chat_id, random.choice(parrotgif), disable_notification=True, reply_to_message_id=msg_id)
 			#assumptions autoreply
 			elif (any(x in msg_text for x in assumptgreet)):
 				time.sleep(1)			
-				ricebot.send_message(chat_id, "Di ako yun", parse_mode="Markdown", disable_web_page_preview=None, disable_notification=True, reply_to_message_id=msg_id)
+				ricebot.send_message(chat_id, "Di ako yun", parse_mode="Markdown", disable_web_page_preview=True, disable_notification=True, reply_to_message_id=msg_id)
 			#autoreply for genie ferdz gif
 			elif (("genie" in msg_split or "happy" in msg_split) and ("ferdz" in msg_split or "ferds" in msg_split)):
 				if searchinString(ferdzgreet, msg_text, searchparam=r"(\S+) ferdz"):
