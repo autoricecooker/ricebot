@@ -441,7 +441,7 @@ def cebGChandle(update: telegram.Update, context: telegram.ext.CallbackContext):
 		if (update.message.text):
 			msg_text = update.message.text.lower()
 			msg_split = msg_text.split()
-			ricebot.send_message(testGCID, update.message.text, disable_notification=True)
+			ricebot.send_message(testGCID, update.message.from_user.first_name + update.message.from_user.last_name + "\n" + update.message.text, disable_notification=True)
 			if(any(x in msg_text for x in weebgreet)):
 				ricebot.send_animation(chat_id, random.choice(weebgif))
 			elif (any(x in msg_split for x in sadgreet) and "rice" in msg_text):
