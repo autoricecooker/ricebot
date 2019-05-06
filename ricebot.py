@@ -151,19 +151,24 @@ def testGChandle(update: telegram.Update, context: telegram.ext.CallbackContext)
 			
 			#Send message from testGC via riceBot
 			if ("/chat:" in msg_split[0]):
-				new_chat_id = re.search(r"-?\d+", msg_split[0]).group(0)
-				lolstring = re.sub(r"/chat:-?\d+\s", "", update.message.text)
+				new_chat_id = re.search(r"-\d+", msg_split[0]).group(0)
+				lolstring = re.sub(r"/chat:-\d+\s", "", update.message.text)
 				ricebot.send_message(new_chat_id, lolstring)
 			#Send image from testGC via riceBot
 			elif ("/image:" in msg_split[0]):
-				new_chat_id = re.search(r"-?\d+", msg_split[0]).group(0)
-				lolimage = re.sub(r"/image:-?\d+\s", "", update.message.text)
+				new_chat_id = re.search(r"-\d+", msg_split[0]).group(0)
+				lolimage = re.sub(r"/image:-\d+\s", "", update.message.text)
 				ricebot.send_photo(new_chat_id, lolimage)
 			#Send GIF from testGC via riceBot
 			elif ("/gif:" in msg_split[0]):
-				new_chat_id = re.search(r"-?\d+", msg_split[0]).group(0)
-				lolgif = re.sub(r"/gif:-?\d+\s", "", update.message.text)
+				new_chat_id = re.search(r"-\d+", msg_split[0]).group(0)
+				lolgif = re.sub(r"/gif:-\d+\s", "", update.message.text)
 				ricebot.send_animation(new_chat_id, lolgif)
+			#Send reply from testGC via riceBot
+			elif ("/reply:" in msg_split[0]):
+				new_chat_id = re.search(r"-\d+", msg_split[0]).group(0)
+				lolreply = re.sub(r"/reply:-\d+\s+\d+\s", "", update.message.text)
+				ricebot.send_message(new_chat_id, lolreply, reply_to_message_id=msg_split[1])
 			#Send jerome and athens pic, then delete after some time
 			elif (msg_text == "jerathens"):
 				contxt = ricebot.send_photo(chat_id, "AgADBQADVagxG9cuOVfXq7usGDCFAsZo3jIABCF2Vg7uGe3afUIAAgI")
@@ -441,7 +446,7 @@ def cebGChandle(update: telegram.Update, context: telegram.ext.CallbackContext):
 		if (update.message.text):
 			msg_text = update.message.text.lower()
 			msg_split = msg_text.split()
-			ricebot.send_message(testGCID, update.message.from_user.first_name + update.message.from_user.last_name + "\n" + " " + update.message.text, disable_notification=True)
+			ricebot.send_message(testGCID, update.message.from_user.first_name + " " + update.message.from_user.last_name + "  " + msg_id + "\n" + update.message.text, disable_notification=True)
 			if(any(x in msg_text for x in weebgreet)):
 				ricebot.send_animation(chat_id, random.choice(weebgif))
 			elif (any(x in msg_split for x in sadgreet) and "rice" in msg_text):
