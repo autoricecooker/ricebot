@@ -150,21 +150,25 @@ def testGChandle(update: telegram.Update, context: telegram.ext.CallbackContext)
 			msg_split = msg_text.split()
 			
 			#Send message from testGC via riceBot
+			#/chat:-chat_id textstring
 			if ("/chat:" in msg_split[0]):
 				new_chat_id = re.search(r"-\d+", msg_split[0]).group(0)
 				lolstring = re.sub(r"/chat:-\d+\s", "", update.message.text)
 				ricebot.send_message(new_chat_id, lolstring)
 			#Send image from testGC via riceBot
+			#/image:-chat_id img_id
 			elif ("/image:" in msg_split[0]):
 				new_chat_id = re.search(r"-\d+", msg_split[0]).group(0)
 				lolimage = re.sub(r"/image:-\d+\s", "", update.message.text)
 				ricebot.send_photo(new_chat_id, lolimage)
 			#Send GIF from testGC via riceBot
+			#/gif:-chat_id gif_id
 			elif ("/gif:" in msg_split[0]):
 				new_chat_id = re.search(r"-\d+", msg_split[0]).group(0)
 				lolgif = re.sub(r"/gif:-\d+\s", "", update.message.text)
 				ricebot.send_animation(new_chat_id, lolgif)
 			#Send reply from testGC via riceBot
+			#/reply:-chat_id msg_id textstring
 			elif ("/reply:" in msg_split[0]):
 				new_chat_id = re.search(r"-\d+", msg_split[0]).group(0)
 				lolreply = re.sub(r"/reply:-\d+\s+\d+\s", "", update.message.text)
