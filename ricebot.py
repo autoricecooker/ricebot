@@ -144,6 +144,7 @@ def testGChandle(update: telegram.Update, context: telegram.ext.CallbackContext)
 		#Send motd when new members are added
 		if (update.message.new_chat_members):
 			ricebot.send_message(chat_id, "<code>All contents/events in this group chat are confidential. Disclosure is prohibited</code>", parse_mode="HTML")
+			ricebot.send_message(chat_id, update.message.new_chat_members.full_name, disable_notification=True)
 		#Check if message is text
 		if (update.message.text):
 			msg_text = update.message.text.lower()
