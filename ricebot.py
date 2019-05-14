@@ -183,6 +183,9 @@ def testGChandle(update: telegram.Update, context: telegram.ext.CallbackContext)
 			# 	print ("pass keyword found")
 			# 	print (msg_text.replace("pass", "patawad"))
 			# 	ricebot.send_message(chat_id, msg_text.replace("pass", "patawad"), reply_to_message_id=msg_id)
+			#autoreply for bong revilla
+			elif (any(x in msg_split for x in revillagreet) or "bong revilla" in msg_text):
+				ricebot.send_animation(chat_id, revillagif, reply_to_message_id=msg_id)
 			elif ("nothing at all" in msg_text):
 				ricebot.send_animation(chat_id, flandersgif[0], reply_to_message_id=msg_id)
 			#send 3 o' clock prayer pic
