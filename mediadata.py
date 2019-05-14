@@ -24,6 +24,7 @@ stressgif = ["CgADBQADeAADXqhQVCksGu6IfbQMAg", "CgADBQADMQADSQ5QVUn-yBLRrDvBAg",
 blessgif =["CgADBQADQwADUt_RVJbf7QgSjFMQAg"]
 #genieferdzgif = "CgADBQADEgADUT_BVphVHpXa9x1UAg"
 genieferdzgif = "CgADBQADEgADUT_BVqvCsq_FYDT-Ag"
+revillagif = "CgADBQADTwADEFuoVswNZyd8icIdAg"
 #unpluggif = "CgADBQADNwADtjzaDem_pNtFz2CxAg"
 unpluggif = "CgADBQADNwADtjzaDXzFsIuaINkHAg"
 #landigif = ["CgADBQADKQADvG2JViq33V_DvoF9Ag", "CgADBQADHQAD6QuQVwZwVsITdN6hAg"]
