@@ -457,6 +457,9 @@ def cebGChandle(update: telegram.Update, context: telegram.ext.CallbackContext):
 			ricebot.send_message(testGCID, update.message.from_user.full_name + "\n" + update.message.text, disable_notification=True)
 			if(any(x in msg_text for x in weebgreet)):
 				ricebot.send_animation(chat_id, random.choice(weebgif))
+			#autoreply for bong revilla
+			elif (any(x in msg_split for x in revillagreet) or "bong revilla" in msg_text):
+				ricebot.send_animation(chat_id, revillagif, reply_to_message_id=msg_id)
 			elif (any(x in msg_split for x in sadgreet) and "rice" in msg_text):
 				if searchinString(sadgreet, msg_text, searchparam=r"(\S+) @ricecooker"):
 					ricebot.send_message(chat_id,"<.<", parse_mode="Markdown", disable_web_page_preview=None, disable_notification=True, reply_to_message_id=msg_id)
