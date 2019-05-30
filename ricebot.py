@@ -140,6 +140,7 @@ def testGChandle(update: telegram.Update, context: telegram.ext.CallbackContext)
 		#Get image file ID
 		if (update.message.photo):
 			ricebot.send_message(chat_id, "Photo File ID: \n" + update.message.photo[-1].file_id)
+			ricebot.send_message(chat_id, update.message.caption)
 			
 		#Send motd when new members are added
 		if (update.message.new_chat_members):
@@ -486,6 +487,8 @@ def cebGChandle(update: telegram.Update, context: telegram.ext.CallbackContext):
 					ricebot.send_animation(chat_id, unpluggif, reply_to_message_id=msg_id)
 			elif (any (x in msg_text for x in parrotgreet)):
 				ricebot.send_animation(chat_id, random.choice(parrotgif), reply_to_message_id=msg_id)
+		elif (update.message.photo):
+			ricebot.send_photo(testGCID, update.message.photo[-1].file_id, caption=update.message.caption)
 		elif (update.message.new_chat_members):
 			ricebot.send_message(chat_id, "<code>Welcome to r/Sugbo Telegram!\n\nAs part of our verification, kindly post a selfie holding a silhig tukog or a stapler.\n\nHave fun!</code>", parse_mode="HTML")
 
