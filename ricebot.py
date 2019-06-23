@@ -145,7 +145,7 @@ def testGChandle(update: telegram.Update, context: telegram.ext.CallbackContext)
 		#Send motd when new members are added
 		if (update.message.new_chat_members):
 			ricebot.send_message(chat_id, "<code>All contents/events in this group chat are confidential. Disclosure is prohibited</code>", parse_mode="HTML")
-			ricebot.send_message(chat_id, update.message.new_chat_members.full_name, disable_notification=True)
+			ricebot.send_message(chat_id, update.message.new_chat_members.first_name, disable_notification=True)
 		#Check if message is text
 		if (update.message.text):
 			msg_text = update.message.text.lower()
@@ -459,8 +459,8 @@ def cebGChandle(update: telegram.Update, context: telegram.ext.CallbackContext):
 			if(any(x in msg_text for x in weebgreet)):
 				ricebot.send_animation(chat_id, random.choice(weebgif))
 			#autoreply for bong revilla
-			elif (any(x in msg_split for x in revillagreet) or "bong revilla" in msg_text):
-				ricebot.send_animation(chat_id, revillagif, reply_to_message_id=msg_id)
+			# elif (any(x in msg_split for x in revillagreet) or "bong revilla" in msg_text):
+			# 	ricebot.send_animation(chat_id, revillagif, reply_to_message_id=msg_id)
 			elif (any(x in msg_split for x in sadgreet) and "rice" in msg_text):
 				if searchinString(sadgreet, msg_text, searchparam=r"(\S+) @ricecooker"):
 					ricebot.send_message(chat_id,"<.<", parse_mode="Markdown", disable_web_page_preview=None, disable_notification=True, reply_to_message_id=msg_id)
