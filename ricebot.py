@@ -505,6 +505,10 @@ def cronjobgreet(context):
 def cronjobpray(context):
 	context.bot.send_photo(prodGCID, prayerpic)
 
+@run_async
+def cronjobfrog(context):
+	context.bot.send_photo(testGCID, wednesdayfrogpic)
+
 def main():
 	updater = telegram.ext.Updater(os.environ["BOT_TOKEN"], use_context=True, workers=11)
 	dp = updater.dispatcher
@@ -525,6 +529,8 @@ def main():
 	prayersched = rm.run_daily(cronjobpray, datetime.time(7,0,3,0))
 	prayersched.enabled = True
 
+	frogsched = ma.run_daily(cronjobfrog, datetime.time(22,0,3,0), days=(3))
+	frogsched.enabled = True
 
 	updater.start_polling()
 
