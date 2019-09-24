@@ -41,3 +41,4 @@ weebgif = ["CgADBQADOwADyE_wVe3mk7g8DJnwAg", "CgADBQADWAAD5XgIVd4wMCz9ESrCAg"]
 prayerpic = "AgADBQADbagxG4ocsVfyRzCWKWz83cBQ9jIABFnbxMn-gKxBdGgBAAEC"
 morningpic = "AgADBQADRKgxG_aNeFXkzaKcraJiFdOA3zIABKp6ugP3u2PoJjgBAAEC"
 weedjesusgif = "CgADBQADNgADZj7JVEzPU_TiD4UHAg"
+wednesdayfrogpic = "AgADBQADo6gxGzozUFTufJLeTUQaGBt0-TIABAEAAwIAA3gAAwIrBAABFgQ"
