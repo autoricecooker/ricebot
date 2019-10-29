@@ -529,7 +529,7 @@ def main():
 	prayersched = rm.run_daily(cronjobpray, datetime.time(7,0,3,0))
 	prayersched.enabled = True
 
-	frogsched = ma.run_daily(cronjobfrog, datetime.time(22,0,3,0), days=(3))
+	frogsched = ma.run_daily(cronjobfrog, datetime.time(22,0,3,0), days=(3,))
 	frogsched.enabled = True
 
 	updater.start_polling()
@@ -539,4 +539,4 @@ def main():
 if __name__ == "__main__":
     main()
 
-#Credits to the Python Telegram Bot team for the wonderful API and examples
+#Credits to the Python Telegram Bot team for the wonderful wrapper and examples
