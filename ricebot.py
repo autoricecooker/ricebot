@@ -506,7 +506,7 @@ def foodGChandle(update, context):
 	chat_id = update.message.chat_id
 
 	#Add welcome greeter
-	if (update.message.new_chat_id):
+	if (update.message.new_chat_members):
 		ricebot.send_message(chat_id, "<code>Hi! Welcome to r/phagkain Telegram!\n\nHave fun and don't forget to post pics of your food every time you eat para hindi kayo magutom!</code", parse_mode="HTML")
 
 @run_async
