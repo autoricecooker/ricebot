@@ -205,7 +205,10 @@ def testGChandle(update, context):
 					ricebot.send_animation(chat_id, genieferdzgif)
 			#autoreply for bless
 			elif (any(x in msg_split for x in blessgreet) and random.randint(0,3)):
-				ricebot.send_animation(chat_id, random.choice(blessgif), reply_to_message_id=msg_id)
+				if (update.message.reply_to_message):
+					ricebot.send_animation(chat_id, random.choice(blessgif), reply_to_message_id=reply_msg_id)
+				else:
+					ricebot.send_animation(chat_id, random.choice(blessgif), reply_to_message_id=msg_id)
 			#autoreply for drunk
 			elif (any(x in msg_split for x in drunkgreet)):
 				ricebot.send_photo(chat_id, random.choice(drunkpic), reply_to_message_id=msg_id)
@@ -527,7 +530,7 @@ def cronjobfrog(context):
 	context.bot.send_photo(testGCID, wednesdayfrogpic)
 
 def main():
-	updater = telegram.ext.Updater(os.environ["BOT_TOKEN"], use_context=True, workers=11)
+	updater = telegram.ext.Updater(os.environ["BOT_TOKEN"], use_context=True, workers=12)
 	dp = updater.dispatcher
 	rm = updater.job_queue
 	ma = updater.job_queue
