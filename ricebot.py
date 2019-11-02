@@ -18,6 +18,7 @@ from telegram.ext.dispatcher import run_async
 testGCID = int(os.environ["TEST_GC"])
 prodGCID = int(os.environ["PROD_GC"])
 cebGCID = int(os.environ["CEB_GC"])
+foodGCID = int(os.environ["FOOD_GC"])
 landichance = 0
 angerychance = 0
 atomchance = 0
@@ -99,7 +100,7 @@ def pmhandle(update: telegram.Update, context: telegram.ext.CallbackContext):
 					ricebot.send_animation(chat_id, unpluggif, reply_to_message_id=msg_id)
 
 @run_async
-def testGChandle(update: telegram.Update, context: telegram.ext.CallbackContext):
+def testGChandle(update, context):
 	#Initialize variables
 	ricebot = context.bot
 	msg_text = None
@@ -286,7 +287,7 @@ def testGChandle(update: telegram.Update, context: telegram.ext.CallbackContext)
 					ricebot.send_animation(chat_id, unpluggif, reply_to_message_id=msg_id)
 
 @run_async
-def prodGChandle(update: telegram.Update, context: telegram.ext.CallbackContext):
+def prodGChandle(update, context):
 	#Initialize variables
 	ricebot = context.bot
 	msg_text = None
@@ -456,7 +457,7 @@ def cebGChandle(update: telegram.Update, context: telegram.ext.CallbackContext):
 			msg_text = update.message.text.lower()
 			msg_split = msg_text.split()
 			ricebot.send_message(testGCID, update.message.from_user.full_name + "\n" + update.message.text, disable_notification=True)
-			if(any(x in msg_text for x in weebgreet)):
+			if (any(x in msg_text for x in weebgreet)):
 				ricebot.send_animation(chat_id, random.choice(weebgif))
 			#autoreply for bong revilla
 			# elif (any(x in msg_split for x in revillagreet) or "bong revilla" in msg_text):
@@ -498,6 +499,15 @@ def chat_id_capture(update, context):
 
 	ricebot.send_message(testGCID, "Group chat ID: " + str(chat_id))
 
+@run_async
+def foodGChandle(update, context):
+	# Initialize variables
+	ricebot = context.bot
+	chat_id = update.message.chat_id
+
+	#Add welcome greeter
+	if (update.message.new_chat_id):
+		ricebot.send_message(chat_id, "<code>Hi! Welcome to r/phagkain Telegram!\n\nHave fun and don't forget to post pics of your food every time you eat para hindi kayo magutom!</code", parse_mode="HTML")
 
 @run_async
 def cronjobdos(context):
@@ -524,6 +534,7 @@ def main():
 
 	dp.add_handler(telegram.ext.MessageHandler(telegram.ext.Filters.chat(testGCID), testGChandle))
 	dp.add_handler(telegram.ext.MessageHandler(telegram.ext.Filters.chat(prodGCID), prodGChandle))
+	dp.add_handler(telegram.ext.MessageHandler(telegram.ext.Filters.chat(foodGCID), foodGChandle))
 	# dp.add_handler(telegram.ext.MessageHandler(telegram.ext.Filters.chat(cebGCID), cebGChandle))
 	dp.add_handler(telegram.ext.MessageHandler(telegram.ext.Filters.private, pmhandle))
 	dp.add_handler(telegram.ext.CommandHandler("getchatID", chat_id_capture, pass_chat_data=True))
