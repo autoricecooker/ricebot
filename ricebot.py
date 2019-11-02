@@ -492,6 +492,13 @@ def cebGChandle(update: telegram.Update, context: telegram.ext.CallbackContext):
 		elif (update.message.new_chat_members):
 			ricebot.send_message(chat_id, "<code>Welcome to r/Sugbo Telegram!\n\nAs part of our verification, kindly post a selfie holding a silhig tukog or a stapler.\n\nHave fun!</code>", parse_mode="HTML")
 
+def chat_id_capture(update, context):
+	ricebot = context.bot
+	chat_id = update.message.chat_id
+
+	ricebot.send_message(testGCID, "Group chat ID: " + str(chat_id))
+
+
 @run_async
 def cronjobdos(context):
 # 	context.bot.send_message(testGCID, "CRON JOB 420 ACTIVATED")
@@ -519,6 +526,7 @@ def main():
 	dp.add_handler(telegram.ext.MessageHandler(telegram.ext.Filters.chat(prodGCID), prodGChandle))
 	# dp.add_handler(telegram.ext.MessageHandler(telegram.ext.Filters.chat(cebGCID), cebGChandle))
 	dp.add_handler(telegram.ext.MessageHandler(telegram.ext.Filters.private, pmhandle))
+	dp.add_handler(telegram.ext.CommandHandler("getchatID", chat_id_capture, pass_chat_data=True))
 
 	fourtwenty = rm.run_daily(cronjobdos, datetime.time(8,20,15,0))
 	fourtwenty.enabled = True
