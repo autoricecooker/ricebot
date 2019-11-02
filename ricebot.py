@@ -341,7 +341,10 @@ def prodGChandle(update, context):
 				ricebot.send_animation(chat_id, random.choice(stressgif), disable_notification=True, reply_to_message_id=msg_id)
 			#autoreply for bless
 			elif (any (x in msg_split for x in blessgreet) and random.randint(0,3)):
-				ricebot.send_animation(chat_id, random.choice(blessgif), disable_notification=True, reply_to_message_id=msg_id)
+				if (update.message.reply_to_message):
+					ricebot.send_animation(chat_id, random.choice(blessgif), reply_to_message_id=reply_msg_id)
+				else:
+					ricebot.send_animation(chat_id, random.choice(blessgif), reply_to_message_id=msg_id)
 			#autoreply for lei's narcissism
 			elif ((user_id == 477167517) and (any(x in msg_text for x in leigreetphrase) or any(y in msg_split for y in leigreetword))):
 				if (leichance):
