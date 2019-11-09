@@ -554,7 +554,7 @@ def main():
 	prayersched = rm.run_daily(cronjobpray, datetime.time(7,0,3,0))
 	prayersched.enabled = True
 
-	frogsched = ma.run_daily(cronjobfrog, datetime.time(22,0,3,0), days=(1,))
+	frogsched = ma.run_daily(cronjobfrog, datetime.time(22,30,3,0), days=(1,))
 	frogsched.enabled = True
 
 	updater.start_polling()
