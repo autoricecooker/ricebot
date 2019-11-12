@@ -530,7 +530,7 @@ def cronjobpray(context):
 
 @run_async
 def cronjobfrog(context):
-	context.bot.send_photo(testGCID, wednesdayfrogpic)
+	context.bot.send_photo(prodGCID, wednesdayfrogpic)
 
 def main():
 	updater = telegram.ext.Updater(os.environ["BOT_TOKEN"], use_context=True, workers=12)
