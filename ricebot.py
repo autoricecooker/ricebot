@@ -288,8 +288,7 @@ def testGChandle(update, context):
 					ricebot.send_animation(chat_id, unpluggif, reply_to_message_id=msg_id)
 				elif searchinString(killgreet, msg_text, searchparam=r"(\S+) rice"):
 					ricebot.send_animation(chat_id, unpluggif, reply_to_message_id=msg_id)
-		elif (update.message.new_chat_members):
-			ricebot.send_message(chat_id, "<code>New Member Message</code>", parse_mode="HTML")
+
 
 
 @run_async
@@ -499,7 +498,8 @@ def cebGChandle(update: telegram.Update, context: telegram.ext.CallbackContext):
 				ricebot.send_animation(chat_id, random.choice(parrotgif), reply_to_message_id=msg_id)
 		elif (update.message.photo):
 			ricebot.send_photo(testGCID, update.message.photo[-1].file_id, caption=update.message.caption)
-		elif (update.message.new_chat_members):
+		
+		if (update.message.new_chat_members):
 			ricebot.send_message(chat_id, "<code>Welcome to r/Sugbo Telegram!\n\nAs part of our verification, kindly post a selfie holding a silhig tukog or a stapler.\n\nHave fun!</code>", parse_mode="HTML")
 
 def chat_id_capture(update, context):
