@@ -288,6 +288,9 @@ def testGChandle(update, context):
 					ricebot.send_animation(chat_id, unpluggif, reply_to_message_id=msg_id)
 				elif searchinString(killgreet, msg_text, searchparam=r"(\S+) rice"):
 					ricebot.send_animation(chat_id, unpluggif, reply_to_message_id=msg_id)
+		elif (update.message.new_chat_members):
+			ricebot.send_message(chat_id, "<code>New Member Message</code>", parse_mode="HTML")
+
 
 @run_async
 def prodGChandle(update, context):
