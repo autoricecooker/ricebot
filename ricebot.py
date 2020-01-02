@@ -544,7 +544,7 @@ def main():
 	dp.add_handler(telegram.ext.MessageHandler(telegram.ext.Filters.chat(testGCID), testGChandle))
 	dp.add_handler(telegram.ext.MessageHandler(telegram.ext.Filters.chat(prodGCID), prodGChandle))
 	dp.add_handler(telegram.ext.MessageHandler(telegram.ext.Filters.chat(foodGCID), foodGChandle))
-	# dp.add_handler(telegram.ext.MessageHandler(telegram.ext.Filters.chat(cebGCID), cebGChandle))
+	dp.add_handler(telegram.ext.MessageHandler(telegram.ext.Filters.chat(cebGCID), cebGChandle))
 	dp.add_handler(telegram.ext.MessageHandler(telegram.ext.Filters.private, pmhandle))
 	dp.add_handler(telegram.ext.CommandHandler("getchatID", chat_id_capture, pass_chat_data=True))
 
