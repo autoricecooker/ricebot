@@ -522,7 +522,7 @@ def foodGChandle(update, context):
 def cronjobdos(context):
 # 	context.bot.send_message(testGCID, "CRON JOB 420 ACTIVATED")
 	context.bot.send_animation(prodGCID, random.choice(ftwentygif))
-	context.bot.send_animation(cebGCID, random.choice(ftwentygif))
+	context.bot.send_animation(cebGCID, "CgADBQADNgADZj7JVEzPU_TiD4UHFgQ")
 
 @run_async
 def cronjobgreet(context):
