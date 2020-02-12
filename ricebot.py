@@ -125,7 +125,9 @@ def testGChandle(update, context):
 		if (update.message.reply_to_message):
 			reply_user_id = update.message.reply_to_message.from_user.id
 			reply_msg_id = update.message.reply_to_message.message_id
-			ricebot.send_message(chat_id,"Reply user ID: \n" + str(reply_user_id))
+			reply_name = update.message.reply_to_message.from_user.mention_html(name=update.message.reply_to_message.from_user.full_name)
+			ricebot.send_message(chat_id, "Reply user ID: \n" + str(reply_user_id))
+			ricebot.send_message(chat_id, reply_name)
 		#Get GIF file ID
 		if (update.message.animation):
 			anm_id = update.message.animation.file_id
@@ -464,7 +466,7 @@ def cebGChandle(update: telegram.Update, context: telegram.ext.CallbackContext):
 		if (update.message.text):
 			msg_text = update.message.text.lower()
 			msg_split = msg_text.split()
-			ricebot.send_message(testGCID, update.message.from_user.full_name + " @" + update.message.from_user.username + "\n" + update.message.text, disable_notification=True)
+			ricebot.send_message(testGCID, update.message.from_user.name + "\n" + update.message.text, disable_notification=True)
 			if (any(x in msg_text for x in weebgreet)):
 				ricebot.send_animation(chat_id, random.choice(weebgif))
 			#autoreply for bong revilla
