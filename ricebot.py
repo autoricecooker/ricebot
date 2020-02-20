@@ -178,6 +178,8 @@ def testGChandle(update, context):
 				new_chat_id = re.search(r"-\d+", msg_split[0]).group(0)
 				lolreply = re.sub(r"/reply:-\d+\s+\d+\s", "", update.message.text)
 				ricebot.send_message(new_chat_id, lolreply, reply_to_message_id=msg_split[1])
+			elif ("/adweedture" in msg_split[0]):
+				ricebot.send_message(testGCID, "https://www.youtube.com/watch?v=sifVwz5Nguc")
 			#Send jerome and athens pic, then delete after some time
 			elif (msg_text == "jerathens"):
 				contxt = ricebot.send_photo(chat_id, "AgADBQADVagxG9cuOVfXq7usGDCFAsZo3jIABCF2Vg7uGe3afUIAAgI")
