@@ -147,7 +147,7 @@ def testGChandle(update, context):
 			
 		#Send motd when new members are added
 		if (update.message.new_chat_members):
-			ricebot.send_message(chat_id, "<code>All contents/events in this group chat are confidential. Disclosure is prohibited</code>", parse_mode="HTML")
+			ricebot.send_message(chat_id, "<code>All contents/events in this group chat are confidential. Disclosure is prohibited</code>", parse_mode="HTML", reply_to_message_id=msg_id)
 			ricebot.send_message(chat_id, update.message.new_chat_members.first_name, disable_notification=True)
 		#Check if message is text
 		if (update.message.text):
@@ -442,7 +442,7 @@ def prodGChandle(update, context):
 			elif (any (x in msg_text for x in parrotgreet)):
 					ricebot.send_animation(chat_id, random.choice(parrotgif), reply_to_message_id=msg_id)
 		elif (update.message.new_chat_members):
-			ricebot.send_message(chat_id, "<code>Hi! Welcome to r/ph tele! \n\nAs part of catfish verification standard procedures, we ask for a selfie of you with a tabo (tabofie) or a tinidor (tinidorfie). \nHave fun and stay fake!</code>", parse_mode="HTML")
+			ricebot.send_message(chat_id, "<code>Hi! Welcome to r/ph tele! \n\nAs part of catfish verification standard procedures, we ask for a selfie of you with a tabo (tabofie) or a tinidor (tinidorfie). \nHave fun and stay fake!</code>", parse_mode="HTML", reply_to_message_id=msg_id)
 		elif (anm_id and anm_id == "CgADBQADjwADxbwAAVQdtvEQ-lCPGwI"):
 			ricebot.send_animation(chat_id, random.choice(stressgif), reply_to_message_id=msg_id)
 		elif (anm_id and (anm_id == "CgADBQADIQAD1PpYV9Q8SLVB8kHHAg" or anm_id == "CgADBQADCQAD2MkBV-93jXgFs7gBAg")):
@@ -504,7 +504,7 @@ def cebGChandle(update: telegram.Update, context: telegram.ext.CallbackContext):
 			ricebot.send_photo(testGCID, update.message.photo[-1].file_id, caption=update.message.caption)
 		
 		if (update.message.new_chat_members):
-			ricebot.send_message(chat_id, "<code>Welcome to r/Sugbo Telegram!\n\nAs part of our verification, kindly post a selfie holding a silhig tukog or a stapler.\n\nHave fun!</code>", parse_mode="HTML")
+			ricebot.send_message(chat_id, "<code>Welcome to r/Sugbo Telegram!\n\nAs part of our verification, kindly post a selfie holding a silhig tukog or a stapler.\n\nHave fun!</code>", parse_mode="HTML", reply_to_message_id=msg_id)
 
 def chat_id_capture(update, context):
 	ricebot = context.bot
@@ -520,7 +520,7 @@ def foodGChandle(update, context):
 
 	#Add welcome greeter
 	if (update.message.new_chat_members):
-		ricebot.send_message(chat_id, "<code>Hi! Welcome to r/phagkain Telegram!\n\nHave fun and don't forget to post pics of your food every time you eat para hindi kayo magutom!</code>", parse_mode="HTML")
+		ricebot.send_message(chat_id, "<code>Hello sa mga bago. Lapag kayo ng mga subo GIF. OO REQUIRED TO BAKLA!\n\nRules:\n1. I-video ang sarili nang walang audio na sumusubo ng pagkain.\n2. Once naglapag ka, verified tao ka. Hindi ka catfish.\n3. Bawal sumubo ng tao\n\nGood morning po and happy eating ng ina nyo</code>", parse_mode="HTML", reply_to_message_id=update.message.message_id)
 
 @run_async
 def cronjobdos(context):
@@ -550,13 +550,13 @@ def main():
 	rm = updater.job_queue
 	ma = updater.job_queue
 
+	dp.add_handler(telegram.ext.CommandHandler("getchatid", chat_id_capture, pass_chat_data=True))
 	dp.add_handler(telegram.ext.MessageHandler(telegram.ext.Filters.chat(testGCID), testGChandle))
 	dp.add_handler(telegram.ext.MessageHandler(telegram.ext.Filters.chat(prodGCID), prodGChandle))
 	dp.add_handler(telegram.ext.MessageHandler(telegram.ext.Filters.chat(foodGCID), foodGChandle))
 	dp.add_handler(telegram.ext.MessageHandler(telegram.ext.Filters.chat(cebGCID), cebGChandle))
 	dp.add_handler(telegram.ext.MessageHandler(telegram.ext.Filters.private, pmhandle))
-	dp.add_handler(telegram.ext.CommandHandler("getchatID", chat_id_capture, pass_chat_data=True))
-
+	
 	fourtwenty = rm.run_daily(cronjobdos, datetime.time(8,20,15,0))
 	fourtwenty.enabled = True
 	
