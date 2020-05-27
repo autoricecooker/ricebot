@@ -520,7 +520,7 @@ def foodGChandle(update, context):
 
 	#Add welcome greeter
 	if (update.message.new_chat_members):
-		ricebot.send_message(chat_id, "<code>Hello sa mga bago. Lapag kayo ng mga subo GIF. OO REQUIRED TO BAKLA!\n\nRules:\n1. I-video ang sarili nang walang audio na sumusubo ng pagkain.\n2. Once naglapag ka, verified tao ka. Hindi ka catfish.\n3. Bawal sumubo ng tao\n\nGood morning po and happy eating ng ina nyo</code>", parse_mode="HTML", reply_to_message_id=update.message.message_id)
+		ricebot.send_message(chat_id, "<code>Hello sa mga bago. Lapag kayo ng mga subo GIF. OO REQUIRED TO BAKLA!\n\nRules:\n1. I-video ang sarili nang walang audio na sumusubo ng pagkain.\n2. Once naglapag ka, verified tao ka. Hindi ka catfish.\n3. Bawal sumubo ng tao.\n\nGood morning po and happy eating ng ina nyo.</code>", parse_mode="HTML", reply_to_message_id=update.message.message_id)
 
 @run_async
 def cronjobdos(context):
