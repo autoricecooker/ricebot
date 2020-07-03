@@ -180,7 +180,7 @@ def testGChandle(update, context):
 			elif ("/adweedture" in msg_split[0]):
 				ricebot.send_message(testGCID, "https://www.youtube.com/watch?v=sifVwz5Nguc")
 			#autoreply for gadon
-			if ("mga bobo" in msg_text):
+			if (any(x in msg_text for x in gadongreet)):
 				ricebot.send_animation(chat_id, random.choice(gadongif))
 			#replace string test
 			# elif ("pass" in msg_split):
