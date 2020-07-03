@@ -109,7 +109,6 @@ def testGChandle(update, context):
 	reply_user_id = None
 	fwd_user_id = None
 	sticker_id = None
-	contxt = None
 	landichance = random.randint(1,6) % 5
 	atomchance = random.randint(1,6) % 6
 	leichance = random.randint(1,3) % 3
@@ -180,10 +179,9 @@ def testGChandle(update, context):
 				ricebot.send_message(new_chat_id, lolreply, reply_to_message_id=msg_split[1])
 			elif ("/adweedture" in msg_split[0]):
 				ricebot.send_message(testGCID, "https://www.youtube.com/watch?v=sifVwz5Nguc")
-			#Send jerome and athens pic, then delete after some time
-			elif (msg_text == "jerathens"):
-				contxt = ricebot.send_photo(chat_id, "AgADBQADVagxG9cuOVfXq7usGDCFAsZo3jIABCF2Vg7uGe3afUIAAgI")
-				delmsg(contxt)
+			#autoreply for gadon
+			if ("mga bobo" in msg_text):
+				ricebot.send_animation(chat_id, random.choice(gadongif))
 			#replace string test
 			# elif ("pass" in msg_split):
 			# 	print ("pass keyword found")
