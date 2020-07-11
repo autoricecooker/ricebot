@@ -341,6 +341,9 @@ def prodGChandle(update, context):
 			# 	else:
 			# 		ricebot.send_document(chat_id, landigif[1], caption=None, parse_mode="Markdown", disable_notification=True, reply_to_message_id=msg_id)
 			#autoreply for stress
+			#autoreply for gadon
+			if (any(x in msg_text for x in gadongreet)):
+				ricebot.send_animation(chat_id, random.choice(gadongif))
 			elif (any(x in msg_split for x in stressgreet) and random.randint(0,1)):
 				ricebot.send_animation(chat_id, random.choice(stressgif), disable_notification=True, reply_to_message_id=msg_id)
 			#autoreply for bless
