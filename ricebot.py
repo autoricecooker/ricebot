@@ -47,12 +47,12 @@ def searchinString(keylist, msg, searchparam):
 	return found
 
 #Delete message
-@run_async
+
 def delmsg(context):
 	msg = context.job
 	msg.delete()
 
-@run_async
+
 def pmhandle(update: telegram.Update, context: telegram.ext.CallbackContext):
 	#Initialize variables
 	ricebot = context.bot
@@ -99,7 +99,6 @@ def pmhandle(update: telegram.Update, context: telegram.ext.CallbackContext):
 				elif searchinString(killgreet, msg_text, searchparam=r"(\S+) rice"):
 					ricebot.send_animation(chat_id, unpluggif, reply_to_message_id=msg_id)
 
-@run_async
 def testGChandle(update, context):
 	#Initialize variables
 	ricebot = context.bot
@@ -291,9 +290,6 @@ def testGChandle(update, context):
 				elif searchinString(killgreet, msg_text, searchparam=r"(\S+) rice"):
 					ricebot.send_animation(chat_id, unpluggif, reply_to_message_id=msg_id)
 
-
-
-@run_async
 def prodGChandle(update, context):
 	#Initialize variables
 	ricebot = context.bot
@@ -452,10 +448,10 @@ def prodGChandle(update, context):
 			else :
 				ricebot.send_animation(chat_id, random.choice(leigif), reply_to_message_id=msg_id)
 
-@run_async
 def cebGChandle(update: telegram.Update, context: telegram.ext.CallbackContext):
 	#Initialize variables
 	ricebot = context.bot
+
 	msg_text = None
 	msg_split = None
 	reply_user_id = None
@@ -513,7 +509,6 @@ def chat_id_capture(update, context):
 
 	ricebot.send_message(testGCID, "Group chat ID: " + str(chat_id))
 
-@run_async
 def foodGChandle(update, context):
 	# Initialize variables
 	ricebot = context.bot
@@ -523,30 +518,28 @@ def foodGChandle(update, context):
 	if (update.message.new_chat_members):
 		ricebot.send_message(chat_id, "<code>Hello sa mga bago. Lapag kayo ng mga subo GIF. OO REQUIRED TO BAKLA!\n\nRules:\n1. I-video ang sarili nang walang audio na sumusubo ng pagkain.\n2. Once naglapag ka, verified tao ka. Hindi ka catfish.\n3. Bawal sumubo ng tao.\n\nGood morning po and happy eating ng ina nyo.</code>", parse_mode="HTML", reply_to_message_id=update.message.message_id)
 
-@run_async
 def cronjobdos(context):
 # 	context.bot.send_message(testGCID, "CRON JOB 420 ACTIVATED")
 	context.bot.send_animation(prodGCID, random.choice(ftwentygif))
 	if (random.randrange(0,9) == 5):
-		context.bot.send_message(cebGCID, "https://www.youtube.com/watch?v=sifVwz5Nguc")
+		context.bot.send_message(cebGCID, random.choice(weedvid))
 	else:
 		context.bot.send_animation(cebGCID, "CgADBQADNgADZj7JVEzPU_TiD4UHFgQ")
 	
 
-@run_async
 def cronjobgreet(context):
 	context.bot.send_photo(cebGCID, morningpic)
 
-@run_async
+
 def cronjobpray(context):
 	context.bot.send_photo(prodGCID, prayerpic)
 
-@run_async
+
 def cronjobfrog(context):
 	context.bot.send_photo(prodGCID, wednesdayfrogpic)
 
 def main():
-	updater = telegram.ext.Updater(os.environ["BOT_TOKEN"], use_context=True, workers=12)
+	updater = telegram.ext.Updater(os.environ["BOT_TOKEN"], use_context=True)
 	dp = updater.dispatcher
 	rm = updater.job_queue
 	ma = updater.job_queue
