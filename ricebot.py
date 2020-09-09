@@ -238,8 +238,11 @@ def testGChandle(update, context):
 				time.sleep(1)			
 				ricebot.send_message(chat_id, "Di ako yun", parse_mode="Markdown", disable_web_page_preview=None, disable_notification=True, reply_to_message_id=msg_id)
 			#autoreply for weeaboos
-			elif(any(x in msg_text for x in weebgreet)):
+			elif (any(x in msg_text for x in weebgreet)):
 				ricebot.send_animation(chat_id, random.choice(weebgif))
+			#autoreply for nice
+			elif (update.message.reply_to_message and msg_text == "nice" and user_id != reply_user_id):
+				ricebot.send_animation(chat_id, nicegif[0], reply_to_message_id=reply_msg_id)
 			#autoreply for athens
 			elif (user_id == 322520879 and any (x in msg_text for x in athensgreet)):
 				if (random.randint(0,3)):
