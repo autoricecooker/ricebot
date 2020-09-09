@@ -125,7 +125,7 @@ def testGChandle(update, context):
 			reply_msg_id = update.message.reply_to_message.message_id
 			reply_name = update.message.reply_to_message.from_user.mention_html(name=update.message.reply_to_message.from_user.full_name)
 			ricebot.send_message(chat_id, "Reply user ID: \n" + str(reply_user_id))
-			ricebot.send_message(chat_id, reply_name)
+			ricebot.send_message(chat_id, reply_name, parse_mode="HTML")
 		#Get GIF file ID
 		if (update.message.animation):
 			anm_id = update.message.animation.file_id
