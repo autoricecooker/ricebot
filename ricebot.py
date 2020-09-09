@@ -464,7 +464,7 @@ def cebGChandle(update: telegram.Update, context: telegram.ext.CallbackContext):
 
 		chat_id = update.message.chat_id
 		msg_id = update.message.message_id
-		user_name = update.message.from_user.mention_html
+
 		if (update.message.text):
 			msg_text = update.message.text.lower()
 			msg_split = msg_text.split()
