@@ -464,11 +464,12 @@ def cebGChandle(update: telegram.Update, context: telegram.ext.CallbackContext):
 
 		chat_id = update.message.chat_id
 		msg_id = update.message.message_id
-
+		user_name = update.message.from_user.mention_html
 		if (update.message.text):
 			msg_text = update.message.text.lower()
 			msg_split = msg_text.split()
-			ricebot.send_message(testGCID, update.message.from_user.name + "\n" + update.message.text, disable_notification=True)
+			user_name = update.message.from_user.mention_html
+			ricebot.send_message(testGCID, user_name + "\n" + update.message.text, parse_mode="HTML", disable_notification=True)
 			if (any(x in msg_text for x in weebgreet)):
 				ricebot.send_animation(chat_id, random.choice(weebgif))
 			#autoreply for bong revilla
