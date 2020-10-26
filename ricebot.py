@@ -7,6 +7,7 @@ import sys
 import random
 import telegram
 import telegram.ext
+from dotenv import load_dotenv
 from telegram.error import NetworkError, Unauthorized
 from mediadata import *
 from time import sleep
@@ -14,11 +15,13 @@ from telegram.ext.dispatcher import run_async
 
 #big ol' blob of variables
 
-#wwgc = os.environ["WW_GC"]
-testGCID = int(os.environ["TEST_GC"])
-prodGCID = int(os.environ["PROD_GC"])
-cebGCID = int(os.environ["CEB_GC"])
-foodGCID = int(os.environ["FOOD_GC"])
+projdir = os.path.expanduser("~/ricebot")
+load_dotenv(os.path.join(projdir,".env"))
+
+testGCID = int(os.getenv("TEST_GC"))
+prodGCID = int(os.getenv("PROD_GC"))
+cebGCID = int(os.getenv("CEB_GC"))
+foodGCID = int(os.getenv("FOOD_GC"))
 landichance = 0
 angerychance = 0
 atomchance = 0
@@ -361,11 +364,11 @@ def prodGChandle(update, context):
 			elif(any(x in msg_text for x in weebgreet)):
 				ricebot.send_animation(chat_id, random.choice(weebgif), disable_notification=True)
 			#autoreply for luh with louise shrug
-			elif ("luh" in msg_split and (random.randrange(0,100) < 40)):
-				if (random.randint(0,15)):
-					ricebot.send_animation(chat_id, louisegif[0], reply_to_message_id=msg_id)
-				else:
-					ricebot.send_animation(chat_id, louisegif[random.randint(1,4)], disable_notification=True, reply_to_message_id=msg_id)
+			# elif ("luh" in msg_split and (random.randrange(0,100) < 40)):
+			# 	if (random.randint(0,15)):
+			# 		ricebot.send_animation(chat_id, louisegif[0], reply_to_message_id=msg_id)
+			# 	else:
+			# 		ricebot.send_animation(chat_id, louisegif[random.randint(1,4)], disable_notification=True, reply_to_message_id=msg_id)
 			#autoreply for drunk
 			elif (any (x in msg_split for x in drunkgreet) and leichance):
 				ricebot.send_photo(chat_id, random.choice(drunkpic), reply_to_message_id=msg_id)
@@ -469,7 +472,7 @@ def cebGChandle(update: telegram.Update, context: telegram.ext.CallbackContext):
 			msg_text = update.message.text.lower()
 			msg_split = msg_text.split()
 			user_name = update.message.from_user.mention_html
-			ricebot.send_message(testGCID, user_name + "\n" + update.message.text, parse_mode="HTML", disable_notification=True)
+			# ricebot.send_message(testGCID, user_name + "\n" + update.message.text, parse_mode="HTML", disable_notification=True)
 			if (any(x in msg_text for x in weebgreet)):
 				ricebot.send_animation(chat_id, random.choice(weebgif))
 			#autoreply for bong revilla
@@ -543,7 +546,7 @@ def cronjobfrog(context):
 	context.bot.send_photo(prodGCID, wednesdayfrogpic)
 
 def main():
-	updater = telegram.ext.Updater(os.environ["BOT_TOKEN"], use_context=True)
+	updater = telegram.ext.Updater(os.getenv("BOT_TOKEN"), use_context=True)
 	dp = updater.dispatcher
 	rm = updater.job_queue
 	ma = updater.job_queue
