@@ -7,7 +7,7 @@ import sys
 import random
 import telegram
 import telegram.ext
-from dotenv import load_dotenv
+from dotenv import load_dotenv, find_dotenv
 from telegram.error import NetworkError, Unauthorized
 from mediadata import *
 from time import sleep
@@ -15,8 +15,7 @@ from telegram.ext.dispatcher import run_async
 
 #big ol' blob of variables
 
-projdir = os.path.expanduser("~/ricebot")
-load_dotenv(os.path.join(projdir,".env"))
+load_dotenv(find_dotenv())
 
 testGCID = int(os.getenv("TEST_GC"))
 prodGCID = int(os.getenv("PROD_GC"))
