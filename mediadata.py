@@ -20,17 +20,12 @@ weebgreet = ["anime was a mistake", "weeb shit", "fucking weeb", "fuckin weeb", 
 gadongreet = ["mga bobo", "putangina bobo", "puta bobo", "lahat bobo", "kingina bobo"]
 
 leisticker = ["CAADBQADIQEAAiO4mBCSjVKUWk7MNwI", "CAADBQADHAEAAiO4mBCeaC0LYAlkowI", "CAADBQADIAEAAiO4mBD3UdIBPEO6WwI", "CAADBQADGwEAAiO4mBC51PR572t9EgI", "CAADBQADHwEAAiO4mBBJWiwq_cjWdQI", "CAADBQADHgEAAiO4mBBMQuYcpcSX2AI"]
-#leigif = ["CgADBQADEAADS754Vj0cIPOA5fAWAg", "CgADBQADFQADDHrhVXLWPyi-fVESAg", "CgADBQADEQADNNrpV0yGyX3SyadcAg", "CgADBQADHwADYlzxVd_bBWXEyqHUAg"]
 leigif = ["CgADBQADEQADNNrpV_JyDVwU2d1rAg", "CgADBQADFQADDHrhVeaTS0bvbyRWAg", "CgADBQADEAADS754Vha1dmKytEvNAg", "CgADBQADHwADYlzxVfOzb9cCUkuqAg", "CgACAgUAAx0CSte9MwAClZNejvehZnp7f2b00c9IDRE80nM-lwACTwADl_rpVHEOdRWaq2VsGAQ"]
-#stressgif = ["CgADBQADNgAD1k_RVO3goPd_-i6UAg", "CgADBQADeAADXqhQVB4H-vGgquQBAg", "CgADBQADagADIQNZVQwwt6F0hhTnAg", "CgADBQADMQADSQ5QVWEW6SjSG4KYAg"]
 stressgif = ["CgADBQADeAADXqhQVCksGu6IfbQMAg", "CgADBQADMQADSQ5QVUn-yBLRrDvBAg", "CgADBQADagADIQNZVdJEKrwDU24lAg", "CgADBQADNgAD1k_RVFSZibSpxmu4Ag", "CgADBQADFgADjGnIVUDk7DZAN-6XAg", "CgADBQADAwADXbeJVIa-vUgkTDSCAg", "CgACAgUAAx0CSte9MwABARGLX1keJEgTYfvp_x_-TUTSikcTxYIAAiQBAAIOq5BVXaAbYCqk3OUbBA"]
 blessgif =["CgADBQADQwADUt_RVJbf7QgSjFMQAg"]
-#genieferdzgif = "CgADBQADEgADUT_BVphVHpXa9x1UAg"
 genieferdzgif = "CgADBQADEgADUT_BVqvCsq_FYDT-Ag"
 revillagif = "CgADBQADTwADEFuoVswNZyd8icIdAg"
-#unpluggif = "CgADBQADNwADtjzaDem_pNtFz2CxAg"
 unpluggif = "CgADBQADNwADtjzaDXzFsIuaINkHAg"
-#landigif = ["CgADBQADKQADvG2JViq33V_DvoF9Ag", "CgADBQADHQAD6QuQVwZwVsITdN6hAg"]
 landigif = ["CgADBQADHQAD6QuQV_mxPdwxj0s2Ag", "CgADBQADKQADvG2JVi4mEJDnylDvAg"]
 louisegif = ["CgADBQADHAADVMqxV2iqwCWWKYXRAg", "CgADBQADRQADggs5VTtpVvYfIcqBAg", "CgADBQADGwADwI9BVYEBhY4qglXKAg", "CgADBQADWwADfhjQVy2VyBHiS3kWAg", "CgADBQADXQADlN5hVIkXruw21LEsAg"]
 toastiesgif = ["CgADBQADLwADv4dBVFVtZJ9jdSwFAg"]
