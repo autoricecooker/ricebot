@@ -181,7 +181,7 @@ def testGChandle(update, context):
 				lolreply = re.sub(r"/reply:-\d+\s+\d+\s", "", update.message.text)
 				ricebot.send_message(new_chat_id, lolreply, reply_to_message_id=msg_split[1])
 			elif ("/adweedture" in msg_split[0]):
-				ricebot.send_message(testGCID, "https://www.youtube.com/watch?v=sifVwz5Nguc")
+				ricebot.send_message(testGCID, random.choice(weedvid))
 			#autoreply for gadon
 			if (any(x in msg_text for x in gadongreet)):
 				ricebot.send_animation(chat_id, random.choice(gadongif))
