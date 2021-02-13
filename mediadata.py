@@ -1,3 +1,4 @@
+mentionnames = ["rice", "ricecooker", "@ricecooker", "@ricecookerisnotabot"]
 sadgreet = ["spill", "trip", "eat", "eat you", "bite", "bite you","tips", "tips over"]
 killgreet = ["unplug", "unplug you", "kill", "kill you", "rip", "destroy", "hate", "hate you"]
 randomgreet = ["Hello", "Hi", "Greetings", "Good day", "How are ya?", "Yes", "No", "What's up?"]
