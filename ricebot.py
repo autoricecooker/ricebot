@@ -57,7 +57,7 @@ def delmsg(context):
 	msg.delete()
 
 
-def pmhandle(update: telegram.Update, context: telegram.ext.CallbackContext):
+def pmhandle(update, context):
 	#Initialize variables
 	ricebot = context.bot
 	msg_text = None
@@ -74,7 +74,7 @@ def pmhandle(update: telegram.Update, context: telegram.ext.CallbackContext):
 			msg_text = update.message.text.lower()
 			msg_split = msg_text.split()	
 			
-			if (angerychance and msg_text == "hi rice"):
+			if (angerychance and ("hi" in msg_text)):
 				time.sleep(1)
 				ricebot.send_message(chat_id, random.choice(randomgreet), parse_mode="Markdown", disable_web_page_preview=None, disable_notification=True, reply_to_message_id=msg_id)
 			#sad greetings autoreply
@@ -102,6 +102,8 @@ def pmhandle(update: telegram.Update, context: telegram.ext.CallbackContext):
 					ricebot.send_animation(chat_id, unpluggif, reply_to_message_id=msg_id)
 				elif searchinString(killgreet, msg_text, searchparam=r"(\S+) rice"):
 					ricebot.send_animation(chat_id, unpluggif, reply_to_message_id=msg_id)
+		else:
+			ricebot.send_message(testGCID, update.message.from_user.name + "\n" + update.message.text, disable_notification=True)
 
 def testGChandle(update, context):
 	#Initialize variables
