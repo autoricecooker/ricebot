@@ -103,7 +103,7 @@ def pmhandle(update, context):
 				elif searchinString(killgreet, msg_text, searchparam=r"(\S+) rice"):
 					ricebot.send_animation(chat_id, unpluggif, reply_to_message_id=msg_id)
 			else:
-				ricebot.send_message(testGCID, update.message.from_user.name + "\n" + update.message.text, disable_notification=True)
+				ricebot.send_message(testGCID, "Bot PM" + "\n" + update.message.from_user.name + "\n" + update.message.text, disable_notification=True)
 
 def testGChandle(update, context):
 	#Initialize variables
