@@ -548,6 +548,7 @@ def cronjobpray(context):
 
 def cronjobfrog(context):
 	context.bot.send_photo(prodGCID, wednesdayfrogpic)
+	context.bot.send_photo(cebGCID, wednesdayfrogpic)
 
 def main():
 	updater = telegram.ext.Updater(os.getenv("BOT_TOKEN"), use_context=True)
@@ -565,7 +566,7 @@ def main():
 	fourtwenty = rm.run_daily(cronjobdos, datetime.time(8,20,15,0))
 	fourtwenty.enabled = True
 	
-	mnggrtsched = ma.run_daily(cronjobgreet, datetime.time(22,0,4,0))
+	mnggrtsched = ma.run_daily(cronjobgreet, datetime.time(22,0,4,0), days=(0,2,3,4,5,6))
 	mnggrtsched.enabled = True
 
 	prayersched = rm.run_daily(cronjobpray, datetime.time(7,0,3,0))
