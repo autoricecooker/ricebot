@@ -535,11 +535,13 @@ def cronjobdos(context):
 	if (random.randrange(0,9) == 5):
 		context.bot.send_message(cebGCID, random.choice(weedvid))
 	else:
-		context.bot.send_animation(cebGCID, "CgADBQADNgADZj7JVEzPU_TiD4UHFgQ")
+		context.bot.send_animation(cebGCID, random.choice(cebweedgif))
 	
 
 def cronjobgreet(context):
 	context.bot.send_photo(cebGCID, morningpic)
+	if (random.randrange(0,2) == 2):
+		context.bot.send_photo(cebGCID,"AgACAgUAAx0CSte9MwABAUb6YH6q6KD42fTZ3GbMK85_MZ_q1-MAAu6rMRtcRfBXUv3Fe9F-GVj-Fr9vdAADAQADAgADeQAD8uUDAAEfBA")
 
 
 def cronjobpray(context):
