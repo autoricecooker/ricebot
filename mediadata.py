@@ -19,7 +19,7 @@ leigreetword = ["pinakacute", "cute", "pinakamaganda"]
 revillagreet = ["bong", "revilla", "budots"]
 weebgreet = ["anime was a mistake", "weeb shit", "fucking weeb", "fuckin weeb", "fucking weeaboo", "fuckin weeaboo", "damn weeb", "damn weeaboo", "weeb trash", "otaku garbage", "otaku shit", "weaaboo trash", "basura anime", "anime is trash"]
 gadongreet = ["mga bobo", "putangina bobo", "puta bobo", "lahat bobo", "kingina bobo"]
-saveupgreet = ["budol", "retail therapy"]
+saveupgreet = ["budol", "retail therapy", "don't waste money", "di ako poor"]
 
 leisticker = ["CAADBQADIQEAAiO4mBCSjVKUWk7MNwI", "CAADBQADHAEAAiO4mBCeaC0LYAlkowI", "CAADBQADIAEAAiO4mBD3UdIBPEO6WwI", "CAADBQADGwEAAiO4mBC51PR572t9EgI", "CAADBQADHwEAAiO4mBBJWiwq_cjWdQI", "CAADBQADHgEAAiO4mBBMQuYcpcSX2AI"]
 leigif = ["CgADBQADEQADNNrpV_JyDVwU2d1rAg", "CgADBQADFQADDHrhVeaTS0bvbyRWAg", "CgADBQADEAADS754Vha1dmKytEvNAg", "CgADBQADHwADYlzxVfOzb9cCUkuqAg", "CgACAgUAAx0CSte9MwAClZNejvehZnp7f2b00c9IDRE80nM-lwACTwADl_rpVHEOdRWaq2VsGAQ"]
