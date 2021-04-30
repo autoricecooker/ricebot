@@ -45,4 +45,4 @@ weedvid = ["https://www.youtube.com/watch?v=sifVwz5Nguc", "https://www.youtube.c
 weedjesusgif = "CgADBQADNgADZj7JVEzPU_TiD4UHAg"
 wednesdayfrogpic = "AgADBQADo6gxGzozUFTufJLeTUQaGBt0-TIABAEAAwIAA3gAAwIrBAABFgQ"
 gadongif = ["CgACAgUAAx0CSte9MwAC47Fe9rWpOOYFduhDInja8uv7Tu3qdAACkQADaLyhVH1Y2JTFsAvfGgQ", "CgACAgUAAx0CSte9MwAC47Ze9rbtdkufvqc_9crhPm3HUk-d8QACAgEAArquuFeMMB6Stv9IZhoE"]
-saveuppic = ""
+saveuppic = "AgACAgIAAx0CSte9MwABAUw9YIvpexpB1phsA50lFjIWB-F-FwADMLMxG9ddWUhz53gMnnAPLiC9h6IuAAMBAAMCAAN5AAMfqAEAAR8E"
