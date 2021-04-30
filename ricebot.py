@@ -273,6 +273,9 @@ def testGChandle(update, context):
 			#weed jesus autoreply
 			elif ("weed jesus" in msg_text):
 				ricebot.send_animation(chat_id, weedjesusgif)
+			#don't waste money autoreply
+			elif (any(x in msg_text for x in saveupgreet) and random.randint(0,2)):
+				ricebot.send_photo(chat_id, saveuppic, reply_to_message_id=msg_id)
 			#sad greetings autoreply
 			elif (any(x in msg_split for x in sadgreet) and "rice" in msg_text):
 				if searchinString(sadgreet, msg_text, searchparam=r"(\S+) @ricecooker"):
