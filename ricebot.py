@@ -418,6 +418,12 @@ def prodGChandle(update, context):
 			#weed jesus autoreply
 			elif ("weed jesus" in msg_text):
 				ricebot.send_animation(chat_id, weedjesusgif)
+			#don't waste money autoreply
+			elif (any(x in msg_text for x in saveupgreet) and random.randint(0,2)):
+				if (update.message.reply_to_message):
+					ricebot.send_photo(chat_id, saveuppic, reply_to_message_id=reply_msg_id)
+				else:
+					ricebot.send_photo(chat_id, saveuppic, reply_to_message_id=msg_id)
 			# #greetings autoreply
 			# elif (user_id == 456128183 and "hi" in msg_split):
 			# 	ricebot.send_message(chat_id, "<code>Negative</code>", parse_mode="HTML", reply_to_message_id=msg_id)
