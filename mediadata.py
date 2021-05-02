@@ -40,7 +40,7 @@ flandersgif = ["CgADBAADOQADvho0UUaTNwGy6fWJAg"]
 weebgif = ["CgADBQADOwADyE_wVe3mk7g8DJnwAg", "CgADBQADWAAD5XgIVd4wMCz9ESrCAg", "CgACAgQAAx0CSte9MwACuXRewo7RKtn4izrnK-R6LgPiwfBpbgACUwADcIS9USzOaoOEG5UYGQQ", "CgACAgQAAx0CSte9MwACuXdewo8I4XLN90FkNNwWVlRoOyPezQACSAIAAvIdHVKmAl4sR-9nsxkE"]
 prayerpic = "AgADBQADbagxG4ocsVfyRzCWKWz83cBQ9jIABFnbxMn-gKxBdGgBAAEC"
 morningpic = "AgADBQADRKgxG_aNeFXkzaKcraJiFdOA3zIABKp6ugP3u2PoJjgBAAEC"
-cebweedgif = ["CgADBQADNgADZj7JVEzPU_TiD4UHAg", "CgACAgQAAx0CSte9MwABAUbiYH6pRokMTbj3mBrwyIz6lVKc7cwAAlkCAAJB7Z1S7GZzwKPLVkcfBA", "CgACAgQAAx0CSte9MwABAUbjYH6pRgpQfm-92ii2tV3gTHvJo-wAAkECAALNBlRRygq8cKZ0q10fBA", "CgACAgQAAx0CSte9MwABAUbkYH6pRuxS8L5FiLEq31OwgWUQDuEAAhwCAAK5-Y1SSIsRTAMEx5AfBA","CgACAgQAAx0CSte9MwABAUblYH6pRmuVgxTnRYGRrE-JHNMa7QoAAicCAALUpI1SuBmAOLB_qGcfBA"]
+cebweedgif = ["CgADBQADNgADZj7JVEzPU_TiD4UHAg", "CgACAgQAAx0CSte9MwABAUbjYH6pRgpQfm-92ii2tV3gTHvJo-wAAkECAALNBlRRygq8cKZ0q10fBA", "CgACAgQAAx0CSte9MwABAUbkYH6pRuxS8L5FiLEq31OwgWUQDuEAAhwCAAK5-Y1SSIsRTAMEx5AfBA","CgACAgQAAx0CSte9MwABAUblYH6pRmuVgxTnRYGRrE-JHNMa7QoAAicCAALUpI1SuBmAOLB_qGcfBA"]
 weedvid = ["https://www.youtube.com/watch?v=sifVwz5Nguc", "https://www.youtube.com/watch?v=DJfg39WkMvE", "https://www.youtube.com/watch?v=iPXKfGxeHIY", "https://www.youtube.com/watch?v=rnS-05XoXs4"]
 weedjesusgif = "CgADBQADNgADZj7JVEzPU_TiD4UHAg"
 wednesdayfrogpic = "AgADBQADo6gxGzozUFTufJLeTUQaGBt0-TIABAEAAwIAA3gAAwIrBAABFgQ"
