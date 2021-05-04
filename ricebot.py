@@ -561,8 +561,13 @@ def cronjobpray(context):
 
 
 def cronjobfrog(context):
-	context.bot.send_photo(prodGCID, wednesdayfrogpic)
-	context.bot.send_photo(cebGCID, wednesdayfrogpic)
+	if (random.randrange(0,4)):
+		context.bot.send_photo(prodGCID, wednesdayfrogpic)
+		context.bot.send_photo(cebGCID, wednesdayfrogpic)
+	else:
+		froggif = random.choice(wednesdayfroggif)
+		context.bot.send_animation(prodGCID, froggif)
+		context.bot.send_animation(cebGCID, froggif)
 
 def main():
 	updater = telegram.ext.Updater(os.getenv("BOT_TOKEN"), use_context=True)
