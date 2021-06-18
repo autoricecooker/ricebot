@@ -274,11 +274,17 @@ def testGChandle(update, context):
 			elif ("weed jesus" in msg_text):
 				ricebot.send_animation(chat_id, weedjesusgif)
 			#don't waste money autoreply
-			elif (any(x in msg_text for x in saveupgreet) and random.randint(0,2)):
-				if (update.message.reply_to_message):
-					ricebot.send_photo(chat_id, saveuppic, reply_to_message_id=reply_msg_id)
-				else:
-					ricebot.send_photo(chat_id, saveuppic, reply_to_message_id=msg_id)
+			elif (any(x in msg_text for x in saveupgreet)):
+				if (random.randint(0,2)):
+					if (update.message.reply_to_message):
+						ricebot.send_photo(chat_id, saveuppic, reply_to_message_id=reply_msg_id)
+					else:
+						ricebot.send_photo(chat_id, saveuppic, reply_to_message_id=msg_id)
+				else :
+					if (update.message.reply_to_message):
+						ricebot.send_animation(chat_id, saveupgif, reply_to_message_id=reply_msg_id)
+					else:
+						ricebot.send_animation(chat_id, saveupgif, reply_to_message_id=msg_id)
 			#sad greetings autoreply
 			elif (any(x in msg_split for x in sadgreet) and "rice" in msg_text):
 				if searchinString(sadgreet, msg_text, searchparam=r"(\S+) @ricecooker"):
