@@ -282,9 +282,9 @@ def testGChandle(update, context):
 						ricebot.send_photo(chat_id, saveuppic, reply_to_message_id=msg_id)
 				else :
 					if (update.message.reply_to_message):
-						ricebot.send_animation(chat_id, random.choice(saveupgif), reply_to_message_id=reply_msg_id)
+						ricebot.send_animation(chat_id, saveupgif, reply_to_message_id=reply_msg_id)
 					else:
-						ricebot.send_animation(chat_id, random.choice(saveupgif), reply_to_message_id=msg_id)
+						ricebot.send_animation(chat_id, saveupgif, reply_to_message_id=msg_id)
 			#sad greetings autoreply
 			elif (any(x in msg_split for x in sadgreet) and "rice" in msg_text):
 				if searchinString(sadgreet, msg_text, searchparam=r"(\S+) @ricecooker"):
@@ -433,9 +433,9 @@ def prodGChandle(update, context):
 						ricebot.send_photo(chat_id, saveuppic, reply_to_message_id=msg_id)
 				else :
 					if (update.message.reply_to_message):
-						ricebot.send_animation(chat_id, random.choice(saveupgif), reply_to_message_id=reply_msg_id)
+						ricebot.send_animation(chat_id, saveupgif, reply_to_message_id=reply_msg_id)
 					else:
-						ricebot.send_animation(chat_id, random.choice(saveupgif), reply_to_message_id=msg_id)
+						ricebot.send_animation(chat_id, saveupgif, reply_to_message_id=msg_id)
 			# #greetings autoreply
 			# elif (user_id == 456128183 and "hi" in msg_split):
 			# 	ricebot.send_message(chat_id, "<code>Negative</code>", parse_mode="HTML", reply_to_message_id=msg_id)
