@@ -473,6 +473,18 @@ def prodGChandle(update, context):
 					ricebot.send_animation(chat_id, random.choice(parrotgif), reply_to_message_id=msg_id)
 		elif (update.message.new_chat_members):
 			ricebot.send_message(chat_id, "<code>Hi! Welcome to r/ph tele! \n\nAs part of catfish verification standard procedures, we ask for a selfie of you with a tabo (tabofie) or a tinidor (tinidorfie). \nHave fun and stay fake!</code>", parse_mode="HTML", reply_to_message_id=msg_id)
+		elif (update.message.animation):
+			if (update.message.animation.file_id == "CgACAgQAAx0CSte9MwABAW1bYQdwgb-J2QwOFC_M2KGBZw0f6ogAAj4CAAIpVI1StKKS683KxXogBA"):
+				if (random.randint(0,2)):
+					if (update.message.reply_to_message):
+						ricebot.send_photo(chat_id, saveuppic, reply_to_message_id=reply_msg_id)
+					else:
+						ricebot.send_photo(chat_id, saveuppic, reply_to_message_id=msg_id)
+				else :
+					if (update.message.reply_to_message):
+						ricebot.send_animation(chat_id, saveupgif, reply_to_message_id=reply_msg_id)
+					else:
+						ricebot.send_animation(chat_id, saveupgif, reply_to_message_id=msg_id)
 		elif (anm_id and anm_id == "CgADBQADjwADxbwAAVQdtvEQ-lCPGwI"):
 			ricebot.send_animation(chat_id, random.choice(stressgif), reply_to_message_id=msg_id)
 		elif (anm_id and (anm_id == "CgADBQADIQAD1PpYV9Q8SLVB8kHHAg" or anm_id == "CgADBQADCQAD2MkBV-93jXgFs7gBAg")):
