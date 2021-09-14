@@ -316,7 +316,6 @@ def prodGChandle(update, context):
 	ricebot = context.bot
 	msg_text = None
 	msg_split = None
-	anm_id = None
 	atomchance = random.randint(1,6) % 6
 	leichance = random.randint(1,3) % 3
 	global prodexpr
@@ -474,7 +473,7 @@ def prodGChandle(update, context):
 		elif (update.message.new_chat_members):
 			ricebot.send_message(chat_id, "<code>Hi! Welcome to r/ph tele! \n\nAs part of catfish verification standard procedures, we ask for a selfie of you with a tabo (tabofie) or a tinidor (tinidorfie). \nHave fun and stay fake!</code>", parse_mode="HTML", reply_to_message_id=msg_id)
 		elif (update.message.animation):
-			if (update.message.animation.file_id == "CgACAgQAAx0CSte9MwABAW1bYQdwgb-J2QwOFC_M2KGBZw0f6ogAAj4CAAIpVI1StKKS683KxXogBA"):
+			if (update.message.animation.file_id == "CgACAgQAAx0CSte9MwABAW1bYQdwgb-J2QwOFC_M2KGBZw0f6ogAAj4CAAIpVI1StKKS683KxXogBA" or update.message.animation.file_id == "CgACAgQAAx0CSte9MwABAW24YQf3qfhdET277ObFVs5LQqIqYdgAAj4CAAIpVI1StKKS683KxXogBA" or update.message.animation.file_id == "CgACAgQAAx0CSte9MwABAW28YQf5yPvj43igp6Z88zpfTkvjcFIAAj4CAAIpVI1StKKS683KxXogBA"):
 				if (random.randint(0,2)):
 					if (update.message.reply_to_message):
 						ricebot.send_photo(chat_id, saveuppic, reply_to_message_id=reply_msg_id)
@@ -485,13 +484,7 @@ def prodGChandle(update, context):
 						ricebot.send_animation(chat_id, saveupgif, reply_to_message_id=reply_msg_id)
 					else:
 						ricebot.send_animation(chat_id, saveupgif, reply_to_message_id=msg_id)
-		elif (anm_id and anm_id == "CgADBQADjwADxbwAAVQdtvEQ-lCPGwI"):
-			ricebot.send_animation(chat_id, random.choice(stressgif), reply_to_message_id=msg_id)
-		elif (anm_id and (anm_id == "CgADBQADIQAD1PpYV9Q8SLVB8kHHAg" or anm_id == "CgADBQADCQAD2MkBV-93jXgFs7gBAg")):
-			if (leichance):
-				ricebot.send_sticker(chat_id, random.choice(leisticker), reply_to_message_id=msg_id)
-			else :
-				ricebot.send_animation(chat_id, random.choice(leigif), reply_to_message_id=msg_id)
+
 
 def cebGChandle(update: telegram.Update, context: telegram.ext.CallbackContext):
 	#Initialize variables
@@ -564,6 +557,17 @@ def foodGChandle(update, context):
 	#Add welcome greeter
 	if (update.message.new_chat_members):
 		ricebot.send_message(chat_id, "<code>Hello sa mga bago. Lapag kayo ng mga subo GIF. OO REQUIRED TO BAKLA!\n\nRules:\n1. I-video ang sarili nang walang audio na sumusubo ng pagkain.\n2. Once naglapag ka, verified tao ka. Hindi ka catfish.\n3. Bawal sumubo ng tao.\n\nGood morning po and happy eating ng ina nyo.</code>", parse_mode="HTML", reply_to_message_id=update.message.message_id)
+	#Autoreply if dingdingding
+	elif (update.message.text):
+		msg_text = update.message.text.lower()
+		msg_split = msg_text.split()
+
+		if (msg_text == "dingdingding"):
+			if (update.message.reply_to_message):
+				ricebot.send_animation(chat_id, "CgACAgQAAx0CSte9MwABAX9eYUCPeAF3aaaC3hxzrGE8ZPeMFRoAAkkHAALVsJlQpuY3BKkbW_YgBA", reply_to_message_id=update.message.reply_to_message.message_id)
+			else :
+				ricebot.send_animation(chat_id, "CgACAgQAAx0CSte9MwABAX9eYUCPeAF3aaaC3hxzrGE8ZPeMFRoAAkkHAALVsJlQpuY3BKkbW_YgBA", reply_to_message_id=update.message.message_id)
+
 
 def cronjobdos(context):
 # 	context.bot.send_message(testGCID, "CRON JOB 420 ACTIVATED")
