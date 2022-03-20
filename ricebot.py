@@ -601,11 +601,15 @@ def cronjobfrog(context):
 		context.bot.send_animation(prodGCID, froggif)
 		context.bot.send_animation(cebGCID, froggif)
 
+def cronjobfriday(context):
+	context.bot.send_video(testGCID,whiteclawgabefridayvid)
+
 def main():
 	updater = telegram.ext.Updater(os.getenv("BOT_TOKEN"), use_context=True)
 	dp = updater.dispatcher
 	rm = updater.job_queue
 	ma = updater.job_queue
+	gb = updater.job_queue
 
 	dp.add_handler(telegram.ext.CommandHandler("getchatid", chat_id_capture, pass_chat_data=True))
 	dp.add_handler(telegram.ext.MessageHandler(telegram.ext.Filters.chat(testGCID), testGChandle))
@@ -626,6 +630,7 @@ def main():
 	frogsched = ma.run_daily(cronjobfrog, datetime.time(22,30,3,0), days=(1,))
 	frogsched.enabled = True
 
+	wcgfriday = gb.run_daily(cronjobfriday, datetime.time(10,0,0,0), days=(4,))
 	updater.start_polling()
 
 	updater.idle()
