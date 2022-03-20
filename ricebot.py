@@ -148,7 +148,11 @@ def testGChandle(update, context):
 		if (update.message.photo):
 			ricebot.send_message(chat_id, "Photo File ID: \n" + update.message.photo[-1].file_id)
 			ricebot.send_message(chat_id, update.message.caption)
-			
+		#Get video file ID
+		if (update.message.video):
+			video_id = update.message.video.file_id
+			ricebot.send_message(chat_id, "Video File ID: \n" + video_id)
+		
 		#Send motd when new members are added
 		if (update.message.new_chat_members):
 			ricebot.send_message(chat_id, "<code>All contents/events in this group chat are confidential. Disclosure is prohibited</code>", parse_mode="HTML", reply_to_message_id=msg_id)
