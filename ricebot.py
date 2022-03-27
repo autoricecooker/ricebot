@@ -602,7 +602,7 @@ def cronjobfrog(context):
 		context.bot.send_animation(cebGCID, froggif)
 
 def cronjobfriday(context):
-	context.bot.send_video(testGCID,whiteclawgabefridayvid)
+	context.bot.send_video(prodGCID,whiteclawgabefridayvid)
 
 def main():
 	updater = telegram.ext.Updater(os.getenv("BOT_TOKEN"), use_context=True)
